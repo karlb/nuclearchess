@@ -41,14 +41,66 @@ function log(text)
     $('#msg').append(htmls.join("<br>"));
 }
 
-$(document).ready(function(){
-    log("starting...!\n");
+function update_board(board) {
+    var x,y;
+	var position = {};
+	var piece_mapping = {
+		1: 'P', 
+		2: 'B', 
+		3: 'N', 
+		4: 'R', 
+		5: 'Q', 
+		6: 'K', 
+	};
 
+    for (y=0; y<8; y++) {
+        for (x=0; x<8; x++) {
+            // pointer to 32-bit var
+            var pointer = (_brett+((x+y*8)<<2));
+            var piece_code = HEAP32[((pointer)>>2)];
+
+			if (piece_code === 0) {
+				continue;
+			}
+			var field = String.fromCharCode('a'.charCodeAt(0) + x) + (y + 1);
+			var color = piece_code < 0 ? 'w' : 'b';
+			var piece = piece_mapping[Math.abs(piece_code)];
+			position[field] = color + piece;
+        }
+    }
+	board.position(position, true);
+}
+
+$(document).ready(function(){
     var weiss = 1, schwarz = -1;
     var tiefe = 1;
     var farbe = weiss;
+	var board;
+
+	function take_turns() {
+		if ((_hat_koenig(weiss, _brett) != 1) || (_hat_koenig(schwarz, _brett) != 1)) {
+			return;
+		}
+
+		_computer_zug(farbe, tiefe, _brett, _zug_temp, _punkte_int_temp, 1);
+		farbe = -farbe; 
+		
+		log(print_zug(_zug_temp));
+		_anwenden(_brett, _zug_temp);
+
+		update_board(board);
+	}
+
+	board = new ChessBoard('board', {
+		pieceTheme: 'lib/chessboardjs/img/chesspieces/wikipedia/{piece}.png',
+		moveSpeed: 2000,
+		onMoveEnd: function() {console.log('bar'); take_turns();}
+	});
+
+    log("starting...!\n");
 
     _newGame();
+	update_board(board);
     log(print_brett());
 
     // zug legal / erlaubt
@@ -58,15 +110,5 @@ $(document).ready(function(){
     //console.log(_hat_koenig(weiss, _brett));
     //console.log(_hat_koenig(schwarz, _brett));
 
-    while ((_hat_koenig(weiss, _brett) == 1) && (_hat_koenig(schwarz, _brett) == 1))
-    {
-
-        _computer_zug(farbe, tiefe, _brett, _zug_temp, _punkte_int_temp, 1);
-        farbe = -farbe; 
-        
-        log(print_zug(_zug_temp));
-
-    _anwenden(_brett, _zug_temp);
-    }
     log(print_brett());
 });
