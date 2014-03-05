@@ -11,12 +11,14 @@ function print_zug(zug) {
 }
 
 function make_zug(from_field, to_field) {
-	_set_zug_temp(
-		from_field.charCodeAt(0) - 'a'.charCodeAt(0),
-		8 - parseInt(from_field[1]),
-		to_field.charCodeAt(0) - 'a'.charCodeAt(0),
-		8 - parseInt(to_field[1])
-	);
+	var from_x = from_field.charCodeAt(0) - 'a'.charCodeAt(0),
+		from_y = 8 - parseInt(from_field[1]),
+		to_x = to_field.charCodeAt(0) - 'a'.charCodeAt(0),
+		to_y = 8 - parseInt(to_field[1]);
+    if (!_legal(from_x, from_y, to_x, to_y, _brett)) {
+		return 'invalid';
+	}
+	_set_zug_temp(from_x, from_y, to_x, to_y);
 	return _zug_temp;
 }
 
@@ -63,11 +65,17 @@ $(document).ready(function(){
 		}
 		_computer_zug(schwarz, tiefe, _brett, _zug_temp, _punkte_int_temp, 1);
 		_anwenden(_brett, _zug_temp);
-		update_html_board(board);
 	}
 
 	function on_snap(from_field, to_field, piece) {
+		update_html_board(board);
+	}
+
+	function on_drop(from_field, to_field, piece) {
 		zug = make_zug(from_field, to_field);
+		if (zug === 'invalid') {
+			return 'snapback';
+		}
 		_anwenden(_brett, zug);
 		computer_turn();
 	}
@@ -76,7 +84,8 @@ $(document).ready(function(){
 		pieceTheme: 'lib/chessboardjs/img/chesspieces/wikipedia/{piece}.png',
 		draggable: true,
 		moveSpeed: 2000,
-		onSnapEnd: on_snap
+		onSnapEnd: on_snap,
+		onDrop: on_drop
 	});
 
     _newGame();
