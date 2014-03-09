@@ -52,6 +52,13 @@ function update_html_board(board) {
     board.position(position, true);
 }
 
+function resize(board) {
+    var width = Math.min($(window).width(), $(window).height());
+    $("#board").width(width + "px");
+    board.resize();
+}
+
+
 $(document).ready(function(){
     var weiss = 1, schwarz = -1;
     var tiefe = 1;
@@ -86,6 +93,13 @@ $(document).ready(function(){
         moveSpeed: 2000,
         onSnapEnd: on_snap,
         onDrop: on_drop
+    });
+
+
+    resize(board);
+
+    $(window).resize(function(){
+        resize(board);
     });
 
     _newGame();
