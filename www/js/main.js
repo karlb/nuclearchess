@@ -54,7 +54,7 @@ function update_html_board(board) {
 
 function resize(board) {
     var width = Math.min($(window).width(), $(window).height());
-    $("#board").width(width + "px");
+    $("#board").width(Math.floor(width/8)*8 + "px");
     board.resize();
 }
 
