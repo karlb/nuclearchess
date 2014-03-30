@@ -59,9 +59,15 @@ function resize(board) {
 }
 
 
+function restart(board) {
+    _newGame();
+    update_html_board(board);
+}
+
+
 $(document).ready(function(){
     var weiss = 1, schwarz = -1;
-    var tiefe = 1;
+    var tiefe = parseInt($('#difficulty').val());
     var board;
 
     function computer_turn() {
@@ -102,8 +108,10 @@ $(document).ready(function(){
         resize(board);
     });
 
-    _newGame();
-    update_html_board(board);
+    restart(board);
+
+    $('#restart').click(function () {restart(board)});
+    $('#difficulty').change(function () {tiefe = parseInt(this.value)});
 
     // zug legal / erlaubt
 //    log( _legal(1, 1, 2, 1, _brett) );
