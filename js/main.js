@@ -10,6 +10,10 @@ function print_zug(zug) {
     );
 }
 
+function indexes_to_field(x, y) {
+    return String.fromCharCode('a'.charCodeAt(0) + x) + (8 - y);
+}
+
 function make_zug(from_field, to_field) {
     var from_x = from_field.charCodeAt(0) - 'a'.charCodeAt(0),
         from_y = 8 - parseInt(from_field[1]),
@@ -71,7 +75,7 @@ function position_to_board(position, board) {
     for (y=0; y<8; y++) {
         for (x=0; x<8; x++) {
             // get piece from chessboard.js
-            var field = String.fromCharCode('a'.charCodeAt(0) + x) + (8 - y);
+            var field = indexes_to_field(x, y);
             var piece = position[field];
 
             // convert to piece_code for _brett
@@ -119,21 +123,28 @@ $(document).ready(function(){
         }
         _computer_zug(schwarz, tiefe, _brett, _zug_temp, _punkte_int_temp, 1);
         _anwenden(_brett, _zug_temp);
+
+        var from = indexes_to_field(_von_x(_zug_temp), _von_y(_zug_temp));
+        var to = indexes_to_field(_nach_x(_zug_temp), _nach_y(_zug_temp));
+        board.move(from + '-' + to);
+    }
+
+    function on_move_end(from_field, to_field) {
+        update_html_board(board); // remove eleminated pieces
     }
 
     function on_snap(from_field, to_field, piece) {
-        update_html_board(board);
+        update_html_board(board); // remove eleminated pieces
+        window.setTimeout(computer_turn, 250);
     }
 
     function on_drop(from_field, to_field, piece) {
         undo_stack.push(board_to_position(_brett));
-        console.log(undo_stack);
         zug = make_zug(from_field, to_field);
         if (zug === 'invalid') {
             return 'snapback';
         }
         _anwenden(_brett, zug);
-        computer_turn();
     }
 
     board = new ChessBoard('board', {
@@ -141,7 +152,8 @@ $(document).ready(function(){
         draggable: true,
         moveSpeed: 2000,
         onSnapEnd: on_snap,
-        onDrop: on_drop
+        onDrop: on_drop,
+        onMoveEnd: on_move_end
     });
 
 
