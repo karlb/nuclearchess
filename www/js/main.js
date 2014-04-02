@@ -157,8 +157,16 @@ $(document).ready(function(){
             var piece_classes = [];
             for (y=-1; y<=1; y++) {
                 for (x=-1; x<=1; x++) {
-                    field = indexes_to_field(center_x + x, center_y + y);
-                    piece_classes.push('.square-' + field + ' img');
+                    if (
+                        (center_x + x >= 0) && 
+                        (center_x + x < 8) && 
+                        (center_y + y >= 0) && 
+                        (center_y + y < 8) 
+                    )
+                    {
+                        field = indexes_to_field(center_x + x, center_y + y);
+                        piece_classes.push('.square-' + field + ' img');
+                    }
                 }
             }
             var pieces = $(piece_classes.join(', '));
