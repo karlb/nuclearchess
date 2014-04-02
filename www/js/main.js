@@ -10,6 +10,16 @@ function print_zug(zug) {
     );
 }
 
+function indexes_to_field(x, y) {
+    return String.fromCharCode('a'.charCodeAt(0) + x) + (8 - y);
+}
+
+function field_to_indexes(field) {
+    var x = field.charCodeAt(0) - 'a'.charCodeAt(0);
+    var y = 8 - parseInt(field[1]);
+    return [x, y]
+}
+
 function make_zug(from_field, to_field) {
     var from_x = from_field.charCodeAt(0) - 'a'.charCodeAt(0),
         from_y = 8 - parseInt(from_field[1]),
@@ -22,7 +32,12 @@ function make_zug(from_field, to_field) {
     return _zug_temp;
 }
 
-function update_html_board(board) {
+function update_html_board(board, show_animation) {
+    var position = board_to_position(board);
+    board.position(position, show_animation);
+}
+
+function board_to_position(board) {
     var x,y;
     var position = {};
     var piece_mapping = {
@@ -31,7 +46,7 @@ function update_html_board(board) {
         3: 'N',
         4: 'R',
         5: 'Q',
-        6: 'K',
+        6: 'K'
     };
 
     for (y=0; y<8; y++) {
@@ -49,7 +64,42 @@ function update_html_board(board) {
             position[field] = color + piece;
         }
     }
-    board.position(position, true);
+    return position;
+}
+
+function position_to_board(position, board) {
+    var x,y;
+    var piece_mapping = {
+        P: '1',
+        B: '2',
+        N: '3',
+        R: '4',
+        Q: '5',
+        K: '6'
+    };
+
+    for (y=0; y<8; y++) {
+        for (x=0; x<8; x++) {
+            // get piece from chessboard.js
+            var field = indexes_to_field(x, y);
+            var piece = position[field];
+
+            // convert to piece_code for _brett
+            var piece_code;
+            if (piece === undefined) {
+                piece_code = 0;
+            } else {
+                piece_code = piece_mapping[piece[1]];
+                if (piece[0] === 'b') {
+                    piece_code *= -1;
+                }
+            }
+
+            // write result to _brett
+            var pointer = _brett + ((x+y*8) << 2);
+            HEAP32[pointer >> 2] = piece_code;
+        }
+    }
 }
 
 function resize(board) {
@@ -60,39 +110,127 @@ function resize(board) {
 
 
 $(document).ready(function(){
-    var weiss = 1, schwarz = -1;
-    var tiefe = 1;
     var board;
+    var weiss = 1, schwarz = -1;
+    var tiefe = parseInt($('#difficulty').val());
+    var undo_stack = [];
+    var nuclear_strike = false;  // either 'false' or the field where the strike hit
+    var waiting_for_player = true;
+    var game_over;
+
+    function restart() {
+        _newGame();
+        update_html_board(board, false);
+        game_over = false;
+        $('#winner').text('');
+    }
 
     function computer_turn() {
-        if ((_hat_koenig(weiss, _brett) != 1) || (_hat_koenig(schwarz, _brett) != 1)) {
-            // game over
-            console.log('game over');
+        if (game_over) {
             return;
         }
         _computer_zug(schwarz, tiefe, _brett, _zug_temp, _punkte_int_temp, 1);
         _anwenden(_brett, _zug_temp);
+
+        var from = indexes_to_field(_von_x(_zug_temp), _von_y(_zug_temp));
+        var to = indexes_to_field(_nach_x(_zug_temp), _nach_y(_zug_temp));
+        check_for_nuclear_strike(to);
+        board.move(from + '-' + to);
+    }
+
+    function check_for_nuclear_strike(to_field) {
+        if (board.position()[to_field] !== undefined) {
+            nuclear_strike = to_field;
+        }
+    }
+
+    function show_nuclear_strike(after_strike_callback) {
+        if (after_strike_callback === undefined) {
+            after_strike_callback = function () {};
+        }
+        if (nuclear_strike) {
+            // select surrounding fields
+            var indexes = field_to_indexes(nuclear_strike);
+            var center_x = indexes[0],
+                center_y = indexes[1];
+            var x, y;
+            var piece_classes = [];
+            for (y=-1; y<=1; y++) {
+                for (x=-1; x<=1; x++) {
+                    field = indexes_to_field(center_x + x, center_y + y);
+                    piece_classes.push('.square-' + field + ' img');
+                }
+            }
+            var pieces = $(piece_classes.join(', '));
+            pieces.addClass('shake shake-hard');
+            setTimeout(function() {
+                pieces.removeClass('shake shake-hard');
+                update_html_board(board); // remove eleminated pieces
+                after_strike_callback();
+            }, 1000);
+        } else {
+            after_strike_callback();
+
+            // only necessary for rochade
+            // TODO: the computer's turn is done while still animating the
+            //       rochade
+            update_html_board(board);
+        }
+        nuclear_strike = false;
+    }
+
+    function check_game_over() {
+        if (_hat_koenig(weiss, _brett) != 1) {
+            game_over = true;
+            $('#winner').text('Black is winner!')
+        }
+        if (_hat_koenig(schwarz, _brett) != 1) {
+            game_over = true;
+            $('#winner').text('White is winner!')
+        }
+    }
+
+    function on_move_end(from_field, to_field) {
+        show_nuclear_strike();
+        check_game_over();
+        waiting_for_player = true;
     }
 
     function on_snap(from_field, to_field, piece) {
-        update_html_board(board);
+        show_nuclear_strike(function () {
+            check_game_over();
+            window.setTimeout(computer_turn, 250);
+        });
     }
 
     function on_drop(from_field, to_field, piece) {
+        undo_stack.push(board_to_position(_brett));
         zug = make_zug(from_field, to_field);
         if (zug === 'invalid') {
             return 'snapback';
         }
+        waiting_for_player = false;
+        check_for_nuclear_strike(to_field);
         _anwenden(_brett, zug);
-        computer_turn();
     }
 
     board = new ChessBoard('board', {
         pieceTheme: 'lib/chessboardjs/img/chesspieces/wikipedia/{piece}.png',
         draggable: true,
-        moveSpeed: 2000,
+        moveSpeed: 1600,
         onSnapEnd: on_snap,
-        onDrop: on_drop
+        onDrop: on_drop,
+        onMoveEnd: on_move_end,
+        onDragStart: function (from, piece) {
+            // picking up pieces it not allowe when ...
+            if (
+                piece[0] === 'b'  // it's black
+                || game_over  // the game has already ended
+                || waiting_for_player === false  // animation in progress or computer's turn
+            ) {
+                return false;
+            }
+        }
     });
 
 
@@ -102,12 +240,17 @@ $(document).ready(function(){
         resize(board);
     });
 
-    _newGame();
-    update_html_board(board);
+    restart(board);
 
-    // zug legal / erlaubt
-//    log( _legal(1, 1, 2, 1, _brett) );
-//    log( _legal(1, 1, 1, 2, _brett) );
+    $('#restart').click(function () {restart(board)});
+    $('#undo').click(function () {
+        var position = undo_stack.pop();
+        position_to_board(position);
+        update_html_board(board);
+        game_over = false;
+        $('#winner').text('');
+    });
+    $('#difficulty').change(function () {tiefe = parseInt(this.value)});
 });
 
 // vim: tabstop=4 expandtab shiftwidth=4 softtabstop=4
