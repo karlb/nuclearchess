@@ -32,9 +32,9 @@ function make_zug(from_field, to_field) {
     return _zug_temp;
 }
 
-function update_html_board(board) {
+function update_html_board(board, show_animation) {
     var position = board_to_position(board);
-    board.position(position, true);
+    board.position(position, show_animation);
 }
 
 function board_to_position(board) {
@@ -109,23 +109,24 @@ function resize(board) {
 }
 
 
-function restart(board) {
-    _newGame();
-    update_html_board(board);
-}
-
-
-var board;
 $(document).ready(function(){
+    var board;
     var weiss = 1, schwarz = -1;
     var tiefe = parseInt($('#difficulty').val());
     var undo_stack = [];
     var nuclear_strike = false;  // either 'false' or the field where the strike hit
+    var waiting_for_player = true;
+    var game_over;
+
+    function restart() {
+        _newGame();
+        update_html_board(board, false);
+        game_over = false;
+        $('#winner').text('');
+    }
 
     function computer_turn() {
-        if ((_hat_koenig(weiss, _brett) != 1) || (_hat_koenig(schwarz, _brett) != 1)) {
-            // game over
-            console.log('game over');
+        if (game_over) {
             return;
         }
         _computer_zug(schwarz, tiefe, _brett, _zug_temp, _punkte_int_temp, 1);
@@ -140,8 +141,6 @@ $(document).ready(function(){
     function check_for_nuclear_strike(to_field) {
         if (board.position()[to_field] !== undefined) {
             nuclear_strike = to_field;
-        } else {
-            nuclear_strike = false;
         }
     }
 
@@ -162,22 +161,44 @@ $(document).ready(function(){
                     piece_classes.push('.square-' + field + ' img');
                 }
             }
-            $(piece_classes.join(', ')).addClass('shake shake-hard');
+            var pieces = $(piece_classes.join(', '));
+            pieces.addClass('shake shake-hard');
             setTimeout(function() {
+                pieces.removeClass('shake shake-hard');
                 update_html_board(board); // remove eleminated pieces
                 after_strike_callback();
-            }, 2000);
+            }, 1000);
         } else {
             after_strike_callback();
+
+            // only necessary for rochade
+            // TODO: the computer's turn is done while still animating the
+            //       rochade
+            update_html_board(board);
+        }
+        nuclear_strike = false;
+    }
+
+    function check_game_over() {
+        if (_hat_koenig(weiss, _brett) != 1) {
+            game_over = true;
+            $('#winner').text('Black is winner!')
+        }
+        if (_hat_koenig(schwarz, _brett) != 1) {
+            game_over = true;
+            $('#winner').text('White is winner!')
         }
     }
 
     function on_move_end(from_field, to_field) {
         show_nuclear_strike();
+        check_game_over();
+        waiting_for_player = true;
     }
 
     function on_snap(from_field, to_field, piece) {
         show_nuclear_strike(function () {
+            check_game_over();
             window.setTimeout(computer_turn, 250);
         });
     }
@@ -188,6 +209,7 @@ $(document).ready(function(){
         if (zug === 'invalid') {
             return 'snapback';
         }
+        waiting_for_player = false;
         check_for_nuclear_strike(to_field);
         _anwenden(_brett, zug);
     }
@@ -195,10 +217,20 @@ $(document).ready(function(){
     board = new ChessBoard('board', {
         pieceTheme: 'lib/chessboardjs/img/chesspieces/wikipedia/{piece}.png',
         draggable: true,
-        moveSpeed: 2000,
+        moveSpeed: 1600,
         onSnapEnd: on_snap,
         onDrop: on_drop,
-        onMoveEnd: on_move_end
+        onMoveEnd: on_move_end,
+        onDragStart: function (from, piece) {
+            // picking up pieces it not allowe when ...
+            if (
+                piece[0] === 'b'  // it's black
+                || game_over  // the game has already ended
+                || waiting_for_player === false  // animation in progress or computer's turn
+            ) {
+                return false;
+            }
+        }
     });
 
 
@@ -213,15 +245,12 @@ $(document).ready(function(){
     $('#restart').click(function () {restart(board)});
     $('#undo').click(function () {
         var position = undo_stack.pop();
-        console.log(position);
         position_to_board(position);
         update_html_board(board);
+        game_over = false;
+        $('#winner').text('');
     });
     $('#difficulty').change(function () {tiefe = parseInt(this.value)});
-
-    // zug legal / erlaubt
-//    log( _legal(1, 1, 2, 1, _brett) );
-//    log( _legal(1, 1, 1, 2, _brett) );
 });
 
 // vim: tabstop=4 expandtab shiftwidth=4 softtabstop=4
