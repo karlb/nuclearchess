@@ -217,11 +217,13 @@ $(document).ready(function(){
     }
 
     function on_drop(from_field, to_field, piece) {
-        undo_stack.push(board_to_position(_brett));
+        // ignore user action if move is not allowed
         zug = make_zug(from_field, to_field);
         if (zug === 'invalid') {
             return 'snapback';
         }
+
+        undo_stack.push(board_to_position(_brett));
         waiting_for_player = false;
         check_for_nuclear_strike(to_field);
         _anwenden(_brett, zug);
