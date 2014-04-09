@@ -188,13 +188,17 @@ $(document).ready(function(){
     }
 
     function check_game_over() {
-        if (_hat_koenig(weiss, _brett) != 1) {
+        if (_hat_koenig(weiss, _brett) != 1 && _hat_koenig(schwarz, _brett) != 1) {
             game_over = true;
-            $('#winner').text('Black is winner!')
+            $('#winner').text('Draw game');
         }
-        if (_hat_koenig(schwarz, _brett) != 1) {
+        else if (_hat_koenig(weiss, _brett) != 1) {
             game_over = true;
-            $('#winner').text('White is winner!')
+            $('#winner').text('Black is winner!');
+        }
+        else if (_hat_koenig(schwarz, _brett) != 1) {
+            game_over = true;
+            $('#winner').text('White is winner!');
         }
     }
 
