@@ -1,12 +1,16 @@
 
 body {
-  margin: 0;
+	margin: 0;
 	padding: 0;
 }
 
 #board {
-	margin-left:auto;
-	margin-right:auto;
+	margin-left: auto;
+	margin-right: auto;
 	padding: 0px;
+}
+
+#top-bar {
+	margin: 0 auto;
 }
 

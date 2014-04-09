@@ -103,8 +103,8 @@ function position_to_board(position, board) {
 }
 
 function resize(board) {
-    var width = Math.min($(window).width(), $(window).height());
-    $("#board").width(Math.floor(width/8)*8 + "px");
+    var width = Math.min($(window).width(), $(window).height() - $('#top-bar').height());
+    $("#board, #top-bar").width(Math.floor(width/8)*8 + "px");
     board.resize();
 }
 
@@ -252,7 +252,6 @@ $(document).ready(function(){
     restart(board);
     // set position from url if a fen-string is in the URL fragment part
     if (window.location.hash) {
-        console.log(window.location.hash);
         var fen = window.location.hash.slice(1);
         board.position(fen, false);
         position_to_board(board.position());
