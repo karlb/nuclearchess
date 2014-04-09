@@ -109,8 +109,8 @@ function resize(board) {
 }
 
 
+var board;
 $(document).ready(function(){
-    var board;
     var weiss = 1, schwarz = -1;
     var tiefe = parseInt($('#difficulty').val());
     var undo_stack = [];
@@ -194,6 +194,7 @@ $(document).ready(function(){
         show_nuclear_strike();
         check_game_over();
         waiting_for_player = true;
+        history.replaceState({}, '', '#' + board.fen());
     }
 
     function on_snap(from_field, to_field, piece) {
@@ -241,6 +242,13 @@ $(document).ready(function(){
     });
 
     restart(board);
+    // set position from url if a fen-string is in the URL fragment part
+    if (window.location.hash) {
+        console.log(window.location.hash);
+        var fen = window.location.hash.slice(1);
+        board.position(fen, false);
+        position_to_board(board.position());
+    }
 
     $('#restart').click(function () {restart(board)});
     $('#undo').click(function () {
