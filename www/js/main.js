@@ -32,9 +32,15 @@ function make_zug(from_field, to_field) {
     return _zug_temp;
 }
 
+/* Returns true if board changed */
 function update_html_board(board, show_animation) {
     var position = board_to_position(board);
-    board.position(position, show_animation);
+    if (ChessBoard.objToFen(position) === ChessBoard.objToFen(board.position())) {
+        return false;
+    } else {
+        board.position(position, show_animation);
+        return true;
+    }
 }
 
 function board_to_position(board) {
@@ -117,6 +123,7 @@ $(document).ready(function(){
     var nuclear_strike = false;  // either 'false' or the field where the strike hit
     var waiting_for_player = true;
     var game_over;
+    var move_end_callbacks = [];
 
     function restart() {
         _newGame();
@@ -177,12 +184,15 @@ $(document).ready(function(){
                 after_strike_callback();
             }, 1000);
         } else {
-            after_strike_callback();
-
-            // only necessary for rochade
-            // TODO: the computer's turn is done while still animating the
-            //       rochade
-            update_html_board(board);
+            // update only necessary for castling
+            if (update_html_board(board)) {
+                // wait until castling animation has finished
+                console.log('wait');
+                move_end_callbacks.push(after_strike_callback);
+            } else {
+                console.log('now');
+                after_strike_callback();
+            }
         }
         nuclear_strike = false;
     }
@@ -207,6 +217,11 @@ $(document).ready(function(){
         check_game_over();
         waiting_for_player = true;
         history.replaceState({}, '', '#' + board.fen());
+
+        $.each(move_end_callbacks, function(i, callback) {
+            callback();
+        });
+        move_end_callbacks = [];
     }
 
     function on_snap(from_field, to_field, piece) {
