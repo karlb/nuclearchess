@@ -19,19 +19,19 @@
 		<link rel="stylesheet" href="lib/chessboardjs/css/chessboard-0.3.0.min.css" />
 	</head>
 	<body>
-		<div id="top-bar" style="font-size: 200% !important;">
-				<button id='restart'>Restart</button>
-				<button id='undo'>Undo</button>
-				<button data-toggle="modal" data-target="#rules">Rules</button>
-				<label>
-				Difficulty:
-				<select id='difficulty'>
-						<option>1</option>
-						<option>2</option>
-						<option>3</option>
-						<option>4</option>
+		<div id="top-bar">
+				<button class="btn btn-default" id='undo'>Undo</button>
+				<select id="difficulty"  class="form-control" style="width: 8em; display: inline-block">
+					<option value="1">Easy</option>
+					<option value="2">Medium</option>
+					<option value="3">Hard</option>
+					<option value="4">Very Hard</option>
+					<option value="5">Too Hard</option>
 				</select>
-				</label>
+				<div style="float: right">
+					<button class="btn btn-default" data-toggle="modal" data-target="#rules">Rules</button>
+					<button class="btn btn-default" id='restart'>Restart</button>
+				</div>
 				<div id="winner"></div>
 		</div>
 		<div id="board"></div>
