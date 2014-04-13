@@ -11,6 +11,7 @@
 
 <!--    <script type="text/javascript" src="phonegap.js"></script>-->
 		<script type="text/javascript" src="js/jquery.min.js" ></script>
+		<script type="text/javascript" src="js/bootstrap.min.js" ></script>
 		<script type="text/javascript" src="js/atomschach.js" ></script>
 		<script type="text/javascript" src="lib/chessboardjs/js/chessboard-0.3.0.min.js" ></script>
 		<script type="text/javascript" src="js/main.js" ></script>
@@ -21,6 +22,7 @@
 		<div id="top-bar" style="font-size: 200% !important;">
 				<button id='restart'>Restart</button>
 				<button id='undo'>Undo</button>
+				<button data-toggle="modal" data-target="#rules">Rules</button>
 				<label>
 				Difficulty:
 				<select id='difficulty'>
@@ -33,15 +35,24 @@
 				<div id="winner"></div>
 		</div>
 		<div id="board"></div>
-		<div id="rules" style="display: none">
-			<h2>Rules</h2>
-			The usual chess rules are valid with the following changes:
-			<ol>
-				<li>Whenever a piece is captured both pieces and all pieces on neighbour fields die.
-				<li>There is no en passent capturing.
-				<li>When a pawn reaches the last rank he becomes a queen.
-				<li>Castling is allowed if the king and the rook are on their start position and there are no pieces between them.
-			</ol>
+		<div id="rules" class="modal fade">
+			<div class="modal-dialog">
+				<div class="modal-content">
+					<div class="modal-header">
+						<button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+						<h4 class="modal-title">Rules</h4>
+					</div>
+					<div class="modal-body">
+						The usual chess rules are valid with the following changes:
+						<ol>
+							<li>Whenever a piece is captured both pieces and all pieces on neighbour fields die.
+							<li>There is no en passent capturing.
+							<li>When a pawn reaches the last rank he becomes a queen.
+							<li>Castling is allowed if the king and the rook are on their start position and there are no pieces between them.
+						</ol>
+					</div>
+				</div>
+			</div>
 		</div>
 	</body>
 </html>
