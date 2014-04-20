@@ -14,6 +14,14 @@ body {
 #top-bar {
 	margin: 0 auto;
 	padding: 3px 0;
+	display: table;
+}
+#top-bar > * {
+	display: table-row;
+}
+#top-bar > * > * {
+	display: table-cell;
+	white-space: nowrap;
 }
 
 
