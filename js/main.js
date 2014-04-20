@@ -278,7 +278,7 @@ $(document).ready(function(){
         position_to_board(board.position());
     }
 
-    $('#restart').click(function () {restart(board)});
+    $('#play').click(function () {restart(board)});
     $('#undo').click(function () {
         var position = undo_stack.pop();
         position_to_board(position);

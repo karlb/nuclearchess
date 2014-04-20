@@ -21,20 +21,14 @@
 	<body>
 		<div id="top-bar">
 				<button class="btn btn-default" id='undo'>Undo</button>
-				<select id="difficulty"  class="form-control" style="width: 8em; display: inline-block">
-					<option value="1">Easy</option>
-					<option value="2">Medium</option>
-					<option value="3">Hard</option>
-					<option value="4">Very Hard</option>
-					<option value="5">Too Hard</option>
-				</select>
 				<div style="float: right">
 					<button class="btn btn-default" data-toggle="modal" data-target="#rules">Rules</button>
-					<button class="btn btn-default" id='restart'>Restart</button>
+					<button class="btn btn-default" data-toggle="modal" data-target="#new-game">New Game</button>
 				</div>
 				<div id="winner"></div>
 		</div>
 		<div id="board"></div>
+
 		<div id="rules" class="modal fade">
 			<div class="modal-dialog">
 				<div class="modal-content">
@@ -50,6 +44,37 @@
 							<li>When a pawn reaches the last rank he becomes a queen.
 							<li>Castling is allowed if the king and the rook are on their start position and there are no pieces between them.
 						</ol>
+					</div>
+				</div>
+			</div>
+		</div>
+
+		<div id="new-game" class="modal fade">
+			<div class="modal-dialog  modal-sm">
+				<div class="modal-content">
+					<div class="modal-header">
+						<button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+						<h4 class="modal-title">New Game</h4>
+					</div>
+					<div class="modal-body">
+						<form class="form-horizontal" role="form">
+							<div class="form-group">
+								<label for="difficulty" class="control-label col-xs-4">Difficulty</label>
+								<div class="col-xs-8">
+									<select id="difficulty"  class="form-control">
+										<option value="1">Easy</option>
+										<option value="2">Medium</option>
+										<option value="3">Hard</option>
+										<option value="4">Very Hard</option>
+										<option value="5">Too Hard</option>
+									</select>
+								</div>
+							</div>
+						</form>
+					</div>
+					<div class="modal-footer">
+						<button type="button" class="btn btn-default" data-dismiss="modal">Cancel</button>
+						<button type="button" class="btn btn-primary" data-dismiss="modal" id="play">Play</button>
 					</div>
 				</div>
 			</div>
