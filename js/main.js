@@ -136,13 +136,17 @@ $(document).ready(function(){
         if (game_over) {
             return;
         }
-        _computer_zug(schwarz, tiefe, _brett, _zug_temp, _punkte_int_temp, 1);
-        _anwenden(_brett, _zug_temp);
+        $('#thinking').show();
+        setTimeout(function() {
+            _computer_zug(schwarz, tiefe, _brett, _zug_temp, _punkte_int_temp, 1);
+            $('#thinking').hide();
+            _anwenden(_brett, _zug_temp);
 
-        var from = indexes_to_field(_von_x(_zug_temp), _von_y(_zug_temp));
-        var to = indexes_to_field(_nach_x(_zug_temp), _nach_y(_zug_temp));
-        check_for_nuclear_strike(to);
-        board.move(from + '-' + to);
+            var from = indexes_to_field(_von_x(_zug_temp), _von_y(_zug_temp));
+            var to = indexes_to_field(_nach_x(_zug_temp), _nach_y(_zug_temp));
+            check_for_nuclear_strike(to);
+            board.move(from + '-' + to);
+        }, 10);
     }
 
     function check_for_nuclear_strike(to_field) {
@@ -187,10 +191,8 @@ $(document).ready(function(){
             // update only necessary for castling
             if (update_html_board(board)) {
                 // wait until castling animation has finished
-                console.log('wait');
                 move_end_callbacks.push(after_strike_callback);
             } else {
-                console.log('now');
                 after_strike_callback();
             }
         }
