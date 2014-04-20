@@ -118,7 +118,7 @@ function resize(board) {
 var board;
 $(document).ready(function(){
     var weiss = 1, schwarz = -1;
-    var tiefe = parseInt($('#difficulty').val());
+    var thinking_depth = 1;
     var undo_stack = [];
     var nuclear_strike = false;  // either 'false' or the field where the strike hit
     var waiting_for_player = true;
@@ -138,7 +138,7 @@ $(document).ready(function(){
         }
         $('#thinking').show();
         setTimeout(function() {
-            _computer_zug(schwarz, tiefe, _brett, _zug_temp, _punkte_int_temp, 1);
+            _computer_zug(schwarz, thinking_depth, _brett, _zug_temp, _punkte_int_temp, 1);
             $('#thinking').hide();
             _anwenden(_brett, _zug_temp);
 
@@ -218,7 +218,7 @@ $(document).ready(function(){
         show_nuclear_strike();
         check_game_over();
         waiting_for_player = true;
-        history.replaceState({}, '', '#' + board.fen());
+        history.replaceState({}, '', '#' + board.fen() + '-' + thinking_depth);
 
         $.each(move_end_callbacks, function(i, callback) {
             callback();
@@ -275,10 +275,13 @@ $(document).ready(function(){
     restart(board);
     // set position from url if a fen-string is in the URL fragment part
     if (window.location.hash) {
-        var fen = window.location.hash.slice(1);
+        var url_data = window.location.hash.slice(1).split('-');
+        var fen = url_data[0];
+        thinking_depth = url_data[1];
         board.position(fen, false);
         position_to_board(board.position());
     }
+    $('#difficulty').val(thinking_depth);
 
     $('#play').click(function () {restart(board)});
     $('#undo').click(function () {
@@ -288,7 +291,7 @@ $(document).ready(function(){
         game_over = false;
         $('#winner').text('');
     });
-    $('#difficulty').change(function () {tiefe = parseInt(this.value)});
+    $('#difficulty').change(function () {thinking_depth = parseInt(this.value)});
 });
 
 // vim: tabstop=4 expandtab shiftwidth=4 softtabstop=4
