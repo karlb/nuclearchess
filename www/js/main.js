@@ -240,7 +240,7 @@ $(document).ready(function(){
         show_nuclear_strike();
         check_game_over();
         waiting_for_player = true;
-        history.replaceState({}, '', '#' + board.fen() + '-' + thinking_depth);
+        history.replaceState({}, '', '#' + board.fen() + '-' + thinking_depth + '-' + player_color);
 
         $.each(move_end_callbacks, function(i, callback) {
             callback();
@@ -300,18 +300,22 @@ $(document).ready(function(){
         var url_data = window.location.hash.slice(1).split('-');
         var fen = url_data[0];
         thinking_depth = url_data[1];
+        player_color = url_data[2];
         board.position(fen, false);
         position_to_board(board.position());
+        if (player_color === 'black') {
+            board.flip();
+        }
     }
     $('#difficulty').val(thinking_depth);
 
     $('#play').click(function () {
+        player_color = $('input[name=play-as]:checked').val();
         restart(board);
         if ($('#shuffle').is(':checked')) {
             shuffle(board, 8);
             shuffle(board, 1);
         }
-        player_color = $('input[name=play-as]:checked').val();
         if (player_color === 'black') {
             board.flip();
             computer_turn();
