@@ -4,12 +4,12 @@
 		<meta charset="utf-8" />
 		<meta name="format-detection" content="telephone=no" />
 		<!-- WARNING: for iOS 7, remove the width=device-width and height=device-height attributes. See https://issues.apache.org/jira/browse/CB-4323 -->
-<!--    <meta name="viewport" content="user-scalable=no, initial-scale=1, maximum-scale=1, minimum-scale=1, width=device-width, height=device-height, target-densitydpi=device-dpi" />-->
+<!--	<meta name="viewport" content="user-scalable=no, initial-scale=1, maximum-scale=1, minimum-scale=1, width=device-width, height=device-height, target-densitydpi=device-dpi" />-->
 				<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, target-densitydpi=medium-dpi, user-scalable=0" />
 		<link rel="stylesheet" type="text/css" href="css/bootstrap.min.css" />
 		<title>Nuclear Chess</title>
 
-<!--    <script type="text/javascript" src="phonegap.js"></script>-->
+<!--	<script type="text/javascript" src="phonegap.js"></script>-->
 		<script type="text/javascript" src="js/jquery.min.js" ></script>
 		<script type="text/javascript" src="js/bootstrap.min.js" ></script>
 		<script type="text/javascript" src="js/atomschach.js" ></script>
@@ -68,15 +68,24 @@
 					<div class="modal-body">
 						<form class="form-horizontal" role="form">
 							<div class="form-group">
-								<label for="difficulty" class="control-label col-xs-4">Difficulty</label>
-								<div class="col-xs-8">
-									<select id="difficulty"  class="form-control">
+								<label for="difficulty" class="control-label col-xs-5">Difficulty</label>
+								<div class="col-xs-7">
+									<select id="difficulty" class="form-control">
 										<option value="1">Easy</option>
 										<option value="2">Medium</option>
 										<option value="3">Hard</option>
 										<option value="4">Very Hard</option>
 										<option value="5">Too Hard</option>
 									</select>
+								</div>
+							</div>
+							<div class="form-group">
+								<div class="col-xs-offset-5 col-xs-7">
+									<div class="checkbox">
+										<label>
+											<input type="checkbox" id="shuffle"> Shuffle Pieces
+										</label>
+									</div>
 								</div>
 							</div>
 						</form>

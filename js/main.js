@@ -114,6 +114,26 @@ function resize(board) {
     board.resize();
 }
 
+function random_x_pos() {
+    var x = Math.floor(Math.random() * 8);
+    return String.fromCharCode('a'.charCodeAt(0) + x);
+}
+
+function shuffle(board, row) {
+    var pos = board.position();
+
+    for (var i=0; i<50; i++) {
+        var from = random_x_pos() + row;
+        var to = random_x_pos() + row;
+        var tmp = pos[to];
+        pos[to] = pos[from];
+        pos[from] = tmp;
+    }
+
+    board.position(pos);
+    position_to_board(pos);
+}
+
 
 var board;
 $(document).ready(function(){
@@ -283,7 +303,13 @@ $(document).ready(function(){
     }
     $('#difficulty').val(thinking_depth);
 
-    $('#play').click(function () {restart(board)});
+    $('#play').click(function () {
+        restart(board);
+        if ($('#shuffle').is(':checked')) {
+            shuffle(board, 8);
+            shuffle(board, 1);
+        }
+    });
     $('#undo').click(function () {
         var position = undo_stack.pop();
         position_to_board(position);
