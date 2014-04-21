@@ -144,6 +144,7 @@ $(document).ready(function(){
     var waiting_for_player = true;
     var game_over;
     var move_end_callbacks = [];
+    var player_color = 'white';
 
     function restart() {
         _newGame();
@@ -158,7 +159,8 @@ $(document).ready(function(){
         }
         $('#thinking').show();
         setTimeout(function() {
-            _computer_zug(schwarz, thinking_depth, _brett, _zug_temp, _punkte_int_temp, 1);
+            _computer_zug(player_color === 'white' ? schwarz : weiss,
+                          thinking_depth, _brett, _zug_temp, _punkte_int_temp, 1);
             $('#thinking').hide();
             _anwenden(_brett, _zug_temp);
 
@@ -274,9 +276,9 @@ $(document).ready(function(){
         onDrop: on_drop,
         onMoveEnd: on_move_end,
         onDragStart: function (from, piece) {
-            // picking up pieces it not allowe when ...
+            // picking up pieces it not allowed when ...
             if (
-                piece[0] === 'b'  // it's black
+                piece[0] !== player_color[0]  // it's not his piece
                 || game_over  // the game has already ended
                 || waiting_for_player === false  // animation in progress or computer's turn
             ) {
@@ -308,6 +310,11 @@ $(document).ready(function(){
         if ($('#shuffle').is(':checked')) {
             shuffle(board, 8);
             shuffle(board, 1);
+        }
+        player_color = $('input[name=play-as]:checked').val();
+        if (player_color === 'black') {
+            board.flip();
+            computer_turn();
         }
     });
     $('#undo').click(function () {
