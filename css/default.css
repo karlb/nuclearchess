@@ -24,6 +24,10 @@ body {
 	white-space: nowrap;
 }
 
+#winner {
+	padding: 0 5%;
+}
+
 
 /* Following styles from cssshake:
  * https://github.com/elrumordelaluz/csshake
