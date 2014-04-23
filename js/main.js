@@ -315,6 +315,9 @@ $(document).ready(function(){
             shuffle(board, 1);
         }
         board.orientation(player_color);
+        if (player_color == 'black') {
+            computer_turn();
+        }
     });
     $('#undo').click(function () {
         var position = undo_stack.pop();
