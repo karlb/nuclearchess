@@ -303,9 +303,7 @@ $(document).ready(function(){
         player_color = url_data[2];
         board.position(fen, false);
         position_to_board(board.position());
-        if (player_color === 'black') {
-            board.flip();
-        }
+        board.orientation(player_color);
     }
     $('#difficulty').val(thinking_depth);
 
@@ -316,10 +314,7 @@ $(document).ready(function(){
             shuffle(board, 8);
             shuffle(board, 1);
         }
-        if (player_color === 'black') {
-            board.flip();
-            computer_turn();
-        }
+        board.orientation(player_color);
     });
     $('#undo').click(function () {
         var position = undo_stack.pop();
