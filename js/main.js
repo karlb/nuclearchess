@@ -110,7 +110,10 @@ function position_to_board(position, board) {
 
 function resize(board) {
     var width = Math.min($(window).width(), $(window).height() - $('#top-bar').height());
-    $("#board, #top-bar").width(Math.floor(width/8)*8 + "px");
+    var board_border = 4;
+    width -= 8; // margin
+    $("#board, #top-bar").width(
+        Math.floor((width - board_border)/8)*8 + board_border + "px");
     board.resize();
 }
 

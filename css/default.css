@@ -9,10 +9,11 @@ body {
 	margin-left: auto;
 	margin-right: auto;
 	padding: 0px;
+	background-color: #ff0000;
 }
 
 #top-bar {
-	margin: 0 auto;
+	margin: 4px auto;
 	padding: 3px 0;
 	display: table;
 }
