@@ -12,9 +12,11 @@ body {
 	background-color: #ff0000;
 }
 
+#top-bar, #bottom-bar {
+	margin: 0px auto;
+	padding: 8px 0;
+}
 #top-bar {
-	margin: 4px auto;
-	padding: 3px 0;
 	display: table;
 }
 #top-bar > * {
@@ -23,6 +25,27 @@ body {
 #top-bar > * > * {
 	display: table-cell;
 	white-space: nowrap;
+}
+#bottom-bar {
+	opacity: 0.3;
+	padding: 12px 0;
+	transition: opacity .5s ease-in-out;
+}
+#bottom-bar:hover {
+	opacity: 1;
+}
+#bottom-bar > * {
+	vertical-align: middle;
+}
+#google-play {
+	display: none;
+	position: absolute;
+	right: 4px; bottom:4px;
+	opacity: 0.3;
+	transition: opacity .5s ease-in-out;
+}
+#google-play:hover {
+	opacity: 1;
 }
 
 #winner {
