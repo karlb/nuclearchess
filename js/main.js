@@ -109,7 +109,7 @@ function position_to_board(position, board) {
 }
 
 function resize(board) {
-    var width = Math.min($(window).width(), $(window).height() - $('#top-bar').height());
+    var width = Math.min($(window).width(), $(window).height() - $('#top-bar').height() - 8);
     var board_border = 4;
     width -= 8; // margin
     $("#board, #top-bar").width(
