@@ -109,12 +109,18 @@ function position_to_board(position, board) {
 }
 
 function resize(board) {
-    var width = Math.min($(window).width(), $(window).height() - $('#top-bar').height() - 8);
+    var phonegap = (document.URL.indexOf("http://") == -1);
+    $('#bottom-bar').toggle(!phonegap);
+
+    var width = Math.min(
+            $(window).width() - 8,
+            $(window).height() - $('#top-bar').outerHeight() - (phonegap ? 0 : $('#bottom-bar').outerHeight()));
     var board_border = 4;
-    width -= 8; // margin
-    $("#board, #top-bar").width(
+    $("#board, #top-bar, #bottom-bar").width(
         Math.floor((width - board_border)/8)*8 + board_border + "px");
     board.resize();
+
+    $('#google-play').toggle(($(window).width() > width + 300) && !phonegap);
 }
 
 function random_x_pos() {
