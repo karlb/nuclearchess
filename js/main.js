@@ -247,11 +247,11 @@ $(document).ready(function(){
         }
         else if (_hat_koenig(weiss, _brett) != 1) {
             game_over = true;
-            set_winner('Black is winner!');
+            set_winner('Black wins!');
         }
         else if (_hat_koenig(schwarz, _brett) != 1) {
             game_over = true;
-            set_winner('White is winner!');
+            set_winner('White wins!');
         }
     }
 
