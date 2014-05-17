@@ -3,6 +3,7 @@
 <!-- config.xml reference: https://build.phonegap.com/docs/config-xml -->
 <widget xmlns     = "http://www.w3.org/ns/widgets"
         xmlns:gap = "http://phonegap.com/ns/1.0"
+		xmlns:android = "http://schemas.android.com/apk/res/android"
         id        = "com.github.elastic"
         version   = "1.0.2">
 
@@ -55,7 +56,15 @@
     <preference name="android-minSdkVersion"      value="7" />              <!-- android: MIN SDK version supported on the target device. MAX version is blank by default. -->
 	<preference name="android-targetSdkVersion"   value="14" />             <!-- android: targetSdkVersion >= 11 is required to get table support -->
     <preference name="android-installLocation"    value="auto" />           <!-- android: app install location. 'auto' will choose. 'internalOnly' is device memory. 'preferExternal' is SDCard. -->
-    <preference name="android-xlargeScreens"      value="true" />           <!-- android: app supports tablet screens -->
+
+	<!-- Declare android table support -->
+	<gap:config-file platform="android" parent="/manifest">
+		<supports-screens android:anyDensity="true" android:resizeable="true"
+			android:smallScreens="true"
+			android:normalScreens="true"
+			android:largeScreens="true"
+			android:xlargeScreens="true" />
+	</gap:config-file>
 
     <!-- Plugins can also be added here. -->
     <!--
