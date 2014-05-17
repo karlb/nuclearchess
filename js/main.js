@@ -144,6 +144,16 @@ function shuffle(board, row) {
 }
 
 
+function clear_winner() {
+    $('#winner').fadeOut();
+}
+
+function set_winner(text) {
+    $('#winner').text(text);
+    $('#winner').fadeIn();
+}
+
+
 var board;
 $(document).ready(function(){
     var weiss = 1, schwarz = -1;
@@ -159,7 +169,7 @@ $(document).ready(function(){
         _newGame();
         update_html_board(board, false);
         game_over = false;
-        $('#winner').text('');
+        clear_winner();
     }
 
     function computer_turn() {
@@ -233,15 +243,15 @@ $(document).ready(function(){
     function check_game_over() {
         if (_hat_koenig(weiss, _brett) != 1 && _hat_koenig(schwarz, _brett) != 1) {
             game_over = true;
-            $('#winner').text('Draw game');
+            set_winner('Draw game');
         }
         else if (_hat_koenig(weiss, _brett) != 1) {
             game_over = true;
-            $('#winner').text('Black is winner!');
+            set_winner('Black is winner!');
         }
         else if (_hat_koenig(schwarz, _brett) != 1) {
             game_over = true;
-            $('#winner').text('White is winner!');
+            set_winner('White is winner!');
         }
     }
 
@@ -333,7 +343,7 @@ $(document).ready(function(){
         position_to_board(position);
         update_html_board(board);
         game_over = false;
-        $('#winner').text('');
+        clear_winner();
     });
     $('#difficulty').change(function () {thinking_depth = parseInt(this.value)});
 });
