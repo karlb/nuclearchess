@@ -38,15 +38,18 @@ body {
 #bottom-bar > * {
 	vertical-align: middle;
 }
-#google-play {
-	display: none;
+.app-store {
+	/*display: none;*/
 	position: absolute;
-	right: 4px; bottom:4px;
+	right: 10px; bottom:10px;
 	opacity: 0.3;
 	transition: opacity .5s ease-in-out;
 }
-#google-play:hover {
+.app-store:hover {
 	opacity: 1;
+}
+#google-play {
+	bottom:60px;
 }
 
 #winner {
