@@ -2,33 +2,12 @@ TNuclear Chess
 v6
 r1
 cCheck dependencies
-cProcessInfoPlistFile /Users/karl/gdrive/code/github/nuclearchess/platforms/ios/build/emulator/Nuclear\ Chess.app/Info.plist /Users/karl/gdrive/code/github/nuclearchess/platforms/ios/Nuclear\ Chess/Nuclear\ Chess-Info.plist
 cPhaseScriptExecution Copy\ www\ directory /Users/karl/gdrive/code/github/nuclearchess/platforms/ios/build/Nuclear\ Chess.build/Debug-iphonesimulator/Nuclear\ Chess.build/Script-304B58A110DAC018002A0835.sh
-cCpResource Nuclear\ Chess/Resources/icons/icon-76.png build/emulator/Nuclear\ Chess.app/icon-76.png
-cCpResource Nuclear\ Chess/Resources/icons/icon-40@2x.png build/emulator/Nuclear\ Chess.app/icon-40@2x.png
-cCpResource Nuclear\ Chess/Resources/icons/icon-72.png build/emulator/Nuclear\ Chess.app/icon-72.png
-cCpResource Nuclear\ Chess/Resources/icons/icon.png build/emulator/Nuclear\ Chess.app/icon.png
 cCopyStringsFile /Users/karl/gdrive/code/github/nuclearchess/platforms/ios/build/emulator/Nuclear\ Chess.app/en.lproj/Localizable.strings Nuclear\ Chess/Resources/en.lproj/Localizable.strings
-cCpResource Nuclear\ Chess/Resources/icons/icon@2x.png build/emulator/Nuclear\ Chess.app/icon@2x.png
 cCompileXIB /Users/karl/gdrive/code/github/nuclearchess/platforms/ios/Nuclear\ Chess/Classes/MainViewController.xib
-cCpResource Nuclear\ Chess/Resources/icons/icon-50.png build/emulator/Nuclear\ Chess.app/icon-50.png
-cCpResource Nuclear\ Chess/Resources/icons/icon-60@2x.png build/emulator/Nuclear\ Chess.app/icon-60@2x.png
-cCopyStringsFile /Users/karl/gdrive/code/github/nuclearchess/platforms/ios/build/emulator/Nuclear\ Chess.app/de.lproj/Localizable.strings Nuclear\ Chess/Resources/de.lproj/Localizable.strings
-cCpResource Nuclear\ Chess/Resources/icons/icon-small.png build/emulator/Nuclear\ Chess.app/icon-small.png
-cCpResource Nuclear\ Chess/Resources/splash/Default-Landscape@2x~ipad.png build/emulator/Nuclear\ Chess.app/Default-Landscape@2x~ipad.png
-cCpResource Nuclear\ Chess/Resources/splash/Default-Landscape~ipad.png build/emulator/Nuclear\ Chess.app/Default-Landscape~ipad.png
-cCpResource Nuclear\ Chess/Resources/splash/Default-Portrait@2x~ipad.png build/emulator/Nuclear\ Chess.app/Default-Portrait@2x~ipad.png
-cCpResource Nuclear\ Chess/Resources/icons/icon-small@2x.png build/emulator/Nuclear\ Chess.app/icon-small@2x.png
-cCpResource Nuclear\ Chess/Resources/splash/Default-Portrait~ipad.png build/emulator/Nuclear\ Chess.app/Default-Portrait~ipad.png
-cCpResource Nuclear\ Chess/Resources/icons/icon-40.png build/emulator/Nuclear\ Chess.app/icon-40.png
-cCpResource Nuclear\ Chess/Resources/splash/Default@2x~iphone.png build/emulator/Nuclear\ Chess.app/Default@2x~iphone.png
-cCpResource Nuclear\ Chess/Resources/icons/icon-60.png build/emulator/Nuclear\ Chess.app/icon-60.png
-cCpResource Nuclear\ Chess/Resources/splash/Default~iphone.png build/emulator/Nuclear\ Chess.app/Default~iphone.png
-cCpResource Nuclear\ Chess/Resources/splash/Default-568h@2x~iphone.png build/emulator/Nuclear\ Chess.app/Default-568h@2x~iphone.png
-cCpResource Nuclear\ Chess/Resources/icons/icon-50@2x.png build/emulator/Nuclear\ Chess.app/icon-50@2x.png
-cCpResource Nuclear\ Chess/Resources/icons/icon-76@2x.png build/emulator/Nuclear\ Chess.app/icon-76@2x.png
-cCpResource Nuclear\ Chess/Resources/icons/icon-72@2x.png build/emulator/Nuclear\ Chess.app/icon-72@2x.png
-cProcessPCH /var/folders/sn/fs_1dmrs2h90zpdgmghl2cy80000gn/C/com.apple.DeveloperTools/5.1.1-5B1008/Xcode/SharedPrecompiledHeaders/Nuclear\ Chess-Prefix-clpcbxktmtjdgrbzourrpqccurhu/Nuclear\ Chess-Prefix.pch.pch Nuclear\ Chess/Nuclear\ Chess-Prefix.pch normal i386 objective-c com.apple.compilers.llvm.clang.1_0.compiler
+cCompileAssetCatalog /Users/karl/gdrive/code/github/nuclearchess/platforms/ios/build/emulator/Nuclear\ Chess.app /Users/karl/gdrive/code/github/nuclearchess/platforms/ios/Nuclear\ Chess/Images.xcassets
+cProcessInfoPlistFile /Users/karl/gdrive/code/github/nuclearchess/platforms/ios/build/emulator/Nuclear\ Chess.app/Info.plist /Users/karl/gdrive/code/github/nuclearchess/platforms/ios/Nuclear\ Chess/Nuclear\ Chess-Info.plist
+cProcessPCH /var/folders/v0/qrz93y5d1cz2rc9vgrd0f8_00000gn/C/com.apple.DeveloperTools/5.1.1-5B1008/Xcode/SharedPrecompiledHeaders/Nuclear\ Chess-Prefix-fybjeielpftzlhfusdxhzvmurjcn/Nuclear\ Chess-Prefix.pch.pch Nuclear\ Chess/Nuclear\ Chess-Prefix.pch normal i386 objective-c com.apple.compilers.llvm.clang.1_0.compiler
 cCompileC build/Nuclear\ Chess.build/Debug-iphonesimulator/Nuclear\ Chess.build/Objects-normal/i386/main.o /Users/karl/gdrive/code/github/nuclearchess/platforms/ios/Nuclear\ Chess/main.m normal i386 objective-c com.apple.compilers.llvm.clang.1_0.compiler
 cCompileC build/Nuclear\ Chess.build/Debug-iphonesimulator/Nuclear\ Chess.build/Objects-normal/i386/AppDelegate.o /Users/karl/gdrive/code/github/nuclearchess/platforms/ios/Nuclear\ Chess/Classes/AppDelegate.m normal i386 objective-c com.apple.compilers.llvm.clang.1_0.compiler
 cCompileC build/Nuclear\ Chess.build/Debug-iphonesimulator/Nuclear\ Chess.build/Objects-normal/i386/MainViewController.o /Users/karl/gdrive/code/github/nuclearchess/platforms/ios/Nuclear\ Chess/Classes/MainViewController.m normal i386 objective-c com.apple.compilers.llvm.clang.1_0.compiler
@@ -37,63 +16,248 @@ cGenerateDSYMFile /Users/karl/gdrive/code/github/nuclearchess/platforms/ios/buil
 cTouch /Users/karl/gdrive/code/github/nuclearchess/platforms/ios/build/emulator/Nuclear\ Chess.app
 
 N/Applications/Xcode.app/Contents/Developer/Platforms/iPhoneSimulator.platform/Developer/SDKs/iPhoneSimulator7.1.sdk
-c000000005357F83B0000000000000198
-t1398274107
+c0000000053119F8A0000000000000198
+t1393663882
 s408
 
 N/Applications/Xcode.app/Contents/Developer/Platforms/iPhoneSimulator.platform/Developer/SDKs/iPhoneSimulator7.1.sdk/SDKSettings.plist
-c000000005330AA1500000000000003B4
-t1395698197
+c0000000053ABEFA200000000000003B4
+t1403776930
 s948
 
 N/Applications/Xcode.app/Contents/Developer/Platforms/iPhoneSimulator.platform/Developer/SDKs/iPhoneSimulator7.1.sdk/System/Library/CoreServices/SystemVersion.plist
-c000000005330AA1B000000000000019E
-t1395698203
+c0000000053ABEFA7000000000000019E
+t1403776935
 s414
 
+N/Applications/Xcode.app/Contents/Developer/Platforms/iPhoneSimulator.platform/Developer/SDKs/iPhoneSimulator7.1.sdk/System/Library/Frameworks/AVFoundation.framework/AVFoundation
+c0000000053ABEFA90000000000484210
+t1403776937
+s4735504
+
+N/Applications/Xcode.app/Contents/Developer/Platforms/iPhoneSimulator.platform/Developer/SDKs/iPhoneSimulator7.1.sdk/System/Library/Frameworks/AVFoundation.framework/libAVFAudio.dylib
+c0000000053ABEFA80000000000098030
+t1403776936
+s622640
+
 N/Applications/Xcode.app/Contents/Developer/Platforms/iPhoneSimulator.platform/Developer/SDKs/iPhoneSimulator7.1.sdk/System/Library/Frameworks/AssetsLibrary.framework/AssetsLibrary
-c000000005330AA1B0000000000059340
-t1395698203
+c0000000053ABEFA80000000000059340
+t1403776936
 s365376
 
+N/Applications/Xcode.app/Contents/Developer/Platforms/iPhoneSimulator.platform/Developer/SDKs/iPhoneSimulator7.1.sdk/System/Library/Frameworks/CoreFoundation.framework/CoreFoundation
+c0000000053ABEFA900000000005B82F0
+t1403776937
+s5997296
+
 N/Applications/Xcode.app/Contents/Developer/Platforms/iPhoneSimulator.platform/Developer/SDKs/iPhoneSimulator7.1.sdk/System/Library/Frameworks/CoreGraphics.framework/CoreGraphics
-c000000005357F7D10000000000446820
-t1398274001
+c0000000053ABEFA90000000000446820
+t1403776937
 s4483104
 
 N/Applications/Xcode.app/Contents/Developer/Platforms/iPhoneSimulator.platform/Developer/SDKs/iPhoneSimulator7.1.sdk/System/Library/Frameworks/CoreLocation.framework/CoreLocation
-c000000005330AA1C00000000000F1A80
-t1395698204
+c0000000053ABEFA900000000000F1A80
+t1403776937
 s989824
 
+N/Applications/Xcode.app/Contents/Developer/Platforms/iPhoneSimulator.platform/Developer/SDKs/iPhoneSimulator7.1.sdk/System/Library/Frameworks/CoreMedia.framework/CoreMedia
+c0000000053ABEFA9000000000013B8C0
+t1403776937
+s1292480
+
+N/Applications/Xcode.app/Contents/Developer/Platforms/iPhoneSimulator.platform/Developer/SDKs/iPhoneSimulator7.1.sdk/System/Library/Frameworks/Foundation.framework/Foundation
+c0000000053ABEFAA000000000088D8C0
+t1403776938
+s8968384
+
 N/Applications/Xcode.app/Contents/Developer/Platforms/iPhoneSimulator.platform/Developer/SDKs/iPhoneSimulator7.1.sdk/System/Library/Frameworks/MobileCoreServices.framework/MobileCoreServices
-c000000005330AA1E00000000001BE790
-t1395698206
+c0000000053ABEFAB00000000001BE790
+t1403776939
 s1828752
 
+N/Applications/Xcode.app/Contents/Developer/Platforms/iPhoneSimulator.platform/Developer/SDKs/iPhoneSimulator7.1.sdk/System/Library/Frameworks/UIKit.framework/UIKit
+c0000000053ABEFAE0000000001F1DE10
+t1403776942
+s32628240
+
+N/Applications/Xcode.app/Contents/Developer/Platforms/iPhoneSimulator.platform/Developer/SDKs/iPhoneSimulator7.1.sdk/System/Library/PrivateFrameworks/UIFoundation.framework/UIFoundation
+c0000000053ABEFB600000000002BC360
+t1403776950
+s2868064
+
+N/Applications/Xcode.app/Contents/Developer/Platforms/iPhoneSimulator.platform/Developer/SDKs/iPhoneSimulator7.1.sdk/usr/lib/crt1.o
+c0000000053ABEFBB0000000000002338
+t1403776955
+s9016
+
+N/Applications/Xcode.app/Contents/Developer/Platforms/iPhoneSimulator.platform/Developer/SDKs/iPhoneSimulator7.1.sdk/usr/lib/libSystem.dylib
+c0000000053ABEFBC000000000008D370
+t1403776956
+s578416
+
+N/Applications/Xcode.app/Contents/Developer/Platforms/iPhoneSimulator.platform/Developer/SDKs/iPhoneSimulator7.1.sdk/usr/lib/libobjc.dylib
+c0000000053ABEFBC0000000000392E20
+t1403776956
+s3747360
+
+N/Applications/Xcode.app/Contents/Developer/Platforms/iPhoneSimulator.platform/Developer/SDKs/iPhoneSimulator7.1.sdk/usr/lib/system/host/libdyld.dylib
+c0000000053AB22BE00000000000141F0
+t1403724478
+s82416
+
+N/Applications/Xcode.app/Contents/Developer/Platforms/iPhoneSimulator.platform/Developer/SDKs/iPhoneSimulator7.1.sdk/usr/lib/system/libcache_sim.dylib
+c0000000053ABEFBC0000000000014A80
+t1403776956
+s84608
+
+N/Applications/Xcode.app/Contents/Developer/Platforms/iPhoneSimulator.platform/Developer/SDKs/iPhoneSimulator7.1.sdk/usr/lib/system/libcommonCrypto_sim.dylib
+c0000000053ABEFBC0000000000033BA0
+t1403776956
+s211872
+
+N/Applications/Xcode.app/Contents/Developer/Platforms/iPhoneSimulator.platform/Developer/SDKs/iPhoneSimulator7.1.sdk/usr/lib/system/libcompiler_rt_sim.dylib
+c0000000053ABEFBC000000000001CFB0
+t1403776956
+s118704
+
+N/Applications/Xcode.app/Contents/Developer/Platforms/iPhoneSimulator.platform/Developer/SDKs/iPhoneSimulator7.1.sdk/usr/lib/system/libcopyfile_sim.dylib
+c0000000053ABEFBC000000000001B2B0
+t1403776956
+s111280
+
+N/Applications/Xcode.app/Contents/Developer/Platforms/iPhoneSimulator.platform/Developer/SDKs/iPhoneSimulator7.1.sdk/usr/lib/system/libcorecrypto_sim.dylib
+c0000000053ABEFBC00000000000C9570
+t1403776956
+s824688
+
+N/Applications/Xcode.app/Contents/Developer/Platforms/iPhoneSimulator.platform/Developer/SDKs/iPhoneSimulator7.1.sdk/usr/lib/system/libdispatch.dylib
+c0000000053ABEFBC0000000000063280
+t1403776956
+s406144
+
+N/Applications/Xcode.app/Contents/Developer/Platforms/iPhoneSimulator.platform/Developer/SDKs/iPhoneSimulator7.1.sdk/usr/lib/system/libdyld_sim.dylib
+c0000000053ABEFBC0000000000008880
+t1403776956
+s34944
+
+N/Applications/Xcode.app/Contents/Developer/Platforms/iPhoneSimulator.platform/Developer/SDKs/iPhoneSimulator7.1.sdk/usr/lib/system/libmacho_sim.dylib
+c0000000053ABEFBC0000000000015080
+t1403776956
+s86144
+
+N/Applications/Xcode.app/Contents/Developer/Platforms/iPhoneSimulator.platform/Developer/SDKs/iPhoneSimulator7.1.sdk/usr/lib/system/libnotify_sim.dylib
+c0000000053ABEFBC00000000000230F0
+t1403776956
+s143600
+
+N/Applications/Xcode.app/Contents/Developer/Platforms/iPhoneSimulator.platform/Developer/SDKs/iPhoneSimulator7.1.sdk/usr/lib/system/libremovefile_sim.dylib
+c0000000053ABEFBC000000000000E380
+t1403776956
+s58240
+
+N/Applications/Xcode.app/Contents/Developer/Platforms/iPhoneSimulator.platform/Developer/SDKs/iPhoneSimulator7.1.sdk/usr/lib/system/libsystem_network.dylib
+c0000000053ABEFBC0000000000089380
+t1403776956
+s562048
+
+N/Applications/Xcode.app/Contents/Developer/Platforms/iPhoneSimulator.platform/Developer/SDKs/iPhoneSimulator7.1.sdk/usr/lib/system/libsystem_override.dylib
+c0000000053ABEFBC0000000000017320
+t1403776956
+s95008
+
+N/Applications/Xcode.app/Contents/Developer/Platforms/iPhoneSimulator.platform/Developer/SDKs/iPhoneSimulator7.1.sdk/usr/lib/system/libsystem_sim_asl.dylib
+c0000000053ABEFBC0000000000039CD0
+t1403776956
+s236752
+
+N/Applications/Xcode.app/Contents/Developer/Platforms/iPhoneSimulator.platform/Developer/SDKs/iPhoneSimulator7.1.sdk/usr/lib/system/libsystem_sim_blocks.dylib
+c0000000053ABEFBC000000000000B0B0
+t1403776956
+s45232
+
+N/Applications/Xcode.app/Contents/Developer/Platforms/iPhoneSimulator.platform/Developer/SDKs/iPhoneSimulator7.1.sdk/usr/lib/system/libsystem_sim_c.dylib
+c0000000053ABEFBC0000000000167E80
+t1403776956
+s1474176
+
+N/Applications/Xcode.app/Contents/Developer/Platforms/iPhoneSimulator.platform/Developer/SDKs/iPhoneSimulator7.1.sdk/usr/lib/system/libsystem_sim_configuration.dylib
+c0000000053ABEFBC00000000000106A0
+t1403776956
+s67232
+
+N/Applications/Xcode.app/Contents/Developer/Platforms/iPhoneSimulator.platform/Developer/SDKs/iPhoneSimulator7.1.sdk/usr/lib/system/libsystem_sim_dnssd.dylib
+c0000000053ABEFBC000000000001CE40
+t1403776956
+s118336
+
+N/Applications/Xcode.app/Contents/Developer/Platforms/iPhoneSimulator.platform/Developer/SDKs/iPhoneSimulator7.1.sdk/usr/lib/system/libsystem_sim_info.dylib
+c0000000053ABEFBC00000000000740C0
+t1403776956
+s475328
+
+N/Applications/Xcode.app/Contents/Developer/Platforms/iPhoneSimulator.platform/Developer/SDKs/iPhoneSimulator7.1.sdk/usr/lib/system/libsystem_sim_m.dylib
+c0000000053ABEFBC000000000006CA60
+t1403776956
+s445024
+
+N/Applications/Xcode.app/Contents/Developer/Platforms/iPhoneSimulator.platform/Developer/SDKs/iPhoneSimulator7.1.sdk/usr/lib/system/libunwind_sim.dylib
+c0000000053ABEFBC000000000001BAD0
+t1403776956
+s113360
+
+N/Applications/Xcode.app/Contents/Developer/Platforms/iPhoneSimulator.platform/Developer/SDKs/iPhoneSimulator7.1.sdk/usr/lib/system/libxpc.dylib
+c0000000053ABEFBC0000000000084A20
+t1403776956
+s543264
+
+N/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/lib/arc/libarclite_iphonesimulator.a
+c0000000053ABEFCA000000000000BB48
+t1403776970
+s47944
+
+N/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/lib/clang/5.1/lib/darwin/libclang_rt.ios.a
+c0000000053ABEFCB000000000000514C
+t1403776971
+s20812
+
+N/Users/karl/gdrive/code/github/nuclearchess/platforms/ios/Nuclear Chess/Classes/AppDelegate.h
+c0000000053A6AF3C00000000000005BF
+t1403432764
+s1471
+
 N/Users/karl/gdrive/code/github/nuclearchess/platforms/ios/Nuclear Chess/Classes/AppDelegate.m
-c00000000539304AA00000000000013B1
-t1402143914
+c0000000053A6AF3C00000000000013B1
+t1403432764
 s5041
 
+N/Users/karl/gdrive/code/github/nuclearchess/platforms/ios/Nuclear Chess/Classes/MainViewController.h
+c0000000053A6AF3C00000000000004D3
+t1403432764
+s1235
+
 N/Users/karl/gdrive/code/github/nuclearchess/platforms/ios/Nuclear Chess/Classes/MainViewController.m
-c00000000539304AA000000000000126E
-t1402143914
-s4718
+c0000000053A6AF3C0000000000001397
+t1403432764
+s5015
 
 N/Users/karl/gdrive/code/github/nuclearchess/platforms/ios/Nuclear Chess/Classes/MainViewController.xib
-c00000000539304A90000000000001759
-t1402143913
+c0000000053A6AF3C0000000000001759
+t1403432764
 s5977
 
+N/Users/karl/gdrive/code/github/nuclearchess/platforms/ios/Nuclear Chess/Images.xcassets
+c0000000053AB5A450000000000000088
+t1403738693
+s136
+
 N/Users/karl/gdrive/code/github/nuclearchess/platforms/ios/Nuclear Chess/Nuclear Chess-Info.plist
-c00000000539304AC0000000000000A0E
-t1402143916
-s2574
+c0000000053AFD94600000000000005E1
+t1404033350
+s1505
 
 N/Users/karl/gdrive/code/github/nuclearchess/platforms/ios/Nuclear Chess/Nuclear Chess-Prefix.pch
-c00000000539304AA00000000000003CB
-t1402143914
+c0000000053A6AF3C00000000000003CB
+t1403432764
 s971
 
 N/Users/karl/gdrive/code/github/nuclearchess/platforms/ios/Nuclear Chess/Resources/de.lproj/Localizable.strings
@@ -102,8 +266,8 @@ t1402143914
 s1216
 
 N/Users/karl/gdrive/code/github/nuclearchess/platforms/ios/Nuclear Chess/Resources/en.lproj/Localizable.strings
-c00000000539304AA00000000000004AB
-t1402143914
+c0000000053A6AF3C00000000000004AB
+t1403432764
 s1195
 
 N/Users/karl/gdrive/code/github/nuclearchess/platforms/ios/Nuclear Chess/Resources/icons/icon-40.png
@@ -212,39 +376,47 @@ t1402143914
 s10394
 
 N/Users/karl/gdrive/code/github/nuclearchess/platforms/ios/Nuclear Chess/main.m
-c00000000539304AA000000000000045F
-t1402143914
+c0000000053A6AF3C000000000000045F
+t1403432764
 s1119
 
 N/Users/karl/gdrive/code/github/nuclearchess/platforms/ios/build/Nuclear Chess.build/Debug-iphonesimulator/Nuclear Chess.build/Objects-normal/i386/AppDelegate.o
-t1402143933
+t1403956272
 s73996
 
 N/Users/karl/gdrive/code/github/nuclearchess/platforms/ios/build/Nuclear Chess.build/Debug-iphonesimulator/Nuclear Chess.build/Objects-normal/i386/MainViewController.o
-t1402143932
-s50808
+t1403956272
+s51980
 
 N/Users/karl/gdrive/code/github/nuclearchess/platforms/ios/build/Nuclear Chess.build/Debug-iphonesimulator/Nuclear Chess.build/Objects-normal/i386/Nuclear Chess.LinkFileList
-c00000000539304B400000000000001E0
-t1402143924
+c0000000053A6AF3C00000000000001E0
+t1403432764
 s480
 
 N/Users/karl/gdrive/code/github/nuclearchess/platforms/ios/build/Nuclear Chess.build/Debug-iphonesimulator/Nuclear Chess.build/Objects-normal/i386/main.o
-t1402143932
+t1403956272
 s2996
 
 N/Users/karl/gdrive/code/github/nuclearchess/platforms/ios/build/Nuclear Chess.build/Debug-iphonesimulator/Nuclear Chess.build/Script-304B58A110DAC018002A0835.sh
-c00000000539304B4000000000000002D
-t1402143924
+c0000000053A6AF3C000000000000002D
+t1403432764
 s45
 
+N/Users/karl/gdrive/code/github/nuclearchess/platforms/ios/build/Nuclear Chess.build/Debug-iphonesimulator/Nuclear Chess.build/assetcatalog_dependencies.txt
+t1403956271
+s2340
+
+N/Users/karl/gdrive/code/github/nuclearchess/platforms/ios/build/Nuclear Chess.build/Debug-iphonesimulator/Nuclear Chess.build/assetcatalog_generated_info.plist
+t1403956271
+s1550
+
 N/Users/karl/gdrive/code/github/nuclearchess/platforms/ios/build/emulator/Nuclear Chess.app
-t1402143934
-s1020
+t1404033351
+s1700
 
 N/Users/karl/gdrive/code/github/nuclearchess/platforms/ios/build/emulator/Nuclear Chess.app.dSYM
-t2
-s0
+t1403956272
+s102
 
 N/Users/karl/gdrive/code/github/nuclearchess/platforms/ios/build/emulator/Nuclear Chess.app/Default-568h@2x~iphone.png
 t1402143924
@@ -275,27 +447,27 @@ t1402143924
 s10394
 
 N/Users/karl/gdrive/code/github/nuclearchess/platforms/ios/build/emulator/Nuclear Chess.app/Info.plist
-t1402143924
-s1288
+t1404033351
+s1502
 
 N/Users/karl/gdrive/code/github/nuclearchess/platforms/ios/build/emulator/Nuclear Chess.app/MainViewController.nib
-t1402143931
-s1332
+t1403956271
+s836
 
 N/Users/karl/gdrive/code/github/nuclearchess/platforms/ios/build/emulator/Nuclear Chess.app/Nuclear Chess
-t1402143934
-s285248
+t1403956272
+s271888
 
 N/Users/karl/gdrive/code/github/nuclearchess/platforms/ios/build/emulator/Nuclear Chess.app/PkgInfo
-t2
-s0
+t1404033351
+s8
 
 N/Users/karl/gdrive/code/github/nuclearchess/platforms/ios/build/emulator/Nuclear Chess.app/de.lproj/Localizable.strings
 t1402143924
 s280
 
 N/Users/karl/gdrive/code/github/nuclearchess/platforms/ios/build/emulator/Nuclear Chess.app/en.lproj/Localizable.strings
-t1402143924
+t1403432764
 s166
 
 N/Users/karl/gdrive/code/github/nuclearchess/platforms/ios/build/emulator/Nuclear Chess.app/icon-40.png
@@ -354,22 +526,243 @@ N/Users/karl/gdrive/code/github/nuclearchess/platforms/ios/build/emulator/Nuclea
 t1402143924
 s7869
 
+N/Users/karl/gdrive/code/github/nuclearchess/platforms/ios/build/emulator/include/Cordova/CDVAvailability.h
+c0000000053A6AF3C0000000000000CDD
+t1403432764
+s3293
+
+N/Users/karl/gdrive/code/github/nuclearchess/platforms/ios/build/emulator/include/Cordova/CDVCommandDelegate.h
+c0000000053A6AF3C00000000000008BA
+t1403432764
+s2234
+
+N/Users/karl/gdrive/code/github/nuclearchess/platforms/ios/build/emulator/include/Cordova/CDVCommandDelegateImpl.h
+c0000000053A6AF3C00000000000004B5
+t1403432764
+s1205
+
+N/Users/karl/gdrive/code/github/nuclearchess/platforms/ios/build/emulator/include/Cordova/CDVCommandQueue.h
+c0000000053A6AF3C0000000000000503
+t1403432764
+s1283
+
+N/Users/karl/gdrive/code/github/nuclearchess/platforms/ios/build/emulator/include/Cordova/CDVInvokedUrlCommand.h
+c0000000053A6AF3C00000000000007E6
+t1403432764
+s2022
+
+N/Users/karl/gdrive/code/github/nuclearchess/platforms/ios/build/emulator/include/Cordova/CDVPlugin.h
+c0000000053A6AF3C0000000000000892
+t1403432764
+s2194
+
+N/Users/karl/gdrive/code/github/nuclearchess/platforms/ios/build/emulator/include/Cordova/CDVPluginResult.h
+c0000000053A6AF3C0000000000000C13
+t1403432764
+s3091
+
+N/Users/karl/gdrive/code/github/nuclearchess/platforms/ios/build/emulator/include/Cordova/CDVScreenOrientationDelegate.h
+c0000000053A6AF3C0000000000000408
+t1403432764
+s1032
+
+N/Users/karl/gdrive/code/github/nuclearchess/platforms/ios/build/emulator/include/Cordova/CDVViewController.h
+c0000000053A6AF3C0000000000000ACC
+t1403432764
+s2764
+
+N/Users/karl/gdrive/code/github/nuclearchess/platforms/ios/build/emulator/include/Cordova/CDVWhitelist.h
+c0000000053A6AF3C00000000000004B4
+t1403432764
+s1204
+
+N/Users/karl/gdrive/code/github/nuclearchess/platforms/ios/build/emulator/include/Cordova/NSMutableArray+QueueAdditions.h
+c0000000053A6AF3C00000000000003A0
+t1403432764
+s928
+
 N/Users/karl/gdrive/code/github/nuclearchess/platforms/ios/build/emulator/libCordova.a
-c00000000539304B400000000000D2BD0
-t1402143924
+c0000000053AEABD400000000000D2BD0
+t1403956180
 s863184
+
+N/usr/lib/libSystem.B.dylib
+c0000000053AB228D000000000000E6D0
+t1403724429
+s59088
+
+N/usr/lib/system/libcache.dylib
+c0000000053AACA140000000000012A00
+t1403701780
+s76288
+
+N/usr/lib/system/libcommonCrypto.dylib
+c0000000053AAC9F3000000000002E320
+t1403701747
+s189216
+
+N/usr/lib/system/libcompiler_rt.dylib
+c0000000053AACA030000000000021860
+t1403701763
+s137312
+
+N/usr/lib/system/libcopyfile.dylib
+c0000000053AACA13000000000001B620
+t1403701779
+s112160
+
+N/usr/lib/system/libcorecrypto.dylib
+c0000000053AACA1300000000000BD920
+t1403701779
+s776480
+
+N/usr/lib/system/libkeymgr.dylib
+c0000000053AACA14000000000000A120
+t1403701780
+s41248
+
+N/usr/lib/system/liblaunch.dylib
+c0000000053AB22BE000000000001D550
+t1403724478
+s120144
+
+N/usr/lib/system/libmacho.dylib
+c0000000053AACA130000000000014EE0
+t1403701779
+s85728
+
+N/usr/lib/system/libquarantine.dylib
+c0000000053AACA160000000000010380
+t1403701782
+s66432
+
+N/usr/lib/system/libremovefile.dylib
+c0000000053AACA16000000000000C4C0
+t1403701782
+s50368
+
+N/usr/lib/system/libsystem_asl.dylib
+c0000000053AACA1400000000000357A0
+t1403701780
+s219040
+
+N/usr/lib/system/libsystem_blocks.dylib
+c0000000053AACA14000000000000C070
+t1403701780
+s49264
+
+N/usr/lib/system/libsystem_c.dylib
+c0000000053AB228D0000000000168D00
+t1403724429
+s1477888
+
+N/usr/lib/system/libsystem_configuration.dylib
+c0000000053AB22B80000000000010630
+t1403724472
+s67120
+
+N/usr/lib/system/libsystem_dnssd.dylib
+c0000000053AB22BF000000000001DF10
+t1403724479
+s122640
+
+N/usr/lib/system/libsystem_info.dylib
+c0000000053AACA030000000000075B00
+t1403701763
+s482048
+
+N/usr/lib/system/libsystem_kernel.dylib
+c0000000053AB228D000000000007CD60
+t1403724429
+s511328
+
+N/usr/lib/system/libsystem_m.dylib
+c0000000053AACA0300000000000766C0
+t1403701763
+s485056
+
+N/usr/lib/system/libsystem_malloc.dylib
+c0000000053AB22BE0000000000044DC0
+t1403724478
+s282048
+
+N/usr/lib/system/libsystem_notify.dylib
+c0000000053AACA030000000000021FA0
+t1403701763
+s139168
+
+N/usr/lib/system/libsystem_platform.dylib
+c0000000053AB22BE000000000002D920
+t1403724478
+s186656
+
+N/usr/lib/system/libsystem_pthread.dylib
+c0000000053AACA15000000000001E570
+t1403701781
+s124272
+
+N/usr/lib/system/libsystem_sandbox.dylib
+c0000000053AB22A8000000000000CC70
+t1403724456
+s52336
+
+N/usr/lib/system/libunc.dylib
+c0000000053AACA0E000000000000C3F0
+t1403701774
+s50160
+
+N/usr/lib/system/libunwind.dylib
+c0000000053AACA1500000000000199F0
+t1403701781
+s104944
 
 N/var/folders/sn/fs_1dmrs2h90zpdgmghl2cy80000gn/C/com.apple.DeveloperTools/5.1.1-5B1008/Xcode/SharedPrecompiledHeaders/Nuclear Chess-Prefix-clpcbxktmtjdgrbzourrpqccurhu/Nuclear Chess-Prefix.pch.pch
 t1402143932
 s5374208
 
+N/var/folders/v0/qrz93y5d1cz2rc9vgrd0f8_00000gn/C/com.apple.DeveloperTools/5.1.1-5B1008/Xcode/SharedPrecompiledHeaders/Nuclear Chess-Prefix-fybjeielpftzlhfusdxhzvmurjcn/Nuclear Chess-Prefix.pch.pch
+t1403956271
+s5376880
+
 CCheck dependencies
 r0
-lSLF06#21%IDEActivityLogSection1@2#32"com.apple.dt.IDE.BuildLogSection18"Check dependencies18"Check dependencies3a0836343c43b941^28b93b343c43b941^---0#1#1#--18"Check dependencies36"F1B25447-18E6-4BA4-880C-49CC0E4FB8E0-
+lSLF06#21%IDEActivityLogSection1@2#32"com.apple.dt.IDE.BuildLogSection18"Check dependencies18"Check dependencies755736c71060b941^0c023bc71060b941^---0#1#1#--18"Check dependencies36"1B97AFD4-EFFF-4C0D-83A3-215F2AB959C6-
+
+CCompileAssetCatalog /Users/karl/gdrive/code/github/nuclearchess/platforms/ios/build/emulator/Nuclear\ Chess.app /Users/karl/gdrive/code/github/nuclearchess/platforms/ios/Nuclear\ Chess/Images.xcassets
+s425649070.617495
+e425649071.133491
+r1
+xCompileAssetCatalog
+x/Users/karl/gdrive/code/github/nuclearchess/platforms/ios/build/emulator/Nuclear Chess.app
+x/Users/karl/gdrive/code/github/nuclearchess/platforms/ios/Nuclear Chess/Images.xcassets
+o/* com.apple.actool.compilation-results */
+o/Users/karl/gdrive/code/github/nuclearchess/platforms/ios/build/emulator/Nuclear Chess.app/AppIcon29x29.png
+o/Users/karl/gdrive/code/github/nuclearchess/platforms/ios/build/emulator/Nuclear Chess.app/AppIcon29x29@2x.png
+o/Users/karl/gdrive/code/github/nuclearchess/platforms/ios/build/emulator/Nuclear Chess.app/AppIcon40x40@2x.png
+o/Users/karl/gdrive/code/github/nuclearchess/platforms/ios/build/emulator/Nuclear Chess.app/AppIcon57x57.png
+o/Users/karl/gdrive/code/github/nuclearchess/platforms/ios/build/emulator/Nuclear Chess.app/AppIcon57x57@2x.png
+o/Users/karl/gdrive/code/github/nuclearchess/platforms/ios/build/emulator/Nuclear Chess.app/AppIcon60x60@2x.png
+o/Users/karl/gdrive/code/github/nuclearchess/platforms/ios/build/emulator/Nuclear Chess.app/AppIcon29x29~ipad.png
+o/Users/karl/gdrive/code/github/nuclearchess/platforms/ios/build/emulator/Nuclear Chess.app/AppIcon29x29@2x~ipad.png
+o/Users/karl/gdrive/code/github/nuclearchess/platforms/ios/build/emulator/Nuclear Chess.app/AppIcon40x40~ipad.png
+o/Users/karl/gdrive/code/github/nuclearchess/platforms/ios/build/emulator/Nuclear Chess.app/AppIcon40x40@2x~ipad.png
+o/Users/karl/gdrive/code/github/nuclearchess/platforms/ios/build/emulator/Nuclear Chess.app/AppIcon50x50~ipad.png
+o/Users/karl/gdrive/code/github/nuclearchess/platforms/ios/build/emulator/Nuclear Chess.app/AppIcon72x72~ipad.png
+o/Users/karl/gdrive/code/github/nuclearchess/platforms/ios/build/emulator/Nuclear Chess.app/AppIcon72x72@2x~ipad.png
+o/Users/karl/gdrive/code/github/nuclearchess/platforms/ios/build/emulator/Nuclear Chess.app/AppIcon76x76~ipad.png
+o/Users/karl/gdrive/code/github/nuclearchess/platforms/ios/build/emulator/Nuclear Chess.app/AppIcon76x76@2x~ipad.png
+o/Users/karl/gdrive/code/github/nuclearchess/platforms/ios/build/emulator/Nuclear Chess.app/LaunchImage-700@2x.png
+o/Users/karl/gdrive/code/github/nuclearchess/platforms/ios/build/emulator/Nuclear Chess.app/LaunchImage-700-568h@2x.png
+o/Users/karl/gdrive/code/github/nuclearchess/platforms/ios/build/emulator/Nuclear Chess.app/LaunchImage@2x.png
+o/Users/karl/gdrive/code/github/nuclearchess/platforms/ios/build/emulator/Nuclear Chess.app/LaunchImage-568h@2x.png
+o/Users/karl/gdrive/code/github/nuclearchess/platforms/ios/build/Nuclear Chess.build/Debug-iphonesimulator/Nuclear Chess.build/assetcatalog_generated_info.plist
+o
+lSLF06#21%IDEActivityLogSection1@2#32"com.apple.dt.IDE.BuildLogSection100"[1mCompileAssetCatalog[0m build/emulator/Nuclear\ Chess.app [1mNuclear\ Chess/Images.xcassets[0m100"[1mCompileAssetCatalog[0m build/emulator/Nuclear\ Chess.app [1mNuclear\ Chess/Images.xcassets[0me5269eaee35eb941^382f22afe35eb941^-2351"/* com.apple.actool.compilation-results *//Users/karl/gdrive/code/github/nuclearchess/platforms/ios/build/emulator/Nuclear Chess.app/AppIcon29x29.png/Users/karl/gdrive/code/github/nuclearchess/platforms/ios/build/emulator/Nuclear Chess.app/AppIcon29x29@2x.png/Users/karl/gdrive/code/github/nuclearchess/platforms/ios/build/emulator/Nuclear Chess.app/AppIcon40x40@2x.png/Users/karl/gdrive/code/github/nuclearchess/platforms/ios/build/emulator/Nuclear Chess.app/AppIcon57x57.png/Users/karl/gdrive/code/github/nuclearchess/platforms/ios/build/emulator/Nuclear Chess.app/AppIcon57x57@2x.png/Users/karl/gdrive/code/github/nuclearchess/platforms/ios/build/emulator/Nuclear Chess.app/AppIcon60x60@2x.png/Users/karl/gdrive/code/github/nuclearchess/platforms/ios/build/emulator/Nuclear Chess.app/AppIcon29x29~ipad.png/Users/karl/gdrive/code/github/nuclearchess/platforms/ios/build/emulator/Nuclear Chess.app/AppIcon29x29@2x~ipad.png/Users/karl/gdrive/code/github/nuclearchess/platforms/ios/build/emulator/Nuclear Chess.app/AppIcon40x40~ipad.png/Users/karl/gdrive/code/github/nuclearchess/platforms/ios/build/emulator/Nuclear Chess.app/AppIcon40x40@2x~ipad.png/Users/karl/gdrive/code/github/nuclearchess/platforms/ios/build/emulator/Nuclear Chess.app/AppIcon50x50~ipad.png/Users/karl/gdrive/code/github/nuclearchess/platforms/ios/build/emulator/Nuclear Chess.app/AppIcon72x72~ipad.png/Users/karl/gdrive/code/github/nuclearchess/platforms/ios/build/emulator/Nuclear Chess.app/AppIcon72x72@2x~ipad.png/Users/karl/gdrive/code/github/nuclearchess/platforms/ios/build/emulator/Nuclear Chess.app/AppIcon76x76~ipad.png/Users/karl/gdrive/code/github/nuclearchess/platforms/ios/build/emulator/Nuclear Chess.app/AppIcon76x76@2x~ipad.png/Users/karl/gdrive/code/github/nuclearchess/platforms/ios/build/emulator/Nuclear Chess.app/LaunchImage-700@2x.png/Users/karl/gdrive/code/github/nuclearchess/platforms/ios/build/emulator/Nuclear Chess.app/LaunchImage-700-568h@2x.png/Users/karl/gdrive/code/github/nuclearchess/platforms/ios/build/emulator/Nuclear Chess.app/LaunchImage@2x.png/Users/karl/gdrive/code/github/nuclearchess/platforms/ios/build/emulator/Nuclear Chess.app/LaunchImage-568h@2x.png/Users/karl/gdrive/code/github/nuclearchess/platforms/ios/build/Nuclear Chess.build/Debug-iphonesimulator/Nuclear Chess.build/assetcatalog_generated_info.plist-0#0#1#-19%DVTDocumentLocation2@97"file:///Users/karl/gdrive/code/github/nuclearchess/platforms/ios/Nuclear%20Chess/Images.xcassets/0000000000000000^1269"[1mCompileAssetCatalog[0m build/emulator/Nuclear\ Chess.app [1mNuclear\ Chess/Images.xcassets[0m    cd /Users/karl/gdrive/code/github/nuclearchess/platforms/ios    export PATH="/Applications/Xcode.app/Contents/Developer/Platforms/iPhoneSimulator.platform/Developer/usr/bin:/Applications/Xcode.app/Contents/Developer/usr/bin:/usr/bin:/bin:/usr/sbin:/sbin:/usr/local/bin"    /Applications/Xcode.app/Contents/Developer/Platforms/iPhoneSimulator.platform/Developer/usr/bin/actool --output-format human-readable-text --notices --warnings --export-dependency-info /Users/karl/gdrive/code/github/nuclearchess/platforms/ios/build/Nuclear\ Chess.build/Debug-iphonesimulator/Nuclear\ Chess.build/assetcatalog_dependencies.txt --output-partial-info-plist /Users/karl/gdrive/code/github/nuclearchess/platforms/ios/build/Nuclear\ Chess.build/Debug-iphonesimulator/Nuclear\ Chess.build/assetcatalog_generated_info.plist --app-icon AppIcon --launch-image LaunchImage --platform iphonesimulator --minimum-deployment-target 6.0 --target-device iphone --target-device ipad --compress-pngs --compile /Users/karl/gdrive/code/github/nuclearchess/platforms/ios/build/emulator/Nuclear\ Chess.app /Users/karl/gdrive/code/github/nuclearchess/platforms/ios/Nuclear\ Chess/Images.xcassets36"DEF663A9-C289-4E2A-8646-0E35541CB2D6-
+b87E71CE4-15EB-4386-A525-7E86D4B09323
 
 CCompileC build/Nuclear\ Chess.build/Debug-iphonesimulator/Nuclear\ Chess.build/Objects-normal/i386/AppDelegate.o /Users/karl/gdrive/code/github/nuclearchess/platforms/ios/Nuclear\ Chess/Classes/AppDelegate.m normal i386 objective-c com.apple.compilers.llvm.clang.1_0.compiler
-s423836732.837649
-e423836733.286414
+s425649071.993430
+e425649072.056067
 r1
 xCompileC
 xbuild/Nuclear Chess.build/Debug-iphonesimulator/Nuclear Chess.build/Objects-normal/i386/AppDelegate.o
@@ -392,12 +785,12 @@ d/Users/karl/gdrive/code/github/nuclearchess/platforms/ios/build/emulator/includ
 d/Users/karl/gdrive/code/github/nuclearchess/platforms/ios/build/emulator/include/Cordova/NSMutableArray+QueueAdditions.h
 d/Users/karl/gdrive/code/github/nuclearchess/platforms/ios/Nuclear Chess/Classes/MainViewController.h
 d/Users/karl/gdrive/code/github/nuclearchess/platforms/ios/build/emulator/include/Cordova/CDVCommandDelegateImpl.h
-lSLF06#21%IDEActivityLogSection1@2#32"com.apple.dt.IDE.BuildLogSection101"Compile /Users/karl/gdrive/code/github/nuclearchess/platforms/ios/Nuclear Chess/Classes/AppDelegate.m233"[1mCompileC[0m build/Nuclear\ Chess.build/Debug-iphonesimulator/Nuclear\ Chess.build/Objects-normal/i386/AppDelegate.o [1mNuclear\ Chess/Classes/AppDelegate.m[0m normal i386 objective-c com.apple.compilers.llvm.clang.1_0.compilerfc89d63c3c43b941^1553493d3c43b941^---0#0#1#-19%DVTDocumentLocation2@102"file:///Users/karl/gdrive/code/github/nuclearchess/platforms/ios/Nuclear%20Chess/Classes/AppDelegate.m0000000000000000^4190"[1mCompileC[0m build/Nuclear\ Chess.build/Debug-iphonesimulator/Nuclear\ Chess.build/Objects-normal/i386/AppDelegate.o [1mNuclear\ Chess/Classes/AppDelegate.m[0m normal i386 objective-c com.apple.compilers.llvm.clang.1_0.compiler    cd /Users/karl/gdrive/code/github/nuclearchess/platforms/ios    export LANG=en_US.US-ASCII    export PATH="/Applications/Xcode.app/Contents/Developer/Platforms/iPhoneSimulator.platform/Developer/usr/bin:/Applications/Xcode.app/Contents/Developer/usr/bin:/Users/karl/local/apache-maven/apache-maven-3.0.4/bin:/usr/bin:/bin:/usr/sbin:/sbin:/usr/local/bin:/usr/local/MacGPG2/bin:/Users/karl/tools/sdks/android/sdk//platform-tools:/Users/karl/tools/sdks/android/sdk//tools"    /Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/clang -x objective-c -arch i386 -fmessage-length=80 -fdiagnostics-show-note-include-stack -fmacro-backtrace-limit=0 -fcolor-diagnostics -std=c99 -fobjc-arc -Wno-trigraphs -fpascal-strings -O0 -Wno-missing-field-initializers -Wno-missing-prototypes -Wno-implicit-atomic-properties -Wno-receiver-is-weak -Wno-arc-repeated-use-of-weak -Wduplicate-method-match -Wno-missing-braces -Wparentheses -Wswitch -Wunused-function -Wno-unused-label -Wno-unused-parameter -Wunused-variable -Wunused-value -Wempty-body -Wuninitialized -Wno-unknown-pragmas -Wno-shadow -Wno-four-char-constants -Wno-conversion -Wconstant-conversion -Wint-conversion -Wbool-conversion -Wenum-conversion -Wno-shorten-64-to-32 -Wpointer-sign -Wno-newline-eof -Wno-selector -Wno-strict-selector-match -Wundeclared-selector -Wno-deprecated-implementations -isysroot /Applications/Xcode.app/Contents/Developer/Platforms/iPhoneSimulator.platform/Developer/SDKs/iPhoneSimulator7.1.sdk -fexceptions -fasm-blocks -fstrict-aliasing -Wprotocol -Wdeprecated-declarations -g -fvisibility=hidden -Wno-sign-conversion -fobjc-abi-version=2 -fobjc-legacy-dispatch -mios-simulator-version-min=5.0 -iquote /Users/karl/gdrive/code/github/nuclearchess/platforms/ios/build/Nuclear\ Chess.build/Debug-iphonesimulator/Nuclear\ Chess.build/Nuclear\ Chess-generated-files.hmap -I/Users/karl/gdrive/code/github/nuclearchess/platforms/ios/build/Nuclear\ Chess.build/Debug-iphonesimulator/Nuclear\ Chess.build/Nuclear\ Chess-own-target-headers.hmap -I/Users/karl/gdrive/code/github/nuclearchess/platforms/ios/build/Nuclear\ Chess.build/Debug-iphonesimulator/Nuclear\ Chess.build/Nuclear\ Chess-all-target-headers.hmap -iquote /Users/karl/gdrive/code/github/nuclearchess/platforms/ios/build/Nuclear\ Chess.build/Debug-iphonesimulator/Nuclear\ Chess.build/Nuclear\ Chess-project-headers.hmap -I/Users/karl/gdrive/code/github/nuclearchess/platforms/ios/build/emulator/include -I/Users/karl/gdrive/code/github/nuclearchess/platforms/ios/build/emulator/usr/local/lib/include -I/Users/karl/gdrive/code/github/nuclearchess/platforms/ios/build/UninstalledProducts/include -I/Users/karl/gdrive/code/github/nuclearchess/platforms/ios/build/emulator -I/Users/karl/gdrive/code/github/nuclearchess/platforms/ios/build/Nuclear\ Chess.build/Debug-iphonesimulator/Nuclear\ Chess.build/DerivedSources/i386 -I/Users/karl/gdrive/code/github/nuclearchess/platforms/ios/build/Nuclear\ Chess.build/Debug-iphonesimulator/Nuclear\ Chess.build/DerivedSources -F/Users/karl/gdrive/code/github/nuclearchess/platforms/ios/build/emulator -include /var/folders/sn/fs_1dmrs2h90zpdgmghl2cy80000gn/C/com.apple.DeveloperTools/5.1.1-5B1008/Xcode/SharedPrecompiledHeaders/Nuclear\ Chess-Prefix-clpcbxktmtjdgrbzourrpqccurhu/Nuclear\ Chess-Prefix.pch -MMD -MT dependencies -MF /Users/karl/gdrive/code/github/nuclearchess/platforms/ios/build/Nuclear\ Chess.build/Debug-iphonesimulator/Nuclear\ Chess.build/Objects-normal/i386/AppDelegate.d --serialize-diagnostics /Users/karl/gdrive/code/github/nuclearchess/platforms/ios/build/Nuclear\ Chess.build/Debug-iphonesimulator/Nuclear\ Chess.build/Objects-normal/i386/AppDelegate.dia -c /Users/karl/gdrive/code/github/nuclearchess/platforms/ios/Nuclear\ Chess/Classes/AppDelegate.m -o /Users/karl/gdrive/code/github/nuclearchess/platforms/ios/build/Nuclear\ Chess.build/Debug-iphonesimulator/Nuclear\ Chess.build/Objects-normal/i386/AppDelegate.o36"AB752C35-D382-49CB-A923-9927100CE941-
-b99958ECD-DE79-4B42-9BE2-86CFB8767F0C
+lSLF06#21%IDEActivityLogSection1@2#32"com.apple.dt.IDE.BuildLogSection101"Compile /Users/karl/gdrive/code/github/nuclearchess/platforms/ios/Nuclear Chess/Classes/AppDelegate.m233"[1mCompileC[0m build/Nuclear\ Chess.build/Debug-iphonesimulator/Nuclear\ Chess.build/Objects-normal/i386/AppDelegate.o [1mNuclear\ Chess/Classes/AppDelegate.m[0m normal i386 objective-c com.apple.compilers.llvm.clang.1_0.compiler4566feafe35eb941^855f0eb0e35eb941^---0#0#1#-19%DVTDocumentLocation2@102"file:///Users/karl/gdrive/code/github/nuclearchess/platforms/ios/Nuclear%20Chess/Classes/AppDelegate.m0000000000000000^4020"[1mCompileC[0m build/Nuclear\ Chess.build/Debug-iphonesimulator/Nuclear\ Chess.build/Objects-normal/i386/AppDelegate.o [1mNuclear\ Chess/Classes/AppDelegate.m[0m normal i386 objective-c com.apple.compilers.llvm.clang.1_0.compiler    cd /Users/karl/gdrive/code/github/nuclearchess/platforms/ios    export LANG=en_US.US-ASCII    export PATH="/Applications/Xcode.app/Contents/Developer/Platforms/iPhoneSimulator.platform/Developer/usr/bin:/Applications/Xcode.app/Contents/Developer/usr/bin:/usr/bin:/bin:/usr/sbin:/sbin:/usr/local/bin"    /Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/clang -x objective-c -arch i386 -fmessage-length=96 -fdiagnostics-show-note-include-stack -fmacro-backtrace-limit=0 -fcolor-diagnostics -std=c99 -fobjc-arc -Wno-trigraphs -fpascal-strings -O0 -Wno-missing-field-initializers -Wno-missing-prototypes -Wno-implicit-atomic-properties -Wno-receiver-is-weak -Wno-arc-repeated-use-of-weak -Wduplicate-method-match -Wno-missing-braces -Wparentheses -Wswitch -Wunused-function -Wno-unused-label -Wno-unused-parameter -Wunused-variable -Wunused-value -Wempty-body -Wuninitialized -Wno-unknown-pragmas -Wno-shadow -Wno-four-char-constants -Wno-conversion -Wconstant-conversion -Wint-conversion -Wbool-conversion -Wenum-conversion -Wno-shorten-64-to-32 -Wpointer-sign -Wno-newline-eof -Wno-selector -Wno-strict-selector-match -Wundeclared-selector -Wno-deprecated-implementations -isysroot /Applications/Xcode.app/Contents/Developer/Platforms/iPhoneSimulator.platform/Developer/SDKs/iPhoneSimulator7.1.sdk -fexceptions -fasm-blocks -fstrict-aliasing -Wprotocol -Wdeprecated-declarations -g -fvisibility=hidden -Wno-sign-conversion -fobjc-abi-version=2 -fobjc-legacy-dispatch -mios-simulator-version-min=6.0 -iquote /Users/karl/gdrive/code/github/nuclearchess/platforms/ios/build/Nuclear\ Chess.build/Debug-iphonesimulator/Nuclear\ Chess.build/Nuclear\ Chess-generated-files.hmap -I/Users/karl/gdrive/code/github/nuclearchess/platforms/ios/build/Nuclear\ Chess.build/Debug-iphonesimulator/Nuclear\ Chess.build/Nuclear\ Chess-own-target-headers.hmap -I/Users/karl/gdrive/code/github/nuclearchess/platforms/ios/build/Nuclear\ Chess.build/Debug-iphonesimulator/Nuclear\ Chess.build/Nuclear\ Chess-all-target-headers.hmap -iquote /Users/karl/gdrive/code/github/nuclearchess/platforms/ios/build/Nuclear\ Chess.build/Debug-iphonesimulator/Nuclear\ Chess.build/Nuclear\ Chess-project-headers.hmap -I/Users/karl/gdrive/code/github/nuclearchess/platforms/ios/build/emulator/include -I/Users/karl/gdrive/code/github/nuclearchess/platforms/ios/build/emulator/usr/local/lib/include -I/Users/karl/gdrive/code/github/nuclearchess/platforms/ios/build/UninstalledProducts/include -I/Users/karl/gdrive/code/github/nuclearchess/platforms/ios/build/emulator -I/Users/karl/gdrive/code/github/nuclearchess/platforms/ios/build/Nuclear\ Chess.build/Debug-iphonesimulator/Nuclear\ Chess.build/DerivedSources/i386 -I/Users/karl/gdrive/code/github/nuclearchess/platforms/ios/build/Nuclear\ Chess.build/Debug-iphonesimulator/Nuclear\ Chess.build/DerivedSources -F/Users/karl/gdrive/code/github/nuclearchess/platforms/ios/build/emulator -include /var/folders/v0/qrz93y5d1cz2rc9vgrd0f8_00000gn/C/com.apple.DeveloperTools/5.1.1-5B1008/Xcode/SharedPrecompiledHeaders/Nuclear\ Chess-Prefix-fybjeielpftzlhfusdxhzvmurjcn/Nuclear\ Chess-Prefix.pch -MMD -MT dependencies -MF /Users/karl/gdrive/code/github/nuclearchess/platforms/ios/build/Nuclear\ Chess.build/Debug-iphonesimulator/Nuclear\ Chess.build/Objects-normal/i386/AppDelegate.d --serialize-diagnostics /Users/karl/gdrive/code/github/nuclearchess/platforms/ios/build/Nuclear\ Chess.build/Debug-iphonesimulator/Nuclear\ Chess.build/Objects-normal/i386/AppDelegate.dia -c /Users/karl/gdrive/code/github/nuclearchess/platforms/ios/Nuclear\ Chess/Classes/AppDelegate.m -o /Users/karl/gdrive/code/github/nuclearchess/platforms/ios/build/Nuclear\ Chess.build/Debug-iphonesimulator/Nuclear\ Chess.build/Objects-normal/i386/AppDelegate.o36"57AE1945-CD07-46A9-B649-65996E873A65-
+b87E71CE4-15EB-4386-A525-7E86D4B09323
 
 CCompileC build/Nuclear\ Chess.build/Debug-iphonesimulator/Nuclear\ Chess.build/Objects-normal/i386/MainViewController.o /Users/karl/gdrive/code/github/nuclearchess/platforms/ios/Nuclear\ Chess/Classes/MainViewController.m normal i386 objective-c com.apple.compilers.llvm.clang.1_0.compiler
-s423836732.895585
-e423836733.285857
+s425649071.994060
+e425649072.046657
 r1
 xCompileC
 xbuild/Nuclear Chess.build/Debug-iphonesimulator/Nuclear Chess.build/Objects-normal/i386/MainViewController.o
@@ -419,12 +812,12 @@ d/Users/karl/gdrive/code/github/nuclearchess/platforms/ios/build/emulator/includ
 d/Users/karl/gdrive/code/github/nuclearchess/platforms/ios/build/emulator/include/Cordova/CDVPluginResult.h
 d/Users/karl/gdrive/code/github/nuclearchess/platforms/ios/build/emulator/include/Cordova/NSMutableArray+QueueAdditions.h
 d/Users/karl/gdrive/code/github/nuclearchess/platforms/ios/build/emulator/include/Cordova/CDVCommandDelegateImpl.h
-lSLF06#21%IDEActivityLogSection1@2#32"com.apple.dt.IDE.BuildLogSection108"Compile /Users/karl/gdrive/code/github/nuclearchess/platforms/ios/Nuclear Chess/Classes/MainViewController.m247"[1mCompileC[0m build/Nuclear\ Chess.build/Debug-iphonesimulator/Nuclear\ Chess.build/Objects-normal/i386/MainViewController.o [1mNuclear\ Chess/Classes/MainViewController.m[0m normal i386 objective-c com.apple.compilers.llvm.clang.1_0.compilerf166e53c3c43b941^9831493d3c43b941^---0#0#1#-19%DVTDocumentLocation2@109"file:///Users/karl/gdrive/code/github/nuclearchess/platforms/ios/Nuclear%20Chess/Classes/MainViewController.m0000000000000000^4232"[1mCompileC[0m build/Nuclear\ Chess.build/Debug-iphonesimulator/Nuclear\ Chess.build/Objects-normal/i386/MainViewController.o [1mNuclear\ Chess/Classes/MainViewController.m[0m normal i386 objective-c com.apple.compilers.llvm.clang.1_0.compiler    cd /Users/karl/gdrive/code/github/nuclearchess/platforms/ios    export LANG=en_US.US-ASCII    export PATH="/Applications/Xcode.app/Contents/Developer/Platforms/iPhoneSimulator.platform/Developer/usr/bin:/Applications/Xcode.app/Contents/Developer/usr/bin:/Users/karl/local/apache-maven/apache-maven-3.0.4/bin:/usr/bin:/bin:/usr/sbin:/sbin:/usr/local/bin:/usr/local/MacGPG2/bin:/Users/karl/tools/sdks/android/sdk//platform-tools:/Users/karl/tools/sdks/android/sdk//tools"    /Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/clang -x objective-c -arch i386 -fmessage-length=80 -fdiagnostics-show-note-include-stack -fmacro-backtrace-limit=0 -fcolor-diagnostics -std=c99 -fobjc-arc -Wno-trigraphs -fpascal-strings -O0 -Wno-missing-field-initializers -Wno-missing-prototypes -Wno-implicit-atomic-properties -Wno-receiver-is-weak -Wno-arc-repeated-use-of-weak -Wduplicate-method-match -Wno-missing-braces -Wparentheses -Wswitch -Wunused-function -Wno-unused-label -Wno-unused-parameter -Wunused-variable -Wunused-value -Wempty-body -Wuninitialized -Wno-unknown-pragmas -Wno-shadow -Wno-four-char-constants -Wno-conversion -Wconstant-conversion -Wint-conversion -Wbool-conversion -Wenum-conversion -Wno-shorten-64-to-32 -Wpointer-sign -Wno-newline-eof -Wno-selector -Wno-strict-selector-match -Wundeclared-selector -Wno-deprecated-implementations -isysroot /Applications/Xcode.app/Contents/Developer/Platforms/iPhoneSimulator.platform/Developer/SDKs/iPhoneSimulator7.1.sdk -fexceptions -fasm-blocks -fstrict-aliasing -Wprotocol -Wdeprecated-declarations -g -fvisibility=hidden -Wno-sign-conversion -fobjc-abi-version=2 -fobjc-legacy-dispatch -mios-simulator-version-min=5.0 -iquote /Users/karl/gdrive/code/github/nuclearchess/platforms/ios/build/Nuclear\ Chess.build/Debug-iphonesimulator/Nuclear\ Chess.build/Nuclear\ Chess-generated-files.hmap -I/Users/karl/gdrive/code/github/nuclearchess/platforms/ios/build/Nuclear\ Chess.build/Debug-iphonesimulator/Nuclear\ Chess.build/Nuclear\ Chess-own-target-headers.hmap -I/Users/karl/gdrive/code/github/nuclearchess/platforms/ios/build/Nuclear\ Chess.build/Debug-iphonesimulator/Nuclear\ Chess.build/Nuclear\ Chess-all-target-headers.hmap -iquote /Users/karl/gdrive/code/github/nuclearchess/platforms/ios/build/Nuclear\ Chess.build/Debug-iphonesimulator/Nuclear\ Chess.build/Nuclear\ Chess-project-headers.hmap -I/Users/karl/gdrive/code/github/nuclearchess/platforms/ios/build/emulator/include -I/Users/karl/gdrive/code/github/nuclearchess/platforms/ios/build/emulator/usr/local/lib/include -I/Users/karl/gdrive/code/github/nuclearchess/platforms/ios/build/UninstalledProducts/include -I/Users/karl/gdrive/code/github/nuclearchess/platforms/ios/build/emulator -I/Users/karl/gdrive/code/github/nuclearchess/platforms/ios/build/Nuclear\ Chess.build/Debug-iphonesimulator/Nuclear\ Chess.build/DerivedSources/i386 -I/Users/karl/gdrive/code/github/nuclearchess/platforms/ios/build/Nuclear\ Chess.build/Debug-iphonesimulator/Nuclear\ Chess.build/DerivedSources -F/Users/karl/gdrive/code/github/nuclearchess/platforms/ios/build/emulator -include /var/folders/sn/fs_1dmrs2h90zpdgmghl2cy80000gn/C/com.apple.DeveloperTools/5.1.1-5B1008/Xcode/SharedPrecompiledHeaders/Nuclear\ Chess-Prefix-clpcbxktmtjdgrbzourrpqccurhu/Nuclear\ Chess-Prefix.pch -MMD -MT dependencies -MF /Users/karl/gdrive/code/github/nuclearchess/platforms/ios/build/Nuclear\ Chess.build/Debug-iphonesimulator/Nuclear\ Chess.build/Objects-normal/i386/MainViewController.d --serialize-diagnostics /Users/karl/gdrive/code/github/nuclearchess/platforms/ios/build/Nuclear\ Chess.build/Debug-iphonesimulator/Nuclear\ Chess.build/Objects-normal/i386/MainViewController.dia -c /Users/karl/gdrive/code/github/nuclearchess/platforms/ios/Nuclear\ Chess/Classes/MainViewController.m -o /Users/karl/gdrive/code/github/nuclearchess/platforms/ios/build/Nuclear\ Chess.build/Debug-iphonesimulator/Nuclear\ Chess.build/Objects-normal/i386/MainViewController.o36"68858FCC-A2E9-49E7-8383-D8A819621D6C-
-b99958ECD-DE79-4B42-9BE2-86CFB8767F0C
+lSLF06#21%IDEActivityLogSection1@2#32"com.apple.dt.IDE.BuildLogSection108"Compile /Users/karl/gdrive/code/github/nuclearchess/platforms/ios/Nuclear Chess/Classes/MainViewController.m247"[1mCompileC[0m build/Nuclear\ Chess.build/Debug-iphonesimulator/Nuclear\ Chess.build/Objects-normal/i386/MainViewController.o [1mNuclear\ Chess/Classes/MainViewController.m[0m normal i386 objective-c com.apple.compilers.llvm.clang.1_0.compiler7d93feafe35eb941^1bf20bb0e35eb941^---0#0#1#-19%DVTDocumentLocation2@109"file:///Users/karl/gdrive/code/github/nuclearchess/platforms/ios/Nuclear%20Chess/Classes/MainViewController.m0000000000000000^4062"[1mCompileC[0m build/Nuclear\ Chess.build/Debug-iphonesimulator/Nuclear\ Chess.build/Objects-normal/i386/MainViewController.o [1mNuclear\ Chess/Classes/MainViewController.m[0m normal i386 objective-c com.apple.compilers.llvm.clang.1_0.compiler    cd /Users/karl/gdrive/code/github/nuclearchess/platforms/ios    export LANG=en_US.US-ASCII    export PATH="/Applications/Xcode.app/Contents/Developer/Platforms/iPhoneSimulator.platform/Developer/usr/bin:/Applications/Xcode.app/Contents/Developer/usr/bin:/usr/bin:/bin:/usr/sbin:/sbin:/usr/local/bin"    /Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/clang -x objective-c -arch i386 -fmessage-length=96 -fdiagnostics-show-note-include-stack -fmacro-backtrace-limit=0 -fcolor-diagnostics -std=c99 -fobjc-arc -Wno-trigraphs -fpascal-strings -O0 -Wno-missing-field-initializers -Wno-missing-prototypes -Wno-implicit-atomic-properties -Wno-receiver-is-weak -Wno-arc-repeated-use-of-weak -Wduplicate-method-match -Wno-missing-braces -Wparentheses -Wswitch -Wunused-function -Wno-unused-label -Wno-unused-parameter -Wunused-variable -Wunused-value -Wempty-body -Wuninitialized -Wno-unknown-pragmas -Wno-shadow -Wno-four-char-constants -Wno-conversion -Wconstant-conversion -Wint-conversion -Wbool-conversion -Wenum-conversion -Wno-shorten-64-to-32 -Wpointer-sign -Wno-newline-eof -Wno-selector -Wno-strict-selector-match -Wundeclared-selector -Wno-deprecated-implementations -isysroot /Applications/Xcode.app/Contents/Developer/Platforms/iPhoneSimulator.platform/Developer/SDKs/iPhoneSimulator7.1.sdk -fexceptions -fasm-blocks -fstrict-aliasing -Wprotocol -Wdeprecated-declarations -g -fvisibility=hidden -Wno-sign-conversion -fobjc-abi-version=2 -fobjc-legacy-dispatch -mios-simulator-version-min=6.0 -iquote /Users/karl/gdrive/code/github/nuclearchess/platforms/ios/build/Nuclear\ Chess.build/Debug-iphonesimulator/Nuclear\ Chess.build/Nuclear\ Chess-generated-files.hmap -I/Users/karl/gdrive/code/github/nuclearchess/platforms/ios/build/Nuclear\ Chess.build/Debug-iphonesimulator/Nuclear\ Chess.build/Nuclear\ Chess-own-target-headers.hmap -I/Users/karl/gdrive/code/github/nuclearchess/platforms/ios/build/Nuclear\ Chess.build/Debug-iphonesimulator/Nuclear\ Chess.build/Nuclear\ Chess-all-target-headers.hmap -iquote /Users/karl/gdrive/code/github/nuclearchess/platforms/ios/build/Nuclear\ Chess.build/Debug-iphonesimulator/Nuclear\ Chess.build/Nuclear\ Chess-project-headers.hmap -I/Users/karl/gdrive/code/github/nuclearchess/platforms/ios/build/emulator/include -I/Users/karl/gdrive/code/github/nuclearchess/platforms/ios/build/emulator/usr/local/lib/include -I/Users/karl/gdrive/code/github/nuclearchess/platforms/ios/build/UninstalledProducts/include -I/Users/karl/gdrive/code/github/nuclearchess/platforms/ios/build/emulator -I/Users/karl/gdrive/code/github/nuclearchess/platforms/ios/build/Nuclear\ Chess.build/Debug-iphonesimulator/Nuclear\ Chess.build/DerivedSources/i386 -I/Users/karl/gdrive/code/github/nuclearchess/platforms/ios/build/Nuclear\ Chess.build/Debug-iphonesimulator/Nuclear\ Chess.build/DerivedSources -F/Users/karl/gdrive/code/github/nuclearchess/platforms/ios/build/emulator -include /var/folders/v0/qrz93y5d1cz2rc9vgrd0f8_00000gn/C/com.apple.DeveloperTools/5.1.1-5B1008/Xcode/SharedPrecompiledHeaders/Nuclear\ Chess-Prefix-fybjeielpftzlhfusdxhzvmurjcn/Nuclear\ Chess-Prefix.pch -MMD -MT dependencies -MF /Users/karl/gdrive/code/github/nuclearchess/platforms/ios/build/Nuclear\ Chess.build/Debug-iphonesimulator/Nuclear\ Chess.build/Objects-normal/i386/MainViewController.d --serialize-diagnostics /Users/karl/gdrive/code/github/nuclearchess/platforms/ios/build/Nuclear\ Chess.build/Debug-iphonesimulator/Nuclear\ Chess.build/Objects-normal/i386/MainViewController.dia -c /Users/karl/gdrive/code/github/nuclearchess/platforms/ios/Nuclear\ Chess/Classes/MainViewController.m -o /Users/karl/gdrive/code/github/nuclearchess/platforms/ios/build/Nuclear\ Chess.build/Debug-iphonesimulator/Nuclear\ Chess.build/Objects-normal/i386/MainViewController.o36"DF98A7EB-0EB6-4AEC-B793-ABFE4ED930C9-
+b87E71CE4-15EB-4386-A525-7E86D4B09323
 
 CCompileC build/Nuclear\ Chess.build/Debug-iphonesimulator/Nuclear\ Chess.build/Objects-normal/i386/main.o /Users/karl/gdrive/code/github/nuclearchess/platforms/ios/Nuclear\ Chess/main.m normal i386 objective-c com.apple.compilers.llvm.clang.1_0.compiler
-s423836732.836393
-e423836733.285465
+s425649071.992936
+e425649072.013131
 r1
 xCompileC
 xbuild/Nuclear Chess.build/Debug-iphonesimulator/Nuclear Chess.build/Objects-normal/i386/main.o
@@ -434,18 +827,18 @@ xi386
 xobjective-c
 xcom.apple.compilers.llvm.clang.1_0.compiler
 d/Users/karl/gdrive/code/github/nuclearchess/platforms/ios/Nuclear Chess/main.m
-lSLF06#21%IDEActivityLogSection1@2#32"com.apple.dt.IDE.BuildLogSection86"Compile /Users/karl/gdrive/code/github/nuclearchess/platforms/ios/Nuclear Chess/main.m211"[1mCompileC[0m build/Nuclear\ Chess.build/Debug-iphonesimulator/Nuclear\ Chess.build/Objects-normal/i386/main.o [1mNuclear\ Chess/main.m[0m normal i386 objective-c com.apple.compilers.llvm.clang.1_0.compiler9339d63c3c43b941^2715493d3c43b941^---0#0#1#-19%DVTDocumentLocation2@87"file:///Users/karl/gdrive/code/github/nuclearchess/platforms/ios/Nuclear%20Chess/main.m0000000000000000^4132"[1mCompileC[0m build/Nuclear\ Chess.build/Debug-iphonesimulator/Nuclear\ Chess.build/Objects-normal/i386/main.o [1mNuclear\ Chess/main.m[0m normal i386 objective-c com.apple.compilers.llvm.clang.1_0.compiler    cd /Users/karl/gdrive/code/github/nuclearchess/platforms/ios    export LANG=en_US.US-ASCII    export PATH="/Applications/Xcode.app/Contents/Developer/Platforms/iPhoneSimulator.platform/Developer/usr/bin:/Applications/Xcode.app/Contents/Developer/usr/bin:/Users/karl/local/apache-maven/apache-maven-3.0.4/bin:/usr/bin:/bin:/usr/sbin:/sbin:/usr/local/bin:/usr/local/MacGPG2/bin:/Users/karl/tools/sdks/android/sdk//platform-tools:/Users/karl/tools/sdks/android/sdk//tools"    /Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/clang -x objective-c -arch i386 -fmessage-length=80 -fdiagnostics-show-note-include-stack -fmacro-backtrace-limit=0 -fcolor-diagnostics -std=c99 -fobjc-arc -Wno-trigraphs -fpascal-strings -O0 -Wno-missing-field-initializers -Wno-missing-prototypes -Wno-implicit-atomic-properties -Wno-receiver-is-weak -Wno-arc-repeated-use-of-weak -Wduplicate-method-match -Wno-missing-braces -Wparentheses -Wswitch -Wunused-function -Wno-unused-label -Wno-unused-parameter -Wunused-variable -Wunused-value -Wempty-body -Wuninitialized -Wno-unknown-pragmas -Wno-shadow -Wno-four-char-constants -Wno-conversion -Wconstant-conversion -Wint-conversion -Wbool-conversion -Wenum-conversion -Wno-shorten-64-to-32 -Wpointer-sign -Wno-newline-eof -Wno-selector -Wno-strict-selector-match -Wundeclared-selector -Wno-deprecated-implementations -isysroot /Applications/Xcode.app/Contents/Developer/Platforms/iPhoneSimulator.platform/Developer/SDKs/iPhoneSimulator7.1.sdk -fexceptions -fasm-blocks -fstrict-aliasing -Wprotocol -Wdeprecated-declarations -g -fvisibility=hidden -Wno-sign-conversion -fobjc-abi-version=2 -fobjc-legacy-dispatch -mios-simulator-version-min=5.0 -iquote /Users/karl/gdrive/code/github/nuclearchess/platforms/ios/build/Nuclear\ Chess.build/Debug-iphonesimulator/Nuclear\ Chess.build/Nuclear\ Chess-generated-files.hmap -I/Users/karl/gdrive/code/github/nuclearchess/platforms/ios/build/Nuclear\ Chess.build/Debug-iphonesimulator/Nuclear\ Chess.build/Nuclear\ Chess-own-target-headers.hmap -I/Users/karl/gdrive/code/github/nuclearchess/platforms/ios/build/Nuclear\ Chess.build/Debug-iphonesimulator/Nuclear\ Chess.build/Nuclear\ Chess-all-target-headers.hmap -iquote /Users/karl/gdrive/code/github/nuclearchess/platforms/ios/build/Nuclear\ Chess.build/Debug-iphonesimulator/Nuclear\ Chess.build/Nuclear\ Chess-project-headers.hmap -I/Users/karl/gdrive/code/github/nuclearchess/platforms/ios/build/emulator/include -I/Users/karl/gdrive/code/github/nuclearchess/platforms/ios/build/emulator/usr/local/lib/include -I/Users/karl/gdrive/code/github/nuclearchess/platforms/ios/build/UninstalledProducts/include -I/Users/karl/gdrive/code/github/nuclearchess/platforms/ios/build/emulator -I/Users/karl/gdrive/code/github/nuclearchess/platforms/ios/build/Nuclear\ Chess.build/Debug-iphonesimulator/Nuclear\ Chess.build/DerivedSources/i386 -I/Users/karl/gdrive/code/github/nuclearchess/platforms/ios/build/Nuclear\ Chess.build/Debug-iphonesimulator/Nuclear\ Chess.build/DerivedSources -F/Users/karl/gdrive/code/github/nuclearchess/platforms/ios/build/emulator -include /var/folders/sn/fs_1dmrs2h90zpdgmghl2cy80000gn/C/com.apple.DeveloperTools/5.1.1-5B1008/Xcode/SharedPrecompiledHeaders/Nuclear\ Chess-Prefix-clpcbxktmtjdgrbzourrpqccurhu/Nuclear\ Chess-Prefix.pch -MMD -MT dependencies -MF /Users/karl/gdrive/code/github/nuclearchess/platforms/ios/build/Nuclear\ Chess.build/Debug-iphonesimulator/Nuclear\ Chess.build/Objects-normal/i386/main.d --serialize-diagnostics /Users/karl/gdrive/code/github/nuclearchess/platforms/ios/build/Nuclear\ Chess.build/Debug-iphonesimulator/Nuclear\ Chess.build/Objects-normal/i386/main.dia -c /Users/karl/gdrive/code/github/nuclearchess/platforms/ios/Nuclear\ Chess/main.m -o /Users/karl/gdrive/code/github/nuclearchess/platforms/ios/build/Nuclear\ Chess.build/Debug-iphonesimulator/Nuclear\ Chess.build/Objects-normal/i386/main.o36"B83A8D77-3144-4421-9AE4-08DBE67B452A-
-b99958ECD-DE79-4B42-9BE2-86CFB8767F0C
+lSLF06#21%IDEActivityLogSection1@2#32"com.apple.dt.IDE.BuildLogSection86"Compile /Users/karl/gdrive/code/github/nuclearchess/platforms/ios/Nuclear Chess/main.m211"[1mCompileC[0m build/Nuclear\ Chess.build/Debug-iphonesimulator/Nuclear\ Chess.build/Objects-normal/i386/main.o [1mNuclear\ Chess/main.m[0m normal i386 objective-c com.apple.compilers.llvm.clang.1_0.compilerbb47feafe35eb941^4b5c03b0e35eb941^---0#0#1#-19%DVTDocumentLocation2@87"file:///Users/karl/gdrive/code/github/nuclearchess/platforms/ios/Nuclear%20Chess/main.m0000000000000000^3962"[1mCompileC[0m build/Nuclear\ Chess.build/Debug-iphonesimulator/Nuclear\ Chess.build/Objects-normal/i386/main.o [1mNuclear\ Chess/main.m[0m normal i386 objective-c com.apple.compilers.llvm.clang.1_0.compiler    cd /Users/karl/gdrive/code/github/nuclearchess/platforms/ios    export LANG=en_US.US-ASCII    export PATH="/Applications/Xcode.app/Contents/Developer/Platforms/iPhoneSimulator.platform/Developer/usr/bin:/Applications/Xcode.app/Contents/Developer/usr/bin:/usr/bin:/bin:/usr/sbin:/sbin:/usr/local/bin"    /Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/clang -x objective-c -arch i386 -fmessage-length=96 -fdiagnostics-show-note-include-stack -fmacro-backtrace-limit=0 -fcolor-diagnostics -std=c99 -fobjc-arc -Wno-trigraphs -fpascal-strings -O0 -Wno-missing-field-initializers -Wno-missing-prototypes -Wno-implicit-atomic-properties -Wno-receiver-is-weak -Wno-arc-repeated-use-of-weak -Wduplicate-method-match -Wno-missing-braces -Wparentheses -Wswitch -Wunused-function -Wno-unused-label -Wno-unused-parameter -Wunused-variable -Wunused-value -Wempty-body -Wuninitialized -Wno-unknown-pragmas -Wno-shadow -Wno-four-char-constants -Wno-conversion -Wconstant-conversion -Wint-conversion -Wbool-conversion -Wenum-conversion -Wno-shorten-64-to-32 -Wpointer-sign -Wno-newline-eof -Wno-selector -Wno-strict-selector-match -Wundeclared-selector -Wno-deprecated-implementations -isysroot /Applications/Xcode.app/Contents/Developer/Platforms/iPhoneSimulator.platform/Developer/SDKs/iPhoneSimulator7.1.sdk -fexceptions -fasm-blocks -fstrict-aliasing -Wprotocol -Wdeprecated-declarations -g -fvisibility=hidden -Wno-sign-conversion -fobjc-abi-version=2 -fobjc-legacy-dispatch -mios-simulator-version-min=6.0 -iquote /Users/karl/gdrive/code/github/nuclearchess/platforms/ios/build/Nuclear\ Chess.build/Debug-iphonesimulator/Nuclear\ Chess.build/Nuclear\ Chess-generated-files.hmap -I/Users/karl/gdrive/code/github/nuclearchess/platforms/ios/build/Nuclear\ Chess.build/Debug-iphonesimulator/Nuclear\ Chess.build/Nuclear\ Chess-own-target-headers.hmap -I/Users/karl/gdrive/code/github/nuclearchess/platforms/ios/build/Nuclear\ Chess.build/Debug-iphonesimulator/Nuclear\ Chess.build/Nuclear\ Chess-all-target-headers.hmap -iquote /Users/karl/gdrive/code/github/nuclearchess/platforms/ios/build/Nuclear\ Chess.build/Debug-iphonesimulator/Nuclear\ Chess.build/Nuclear\ Chess-project-headers.hmap -I/Users/karl/gdrive/code/github/nuclearchess/platforms/ios/build/emulator/include -I/Users/karl/gdrive/code/github/nuclearchess/platforms/ios/build/emulator/usr/local/lib/include -I/Users/karl/gdrive/code/github/nuclearchess/platforms/ios/build/UninstalledProducts/include -I/Users/karl/gdrive/code/github/nuclearchess/platforms/ios/build/emulator -I/Users/karl/gdrive/code/github/nuclearchess/platforms/ios/build/Nuclear\ Chess.build/Debug-iphonesimulator/Nuclear\ Chess.build/DerivedSources/i386 -I/Users/karl/gdrive/code/github/nuclearchess/platforms/ios/build/Nuclear\ Chess.build/Debug-iphonesimulator/Nuclear\ Chess.build/DerivedSources -F/Users/karl/gdrive/code/github/nuclearchess/platforms/ios/build/emulator -include /var/folders/v0/qrz93y5d1cz2rc9vgrd0f8_00000gn/C/com.apple.DeveloperTools/5.1.1-5B1008/Xcode/SharedPrecompiledHeaders/Nuclear\ Chess-Prefix-fybjeielpftzlhfusdxhzvmurjcn/Nuclear\ Chess-Prefix.pch -MMD -MT dependencies -MF /Users/karl/gdrive/code/github/nuclearchess/platforms/ios/build/Nuclear\ Chess.build/Debug-iphonesimulator/Nuclear\ Chess.build/Objects-normal/i386/main.d --serialize-diagnostics /Users/karl/gdrive/code/github/nuclearchess/platforms/ios/build/Nuclear\ Chess.build/Debug-iphonesimulator/Nuclear\ Chess.build/Objects-normal/i386/main.dia -c /Users/karl/gdrive/code/github/nuclearchess/platforms/ios/Nuclear\ Chess/main.m -o /Users/karl/gdrive/code/github/nuclearchess/platforms/ios/build/Nuclear\ Chess.build/Debug-iphonesimulator/Nuclear\ Chess.build/Objects-normal/i386/main.o36"70A7A212-8B99-44DE-815D-6EF62ABB716A-
+b87E71CE4-15EB-4386-A525-7E86D4B09323
 
 CCompileXIB /Users/karl/gdrive/code/github/nuclearchess/platforms/ios/Nuclear\ Chess/Classes/MainViewController.xib
-s423836724.604173
-e423836732.100980
+s425649070.617042
+e425649071.673931
 r1
 xCompileXIB
 x/Users/karl/gdrive/code/github/nuclearchess/platforms/ios/Nuclear Chess/Classes/MainViewController.xib
-o2014-06-07 14:25:31.534 Interface Builder Cocoa Touch Tool[12520:303] CFPreferences: user home directory at file:///Users/karl/Library/Application%20Support/iPhone%20Simulator/User/ is unavailable. User domains will be volatile.
-lSLF06#21%IDEActivityLogSection1@2#32"com.apple.dt.IDE.BuildLogSection112"Compiling /Users/karl/gdrive/code/github/nuclearchess/platforms/ios/Nuclear Chess/Classes/MainViewController.xib72"[1mCompileXIB[0m [1mNuclear\ Chess/Classes/MainViewController.xib[0ma9bf9a343c43b941^16da193c3c43b941^-229"2014-06-07 14:25:31.534 Interface Builder Cocoa Touch Tool[12520:303] CFPreferences: user home directory at file:///Users/karl/Library/Application%20Support/iPhone%20Simulator/User/ is unavailable. User domains will be volatile.-0#0#1#-19%DVTDocumentLocation2@111"file:///Users/karl/gdrive/code/github/nuclearchess/platforms/ios/Nuclear%20Chess/Classes/MainViewController.xib0000000000000000^1042"[1mCompileXIB[0m [1mNuclear\ Chess/Classes/MainViewController.xib[0m    cd /Users/karl/gdrive/code/github/nuclearchess/platforms/ios    export PATH="/Applications/Xcode.app/Contents/Developer/Platforms/iPhoneSimulator.platform/Developer/usr/bin:/Applications/Xcode.app/Contents/Developer/usr/bin:/Users/karl/local/apache-maven/apache-maven-3.0.4/bin:/usr/bin:/bin:/usr/sbin:/sbin:/usr/local/bin:/usr/local/MacGPG2/bin:/Users/karl/tools/sdks/android/sdk//platform-tools:/Users/karl/tools/sdks/android/sdk//tools"    export XCODE_DEVELOPER_USR_PATH=/Applications/Xcode.app/Contents/Developer/usr/bin/..    /Applications/Xcode.app/Contents/Developer/Platforms/iPhoneSimulator.platform/Developer/usr/bin/ibtool --errors --warnings --notices --minimum-deployment-target 5.0 --output-format human-readable-text --compile /Users/karl/gdrive/code/github/nuclearchess/platforms/ios/build/emulator/Nuclear\ Chess.app/MainViewController.nib /Users/karl/gdrive/code/github/nuclearchess/platforms/ios/Nuclear\ Chess/Classes/MainViewController.xib36"0F1EB009-F5B7-4368-9E7C-E86D83C53926-
-b99958ECD-DE79-4B42-9BE2-86CFB8767F0C
+o2014-06-28 13:51:11.561 Interface Builder Cocoa Touch Tool[18071:303] CFPreferences: user home directory at file:///Users/karl/Library/Application%20Support/iPhone%20Simulator/User/ is unavailable. User domains will be volatile.
+lSLF06#21%IDEActivityLogSection1@2#32"com.apple.dt.IDE.BuildLogSection112"Compiling /Users/karl/gdrive/code/github/nuclearchess/platforms/ios/Nuclear Chess/Classes/MainViewController.xib72"[1mCompileXIB[0m [1mNuclear\ Chess/Classes/MainViewController.xib[0m6c089eaee35eb941^0187acafe35eb941^-229"2014-06-28 13:51:11.561 Interface Builder Cocoa Touch Tool[18071:303] CFPreferences: user home directory at file:///Users/karl/Library/Application%20Support/iPhone%20Simulator/User/ is unavailable. User domains will be volatile.-0#0#1#-19%DVTDocumentLocation2@111"file:///Users/karl/gdrive/code/github/nuclearchess/platforms/ios/Nuclear%20Chess/Classes/MainViewController.xib0000000000000000^872"[1mCompileXIB[0m [1mNuclear\ Chess/Classes/MainViewController.xib[0m    cd /Users/karl/gdrive/code/github/nuclearchess/platforms/ios    export PATH="/Applications/Xcode.app/Contents/Developer/Platforms/iPhoneSimulator.platform/Developer/usr/bin:/Applications/Xcode.app/Contents/Developer/usr/bin:/usr/bin:/bin:/usr/sbin:/sbin:/usr/local/bin"    export XCODE_DEVELOPER_USR_PATH=/Applications/Xcode.app/Contents/Developer/usr/bin/..    /Applications/Xcode.app/Contents/Developer/Platforms/iPhoneSimulator.platform/Developer/usr/bin/ibtool --errors --warnings --notices --minimum-deployment-target 6.0 --output-format human-readable-text --compile /Users/karl/gdrive/code/github/nuclearchess/platforms/ios/build/emulator/Nuclear\ Chess.app/MainViewController.nib /Users/karl/gdrive/code/github/nuclearchess/platforms/ios/Nuclear\ Chess/Classes/MainViewController.xib36"F4C616AB-0595-48AC-B44E-1DAAFD22BA92-
+b87E71CE4-15EB-4386-A525-7E86D4B09323
 
 CCopyStringsFile /Users/karl/gdrive/code/github/nuclearchess/platforms/ios/build/emulator/Nuclear\ Chess.app/de.lproj/Localizable.strings Nuclear\ Chess/Resources/de.lproj/Localizable.strings
 s423836724.606146
@@ -678,18 +1071,18 @@ lSLF06#21%IDEActivityLogSection1@2#32"com.apple.dt.IDE.BuildLogSection56"Copy bu
 b99958ECD-DE79-4B42-9BE2-86CFB8767F0C
 
 CGenerateDSYMFile /Users/karl/gdrive/code/github/nuclearchess/platforms/ios/build/emulator/Nuclear\ Chess.app.dSYM /Users/karl/gdrive/code/github/nuclearchess/platforms/ios/build/emulator/Nuclear\ Chess.app/Nuclear\ Chess
-s423836734.539060
-e423836734.607797
+s425726151.413579
+e425726151.463371
 r1
 xGenerateDSYMFile
 x/Users/karl/gdrive/code/github/nuclearchess/platforms/ios/build/emulator/Nuclear Chess.app.dSYM
 x/Users/karl/gdrive/code/github/nuclearchess/platforms/ios/build/emulator/Nuclear Chess.app/Nuclear Chess
-lSLF06#21%IDEActivityLogSection1@2#32"com.apple.dt.IDE.BuildLogSection104"Generate /Users/karl/gdrive/code/github/nuclearchess/platforms/ios/build/emulator/Nuclear Chess.app.dSYM120"[1mGenerateDSYMFile[0m [1mbuild/emulator/Nuclear\ Chess.app.dSYM[0m build/emulator/Nuclear\ Chess.app/Nuclear\ Chessfd118a3e3c43b941^ae9a9b3e3c43b941^---0#0#1#-19%DVTDocumentLocation2@104"file:///Users/karl/gdrive/code/github/nuclearchess/platforms/ios/build/emulator/Nuclear%20Chess.app.dSYM0034b0eaddffdf42^873"[1mGenerateDSYMFile[0m [1mbuild/emulator/Nuclear\ Chess.app.dSYM[0m build/emulator/Nuclear\ Chess.app/Nuclear\ Chess    cd /Users/karl/gdrive/code/github/nuclearchess/platforms/ios    export PATH="/Applications/Xcode.app/Contents/Developer/Platforms/iPhoneSimulator.platform/Developer/usr/bin:/Applications/Xcode.app/Contents/Developer/usr/bin:/Users/karl/local/apache-maven/apache-maven-3.0.4/bin:/usr/bin:/bin:/usr/sbin:/sbin:/usr/local/bin:/usr/local/MacGPG2/bin:/Users/karl/tools/sdks/android/sdk//platform-tools:/Users/karl/tools/sdks/android/sdk//tools"    /Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/dsymutil /Users/karl/gdrive/code/github/nuclearchess/platforms/ios/build/emulator/Nuclear\ Chess.app/Nuclear\ Chess -o /Users/karl/gdrive/code/github/nuclearchess/platforms/ios/build/emulator/Nuclear\ Chess.app.dSYM36"D3FA1A25-7E0C-44ED-A576-82619143D5BC-
-b99958ECD-DE79-4B42-9BE2-86CFB8767F0C
+lSLF06#21%IDEActivityLogSection1@2#32"com.apple.dt.IDE.BuildLogSection104"Generate /Users/karl/gdrive/code/github/nuclearchess/platforms/ios/build/emulator/Nuclear Chess.app.dSYM120"[1mGenerateDSYMFile[0m [1mbuild/emulator/Nuclear\ Chess.app.dSYM[0m build/emulator/Nuclear\ Chess.app/Nuclear\ Chess4ef069c71060b941^ae9f76c71060b941^---0#0#1#-19%DVTDocumentLocation2@105"file:///Users/karl/gdrive/code/github/nuclearchess/platforms/ios/build/emulator/Nuclear%20Chess.app.dSYM/0000000000000000^703"[1mGenerateDSYMFile[0m [1mbuild/emulator/Nuclear\ Chess.app.dSYM[0m build/emulator/Nuclear\ Chess.app/Nuclear\ Chess    cd /Users/karl/gdrive/code/github/nuclearchess/platforms/ios    export PATH="/Applications/Xcode.app/Contents/Developer/Platforms/iPhoneSimulator.platform/Developer/usr/bin:/Applications/Xcode.app/Contents/Developer/usr/bin:/usr/bin:/bin:/usr/sbin:/sbin:/usr/local/bin"    /Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/dsymutil /Users/karl/gdrive/code/github/nuclearchess/platforms/ios/build/emulator/Nuclear\ Chess.app/Nuclear\ Chess -o /Users/karl/gdrive/code/github/nuclearchess/platforms/ios/build/emulator/Nuclear\ Chess.app.dSYM36"A8D5451E-4E69-4818-A655-9DDAB9373A60-
+bB8F28881-06F9-4859-A4A3-70DA63441224
 
 CLd /Users/karl/gdrive/code/github/nuclearchess/platforms/ios/build/emulator/Nuclear\ Chess.app/Nuclear\ Chess normal i386
-s423836733.306945
-e423836734.538094
+s425649072.058424
+e425649072.097191
 r1
 xLd
 x/Users/karl/gdrive/code/github/nuclearchess/platforms/ios/build/emulator/Nuclear Chess.app/Nuclear Chess
@@ -710,12 +1103,9 @@ d/Applications/Xcode.app/Contents/Developer/Platforms/iPhoneSimulator.platform/D
 d/Applications/Xcode.app/Contents/Developer/Platforms/iPhoneSimulator.platform/Developer/SDKs/iPhoneSimulator7.1.sdk/System/Library/Frameworks/CoreGraphics.framework/CoreGraphics
 d/Applications/Xcode.app/Contents/Developer/Platforms/iPhoneSimulator.platform/Developer/SDKs/iPhoneSimulator7.1.sdk/System/Library/Frameworks/MobileCoreServices.framework/MobileCoreServices
 d/Applications/Xcode.app/Contents/Developer/Platforms/iPhoneSimulator.platform/Developer/SDKs/iPhoneSimulator7.1.sdk/System/Library/Frameworks/CoreLocation.framework/CoreLocation
-d/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/lib/arc/libarclite_iphonesimulator.a
 d/Applications/Xcode.app/Contents/Developer/Platforms/iPhoneSimulator.platform/Developer/SDKs/iPhoneSimulator7.1.sdk/System/Library/Frameworks/Foundation.framework/Foundation
 d/Applications/Xcode.app/Contents/Developer/Platforms/iPhoneSimulator.platform/Developer/SDKs/iPhoneSimulator7.1.sdk/usr/lib/libobjc.dylib
 d/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/lib/clang/5.1/lib/darwin/libclang_rt.ios.a
-d/Applications/Xcode.app/Contents/Developer/Platforms/iPhoneSimulator.platform/Developer/SDKs/iPhoneSimulator7.1.sdk/System/Library/PrivateFrameworks/UIFoundation.framework/UIFoundation
-d/Applications/Xcode.app/Contents/Developer/Platforms/iPhoneSimulator.platform/Developer/SDKs/iPhoneSimulator7.1.sdk/System/Library/Frameworks/AVFoundation.framework/libAVFAudio.dylib
 d/Applications/Xcode.app/Contents/Developer/Platforms/iPhoneSimulator.platform/Developer/SDKs/iPhoneSimulator7.1.sdk/usr/lib/system/libsystem_override.dylib
 d/Applications/Xcode.app/Contents/Developer/Platforms/iPhoneSimulator.platform/Developer/SDKs/iPhoneSimulator7.1.sdk/usr/lib/system/libcache_sim.dylib
 d/Applications/Xcode.app/Contents/Developer/Platforms/iPhoneSimulator.platform/Developer/SDKs/iPhoneSimulator7.1.sdk/usr/lib/system/libcommonCrypto_sim.dylib
@@ -738,6 +1128,8 @@ d/Applications/Xcode.app/Contents/Developer/Platforms/iPhoneSimulator.platform/D
 d/Applications/Xcode.app/Contents/Developer/Platforms/iPhoneSimulator.platform/Developer/SDKs/iPhoneSimulator7.1.sdk/usr/lib/system/libsystem_sim_configuration.dylib
 d/Applications/Xcode.app/Contents/Developer/Platforms/iPhoneSimulator.platform/Developer/SDKs/iPhoneSimulator7.1.sdk/usr/lib/system/libsystem_sim_asl.dylib
 d/usr/lib/libSystem.B.dylib
+d/Applications/Xcode.app/Contents/Developer/Platforms/iPhoneSimulator.platform/Developer/SDKs/iPhoneSimulator7.1.sdk/System/Library/PrivateFrameworks/UIFoundation.framework/UIFoundation
+d/Applications/Xcode.app/Contents/Developer/Platforms/iPhoneSimulator.platform/Developer/SDKs/iPhoneSimulator7.1.sdk/System/Library/Frameworks/AVFoundation.framework/libAVFAudio.dylib
 d/Applications/Xcode.app/Contents/Developer/Platforms/iPhoneSimulator.platform/Developer/SDKs/iPhoneSimulator7.1.sdk/usr/lib/system/host/libdyld.dylib
 d/usr/lib/system/libcache.dylib
 d/usr/lib/system/libcommonCrypto.dylib
@@ -764,32 +1156,32 @@ d/usr/lib/system/libsystem_pthread.dylib
 d/usr/lib/system/libsystem_sandbox.dylib
 d/usr/lib/system/libunc.dylib
 d/usr/lib/system/libunwind.dylib
-lSLF06#21%IDEActivityLogSection1@2#32"com.apple.dt.IDE.BuildLogSection109"Link /Users/karl/gdrive/code/github/nuclearchess/platforms/ios/build/emulator/Nuclear Chess.app/Nuclear Chess71"[1mLd[0m build/emulator/Nuclear\ Chess.app/Nuclear\ Chess normal i386b9a84e3d3c43b941^1ac2893e3c43b941^---0#0#1#--2002"[1mLd[0m build/emulator/Nuclear\ Chess.app/Nuclear\ Chess normal i386    cd /Users/karl/gdrive/code/github/nuclearchess/platforms/ios    export IPHONEOS_DEPLOYMENT_TARGET=5.0    export PATH="/Applications/Xcode.app/Contents/Developer/Platforms/iPhoneSimulator.platform/Developer/usr/bin:/Applications/Xcode.app/Contents/Developer/usr/bin:/Users/karl/local/apache-maven/apache-maven-3.0.4/bin:/usr/bin:/bin:/usr/sbin:/sbin:/usr/local/bin:/usr/local/MacGPG2/bin:/Users/karl/tools/sdks/android/sdk//platform-tools:/Users/karl/tools/sdks/android/sdk//tools"    /Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/clang -arch i386 -isysroot /Applications/Xcode.app/Contents/Developer/Platforms/iPhoneSimulator.platform/Developer/SDKs/iPhoneSimulator7.1.sdk -L/Users/karl/gdrive/code/github/nuclearchess/platforms/ios/build/emulator -F/Users/karl/gdrive/code/github/nuclearchess/platforms/ios/build/emulator -filelist /Users/karl/gdrive/code/github/nuclearchess/platforms/ios/build/Nuclear\ Chess.build/Debug-iphonesimulator/Nuclear\ Chess.build/Objects-normal/i386/Nuclear\ Chess.LinkFileList -Xlinker -objc_abi_version -Xlinker 2 -weak_framework CoreFoundation -weak_framework UIKit -weak_framework AVFoundation -weak_framework CoreMedia -weak-lSystem -force_load /Users/karl/gdrive/code/github/nuclearchess/platforms/ios/build/emulator/libCordova.a -ObjC -fobjc-arc -fobjc-link-runtime -Xlinker -no_implicit_dylibs -mios-simulator-version-min=5.0 -framework AssetsLibrary /Users/karl/gdrive/code/github/nuclearchess/platforms/ios/build/emulator/libCordova.a -framework CoreGraphics -framework MobileCoreServices -framework CoreLocation -Xlinker -dependency_info -Xlinker /Users/karl/gdrive/code/github/nuclearchess/platforms/ios/build/Nuclear\ Chess.build/Debug-iphonesimulator/Nuclear\ Chess.build/Objects-normal/i386/Nuclear\ Chess_dependency_info.dat -o /Users/karl/gdrive/code/github/nuclearchess/platforms/ios/build/emulator/Nuclear\ Chess.app/Nuclear\ Chess36"4B9DE211-C184-4062-87A1-9094A584DBA9-
-b99958ECD-DE79-4B42-9BE2-86CFB8767F0C
+lSLF06#21%IDEActivityLogSection1@2#32"com.apple.dt.IDE.BuildLogSection109"Link /Users/karl/gdrive/code/github/nuclearchess/platforms/ios/build/emulator/Nuclear Chess.app/Nuclear Chess71"[1mLd[0m build/emulator/Nuclear\ Chess.app/Nuclear\ Chess normal i38692060fb0e35eb941^3be218b0e35eb941^---0#0#1#--1832"[1mLd[0m build/emulator/Nuclear\ Chess.app/Nuclear\ Chess normal i386    cd /Users/karl/gdrive/code/github/nuclearchess/platforms/ios    export IPHONEOS_DEPLOYMENT_TARGET=6.0    export PATH="/Applications/Xcode.app/Contents/Developer/Platforms/iPhoneSimulator.platform/Developer/usr/bin:/Applications/Xcode.app/Contents/Developer/usr/bin:/usr/bin:/bin:/usr/sbin:/sbin:/usr/local/bin"    /Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/clang -arch i386 -isysroot /Applications/Xcode.app/Contents/Developer/Platforms/iPhoneSimulator.platform/Developer/SDKs/iPhoneSimulator7.1.sdk -L/Users/karl/gdrive/code/github/nuclearchess/platforms/ios/build/emulator -F/Users/karl/gdrive/code/github/nuclearchess/platforms/ios/build/emulator -filelist /Users/karl/gdrive/code/github/nuclearchess/platforms/ios/build/Nuclear\ Chess.build/Debug-iphonesimulator/Nuclear\ Chess.build/Objects-normal/i386/Nuclear\ Chess.LinkFileList -Xlinker -objc_abi_version -Xlinker 2 -weak_framework CoreFoundation -weak_framework UIKit -weak_framework AVFoundation -weak_framework CoreMedia -weak-lSystem -force_load /Users/karl/gdrive/code/github/nuclearchess/platforms/ios/build/emulator/libCordova.a -ObjC -fobjc-arc -fobjc-link-runtime -Xlinker -no_implicit_dylibs -mios-simulator-version-min=6.0 -framework AssetsLibrary /Users/karl/gdrive/code/github/nuclearchess/platforms/ios/build/emulator/libCordova.a -framework CoreGraphics -framework MobileCoreServices -framework CoreLocation -Xlinker -dependency_info -Xlinker /Users/karl/gdrive/code/github/nuclearchess/platforms/ios/build/Nuclear\ Chess.build/Debug-iphonesimulator/Nuclear\ Chess.build/Objects-normal/i386/Nuclear\ Chess_dependency_info.dat -o /Users/karl/gdrive/code/github/nuclearchess/platforms/ios/build/emulator/Nuclear\ Chess.app/Nuclear\ Chess36"1C0EAAAD-A276-4AFC-8C1B-8742C747ED6A-
+b87E71CE4-15EB-4386-A525-7E86D4B09323
 
 CPhaseScriptExecution Copy\ www\ directory /Users/karl/gdrive/code/github/nuclearchess/platforms/ios/build/Nuclear\ Chess.build/Debug-iphonesimulator/Nuclear\ Chess.build/Script-304B58A110DAC018002A0835.sh
-s423836724.236816
-e423836724.601634
+s425726151.231820
+e425726151.404160
 r1
 xPhaseScriptExecution
 xCopy www directory
 x/Users/karl/gdrive/code/github/nuclearchess/platforms/ios/build/Nuclear Chess.build/Debug-iphonesimulator/Nuclear Chess.build/Script-304B58A110DAC018002A0835.sh
 o
-oreal	0m0.337s
-ouser	0m0.083s
-osys	0m0.118s
-lSLF06#21%IDEActivityLogSection1@2#32"com.apple.dt.IDE.BuildLogSection44"Run custom shell script 'Copy www directory'154"[1mPhaseScriptExecution[0m Copy\ www\ directory build/Nuclear\ Chess.build/Debug-iphonesimulator/Nuclear\ Chess.build/Script-304B58A110DAC018002A0835.sh23f33c343c43b941^7d089a343c43b941^-42"real	0m0.337suser	0m0.083ssys	0m0.118s3(21%IDEActivityLogMessage2@14"real	0m0.337s-423836724#1#14#-0#-----2@14"user	0m0.083s-423836724#15#14#-0#-----2@13"sys	0m0.118s-423836724#29#13#-0#-----0#0#1#--402"[1mPhaseScriptExecution[0m Copy\ www\ directory build/Nuclear\ Chess.build/Debug-iphonesimulator/Nuclear\ Chess.build/Script-304B58A110DAC018002A0835.sh    cd /Users/karl/gdrive/code/github/nuclearchess/platforms/ios    /bin/sh -c \"/Users/karl/gdrive/code/github/nuclearchess/platforms/ios/build/Nuclear\ Chess.build/Debug-iphonesimulator/Nuclear\ Chess.build/Script-304B58A110DAC018002A0835.sh\"36"D1482D82-CA7F-4BF9-8BCA-4677346EFEA7-
-b99958ECD-DE79-4B42-9BE2-86CFB8767F0C
+oreal	0m0.151s
+ouser	0m0.057s
+osys	0m0.087s
+lSLF06#21%IDEActivityLogSection1@2#32"com.apple.dt.IDE.BuildLogSection44"Run custom shell script 'Copy www directory'154"[1mPhaseScriptExecution[0m Copy\ www\ directory build/Nuclear\ Chess.build/Debug-iphonesimulator/Nuclear\ Chess.build/Script-304B58A110DAC018002A0835.sh30bb3bc71060b941^977567c71060b941^-42"real	0m0.151suser	0m0.057ssys	0m0.087s3(21%IDEActivityLogMessage2@14"real	0m0.151s-425726151#1#14#-0#-----2@14"user	0m0.057s-425726151#15#14#-0#-----2@13"sys	0m0.087s-425726151#29#13#-0#-----0#0#1#--402"[1mPhaseScriptExecution[0m Copy\ www\ directory build/Nuclear\ Chess.build/Debug-iphonesimulator/Nuclear\ Chess.build/Script-304B58A110DAC018002A0835.sh    cd /Users/karl/gdrive/code/github/nuclearchess/platforms/ios    /bin/sh -c \"/Users/karl/gdrive/code/github/nuclearchess/platforms/ios/build/Nuclear\ Chess.build/Debug-iphonesimulator/Nuclear\ Chess.build/Script-304B58A110DAC018002A0835.sh\"36"C7C23657-0226-43A3-A298-4991117F0D2E-
+bB8F28881-06F9-4859-A4A3-70DA63441224
 
 CProcessInfoPlistFile /Users/karl/gdrive/code/github/nuclearchess/platforms/ios/build/emulator/Nuclear\ Chess.app/Info.plist /Users/karl/gdrive/code/github/nuclearchess/platforms/ios/Nuclear\ Chess/Nuclear\ Chess-Info.plist
-s423836724.233971
-e423836724.235858
+s425726151.405296
+e425726151.407297
 r1
 xProcessInfoPlistFile
 x/Users/karl/gdrive/code/github/nuclearchess/platforms/ios/build/emulator/Nuclear Chess.app/Info.plist
 x/Users/karl/gdrive/code/github/nuclearchess/platforms/ios/Nuclear Chess/Nuclear Chess-Info.plist
-lSLF06#21%IDEActivityLogSection1@2#32"com.apple.dt.IDE.BuildLogSection104"Process /Users/karl/gdrive/code/github/nuclearchess/platforms/ios/Nuclear Chess/Nuclear Chess-Info.plist122"[1mProcessInfoPlistFile[0m build/emulator/Nuclear\ Chess.app/Info.plist [1mNuclear\ Chess/Nuclear\ Chess-Info.plist[0m44f83b343c43b941^e9613c343c43b941^---0#0#1#-19%DVTDocumentLocation2@107"file:///Users/karl/gdrive/code/github/nuclearchess/platforms/ios/Nuclear%20Chess/Nuclear%20Chess-Info.plist0000000000000000^976"[1mProcessInfoPlistFile[0m build/emulator/Nuclear\ Chess.app/Info.plist [1mNuclear\ Chess/Nuclear\ Chess-Info.plist[0m    cd /Users/karl/gdrive/code/github/nuclearchess/platforms/ios    export PATH="/Applications/Xcode.app/Contents/Developer/Platforms/iPhoneSimulator.platform/Developer/usr/bin:/Applications/Xcode.app/Contents/Developer/usr/bin:/Users/karl/local/apache-maven/apache-maven-3.0.4/bin:/usr/bin:/bin:/usr/sbin:/sbin:/usr/local/bin:/usr/local/MacGPG2/bin:/Users/karl/tools/sdks/android/sdk//platform-tools:/Users/karl/tools/sdks/android/sdk//tools"    builtin-infoPlistUtility /Users/karl/gdrive/code/github/nuclearchess/platforms/ios/Nuclear\ Chess/Nuclear\ Chess-Info.plist -genpkginfo /Users/karl/gdrive/code/github/nuclearchess/platforms/ios/build/emulator/Nuclear\ Chess.app/PkgInfo -expandbuildsettings -format binary -platform iphonesimulator -o /Users/karl/gdrive/code/github/nuclearchess/platforms/ios/build/emulator/Nuclear\ Chess.app/Info.plist36"B28AF558-9F42-4043-92B9-A44C65AEE9F5-
-b99958ECD-DE79-4B42-9BE2-86CFB8767F0C
+lSLF06#21%IDEActivityLogSection1@2#32"com.apple.dt.IDE.BuildLogSection104"Process /Users/karl/gdrive/code/github/nuclearchess/platforms/ios/Nuclear Chess/Nuclear Chess-Info.plist122"[1mProcessInfoPlistFile[0m build/emulator/Nuclear\ Chess.app/Info.plist [1mNuclear\ Chess/Nuclear\ Chess-Info.plist[0m28d467c71060b941^f24468c71060b941^---0#0#1#-19%DVTDocumentLocation2@107"file:///Users/karl/gdrive/code/github/nuclearchess/platforms/ios/Nuclear%20Chess/Nuclear%20Chess-Info.plist0000000000000000^991"[1mProcessInfoPlistFile[0m build/emulator/Nuclear\ Chess.app/Info.plist [1mNuclear\ Chess/Nuclear\ Chess-Info.plist[0m    cd /Users/karl/gdrive/code/github/nuclearchess/platforms/ios    export PATH="/Applications/Xcode.app/Contents/Developer/Platforms/iPhoneSimulator.platform/Developer/usr/bin:/Applications/Xcode.app/Contents/Developer/usr/bin:/usr/bin:/bin:/usr/sbin:/sbin:/usr/local/bin"    builtin-infoPlistUtility /Users/karl/gdrive/code/github/nuclearchess/platforms/ios/Nuclear\ Chess/Nuclear\ Chess-Info.plist -genpkginfo /Users/karl/gdrive/code/github/nuclearchess/platforms/ios/build/emulator/Nuclear\ Chess.app/PkgInfo -expandbuildsettings -format binary -platform iphonesimulator -additionalcontentfile /Users/karl/gdrive/code/github/nuclearchess/platforms/ios/build/Nuclear\ Chess.build/Debug-iphonesimulator/Nuclear\ Chess.build/assetcatalog_generated_info.plist -o /Users/karl/gdrive/code/github/nuclearchess/platforms/ios/build/emulator/Nuclear\ Chess.app/Info.plist36"0C944143-37BE-4F62-8267-3F236144CEA4-
+bB8F28881-06F9-4859-A4A3-70DA63441224
 
 CProcessPCH /var/folders/sn/fs_1dmrs2h90zpdgmghl2cy80000gn/C/com.apple.DeveloperTools/5.1.1-5B1008/Xcode/SharedPrecompiledHeaders/Nuclear\ Chess-Prefix-clpcbxktmtjdgrbzourrpqccurhu/Nuclear\ Chess-Prefix.pch.pch Nuclear\ Chess/Nuclear\ Chess-Prefix.pch normal i386 objective-c com.apple.compilers.llvm.clang.1_0.compiler
 s423836732.101771
@@ -805,6 +1197,21 @@ xcom.apple.compilers.llvm.clang.1_0.compiler
 d/Users/karl/gdrive/code/github/nuclearchess/platforms/ios/Nuclear Chess/Nuclear Chess-Prefix.pch
 lSLF06#21%IDEActivityLogSection1@2#32"com.apple.dt.IDE.BuildLogSection49"Precompile Nuclear Chess/Nuclear Chess-Prefix.pch326"[1mProcessPCH[0m /var/folders/sn/fs_1dmrs2h90zpdgmghl2cy80000gn/C/com.apple.DeveloperTools/5.1.1-5B1008/Xcode/SharedPrecompiledHeaders/Nuclear\ Chess-Prefix-clpcbxktmtjdgrbzourrpqccurhu/Nuclear\ Chess-Prefix.pch.pch Nuclear\ Chess/Nuclear\ Chess-Prefix.pch normal i386 objective-c com.apple.compilers.llvm.clang.1_0.compiler172b1a3c3c43b941^5eda9c3c3c43b941^---0#0#1#-19%DVTDocumentLocation2@107"file:///Users/karl/gdrive/code/github/nuclearchess/platforms/ios/Nuclear%20Chess/Nuclear%20Chess-Prefix.pch0000000000000000^4197"[1mProcessPCH[0m /var/folders/sn/fs_1dmrs2h90zpdgmghl2cy80000gn/C/com.apple.DeveloperTools/5.1.1-5B1008/Xcode/SharedPrecompiledHeaders/Nuclear\ Chess-Prefix-clpcbxktmtjdgrbzourrpqccurhu/Nuclear\ Chess-Prefix.pch.pch Nuclear\ Chess/Nuclear\ Chess-Prefix.pch normal i386 objective-c com.apple.compilers.llvm.clang.1_0.compiler    cd /Users/karl/gdrive/code/github/nuclearchess/platforms/ios    export LANG=en_US.US-ASCII    export PATH="/Applications/Xcode.app/Contents/Developer/Platforms/iPhoneSimulator.platform/Developer/usr/bin:/Applications/Xcode.app/Contents/Developer/usr/bin:/Users/karl/local/apache-maven/apache-maven-3.0.4/bin:/usr/bin:/bin:/usr/sbin:/sbin:/usr/local/bin:/usr/local/MacGPG2/bin:/Users/karl/tools/sdks/android/sdk//platform-tools:/Users/karl/tools/sdks/android/sdk//tools"    /Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/clang -x objective-c-header -arch i386 -fmessage-length=80 -fdiagnostics-show-note-include-stack -fmacro-backtrace-limit=0 -fcolor-diagnostics -std=c99 -fobjc-arc -Wno-trigraphs -fpascal-strings -O0 -Wno-missing-field-initializers -Wno-missing-prototypes -Wno-implicit-atomic-properties -Wno-receiver-is-weak -Wno-arc-repeated-use-of-weak -Wduplicate-method-match -Wno-missing-braces -Wparentheses -Wswitch -Wunused-function -Wno-unused-label -Wno-unused-parameter -Wunused-variable -Wunused-value -Wempty-body -Wuninitialized -Wno-unknown-pragmas -Wno-shadow -Wno-four-char-constants -Wno-conversion -Wconstant-conversion -Wint-conversion -Wbool-conversion -Wenum-conversion -Wno-shorten-64-to-32 -Wpointer-sign -Wno-newline-eof -Wno-selector -Wno-strict-selector-match -Wundeclared-selector -Wno-deprecated-implementations -isysroot /Applications/Xcode.app/Contents/Developer/Platforms/iPhoneSimulator.platform/Developer/SDKs/iPhoneSimulator7.1.sdk -fexceptions -fasm-blocks -fstrict-aliasing -Wprotocol -Wdeprecated-declarations -g -fvisibility=hidden -Wno-sign-conversion -fobjc-abi-version=2 -fobjc-legacy-dispatch -mios-simulator-version-min=5.0 -iquote /Users/karl/gdrive/code/github/nuclearchess/platforms/ios/build/Nuclear\ Chess.build/Debug-iphonesimulator/Nuclear\ Chess.build/Nuclear\ Chess-generated-files.hmap -I/Users/karl/gdrive/code/github/nuclearchess/platforms/ios/build/Nuclear\ Chess.build/Debug-iphonesimulator/Nuclear\ Chess.build/Nuclear\ Chess-own-target-headers.hmap -I/Users/karl/gdrive/code/github/nuclearchess/platforms/ios/build/Nuclear\ Chess.build/Debug-iphonesimulator/Nuclear\ Chess.build/Nuclear\ Chess-all-target-headers.hmap -iquote /Users/karl/gdrive/code/github/nuclearchess/platforms/ios/build/Nuclear\ Chess.build/Debug-iphonesimulator/Nuclear\ Chess.build/Nuclear\ Chess-project-headers.hmap -I/Users/karl/gdrive/code/github/nuclearchess/platforms/ios/build/emulator/include -I/Users/karl/gdrive/code/github/nuclearchess/platforms/ios/build/emulator/usr/local/lib/include -I/Users/karl/gdrive/code/github/nuclearchess/platforms/ios/build/UninstalledProducts/include -I/Users/karl/gdrive/code/github/nuclearchess/platforms/ios/build/emulator -I/Users/karl/gdrive/code/github/nuclearchess/platforms/ios/build/Nuclear\ Chess.build/Debug-iphonesimulator/Nuclear\ Chess.build/DerivedSources/i386 -I/Users/karl/gdrive/code/github/nuclearchess/platforms/ios/build/Nuclear\ Chess.build/Debug-iphonesimulator/Nuclear\ Chess.build/DerivedSources -F/Users/karl/gdrive/code/github/nuclearchess/platforms/ios/build/emulator --serialize-diagnostics /var/folders/sn/fs_1dmrs2h90zpdgmghl2cy80000gn/C/com.apple.DeveloperTools/5.1.1-5B1008/Xcode/SharedPrecompiledHeaders/Nuclear\ Chess-Prefix-clpcbxktmtjdgrbzourrpqccurhu/Nuclear\ Chess-Prefix.pch.dia -MMD -MT dependencies -MF /var/folders/sn/fs_1dmrs2h90zpdgmghl2cy80000gn/C/com.apple.DeveloperTools/5.1.1-5B1008/Xcode/SharedPrecompiledHeaders/Nuclear\ Chess-Prefix-clpcbxktmtjdgrbzourrpqccurhu/Nuclear\ Chess-Prefix.pch.d -c /Users/karl/gdrive/code/github/nuclearchess/platforms/ios/Nuclear\ Chess/Nuclear\ Chess-Prefix.pch -o /var/folders/sn/fs_1dmrs2h90zpdgmghl2cy80000gn/C/com.apple.DeveloperTools/5.1.1-5B1008/Xcode/SharedPrecompiledHeaders/Nuclear\ Chess-Prefix-clpcbxktmtjdgrbzourrpqccurhu/Nuclear\ Chess-Prefix.pch.pch36"17D7B9A7-32F4-43E1-9881-AE833706F2AA-
 b99958ECD-DE79-4B42-9BE2-86CFB8767F0C
+
+CProcessPCH /var/folders/v0/qrz93y5d1cz2rc9vgrd0f8_00000gn/C/com.apple.DeveloperTools/5.1.1-5B1008/Xcode/SharedPrecompiledHeaders/Nuclear\ Chess-Prefix-fybjeielpftzlhfusdxhzvmurjcn/Nuclear\ Chess-Prefix.pch.pch Nuclear\ Chess/Nuclear\ Chess-Prefix.pch normal i386 objective-c com.apple.compilers.llvm.clang.1_0.compiler
+s425649071.677544
+e425649071.992267
+r1
+xProcessPCH
+x/var/folders/v0/qrz93y5d1cz2rc9vgrd0f8_00000gn/C/com.apple.DeveloperTools/5.1.1-5B1008/Xcode/SharedPrecompiledHeaders/Nuclear Chess-Prefix-fybjeielpftzlhfusdxhzvmurjcn/Nuclear Chess-Prefix.pch.pch
+xNuclear Chess/Nuclear Chess-Prefix.pch
+xnormal
+xi386
+xobjective-c
+xcom.apple.compilers.llvm.clang.1_0.compiler
+d/Users/karl/gdrive/code/github/nuclearchess/platforms/ios/Nuclear Chess/Nuclear Chess-Prefix.pch
+lSLF06#21%IDEActivityLogSection1@2#32"com.apple.dt.IDE.BuildLogSection49"Precompile Nuclear Chess/Nuclear Chess-Prefix.pch326"[1mProcessPCH[0m /var/folders/v0/qrz93y5d1cz2rc9vgrd0f8_00000gn/C/com.apple.DeveloperTools/5.1.1-5B1008/Xcode/SharedPrecompiledHeaders/Nuclear\ Chess-Prefix-fybjeielpftzlhfusdxhzvmurjcn/Nuclear\ Chess-Prefix.pch.pch Nuclear\ Chess/Nuclear\ Chess-Prefix.pch normal i386 objective-c com.apple.compilers.llvm.clang.1_0.compiler8b89adafe35eb941^e204feafe35eb941^---0#0#1#-19%DVTDocumentLocation2@107"file:///Users/karl/gdrive/code/github/nuclearchess/platforms/ios/Nuclear%20Chess/Nuclear%20Chess-Prefix.pch0000000000000000^4027"[1mProcessPCH[0m /var/folders/v0/qrz93y5d1cz2rc9vgrd0f8_00000gn/C/com.apple.DeveloperTools/5.1.1-5B1008/Xcode/SharedPrecompiledHeaders/Nuclear\ Chess-Prefix-fybjeielpftzlhfusdxhzvmurjcn/Nuclear\ Chess-Prefix.pch.pch Nuclear\ Chess/Nuclear\ Chess-Prefix.pch normal i386 objective-c com.apple.compilers.llvm.clang.1_0.compiler    cd /Users/karl/gdrive/code/github/nuclearchess/platforms/ios    export LANG=en_US.US-ASCII    export PATH="/Applications/Xcode.app/Contents/Developer/Platforms/iPhoneSimulator.platform/Developer/usr/bin:/Applications/Xcode.app/Contents/Developer/usr/bin:/usr/bin:/bin:/usr/sbin:/sbin:/usr/local/bin"    /Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/clang -x objective-c-header -arch i386 -fmessage-length=96 -fdiagnostics-show-note-include-stack -fmacro-backtrace-limit=0 -fcolor-diagnostics -std=c99 -fobjc-arc -Wno-trigraphs -fpascal-strings -O0 -Wno-missing-field-initializers -Wno-missing-prototypes -Wno-implicit-atomic-properties -Wno-receiver-is-weak -Wno-arc-repeated-use-of-weak -Wduplicate-method-match -Wno-missing-braces -Wparentheses -Wswitch -Wunused-function -Wno-unused-label -Wno-unused-parameter -Wunused-variable -Wunused-value -Wempty-body -Wuninitialized -Wno-unknown-pragmas -Wno-shadow -Wno-four-char-constants -Wno-conversion -Wconstant-conversion -Wint-conversion -Wbool-conversion -Wenum-conversion -Wno-shorten-64-to-32 -Wpointer-sign -Wno-newline-eof -Wno-selector -Wno-strict-selector-match -Wundeclared-selector -Wno-deprecated-implementations -isysroot /Applications/Xcode.app/Contents/Developer/Platforms/iPhoneSimulator.platform/Developer/SDKs/iPhoneSimulator7.1.sdk -fexceptions -fasm-blocks -fstrict-aliasing -Wprotocol -Wdeprecated-declarations -g -fvisibility=hidden -Wno-sign-conversion -fobjc-abi-version=2 -fobjc-legacy-dispatch -mios-simulator-version-min=6.0 -iquote /Users/karl/gdrive/code/github/nuclearchess/platforms/ios/build/Nuclear\ Chess.build/Debug-iphonesimulator/Nuclear\ Chess.build/Nuclear\ Chess-generated-files.hmap -I/Users/karl/gdrive/code/github/nuclearchess/platforms/ios/build/Nuclear\ Chess.build/Debug-iphonesimulator/Nuclear\ Chess.build/Nuclear\ Chess-own-target-headers.hmap -I/Users/karl/gdrive/code/github/nuclearchess/platforms/ios/build/Nuclear\ Chess.build/Debug-iphonesimulator/Nuclear\ Chess.build/Nuclear\ Chess-all-target-headers.hmap -iquote /Users/karl/gdrive/code/github/nuclearchess/platforms/ios/build/Nuclear\ Chess.build/Debug-iphonesimulator/Nuclear\ Chess.build/Nuclear\ Chess-project-headers.hmap -I/Users/karl/gdrive/code/github/nuclearchess/platforms/ios/build/emulator/include -I/Users/karl/gdrive/code/github/nuclearchess/platforms/ios/build/emulator/usr/local/lib/include -I/Users/karl/gdrive/code/github/nuclearchess/platforms/ios/build/UninstalledProducts/include -I/Users/karl/gdrive/code/github/nuclearchess/platforms/ios/build/emulator -I/Users/karl/gdrive/code/github/nuclearchess/platforms/ios/build/Nuclear\ Chess.build/Debug-iphonesimulator/Nuclear\ Chess.build/DerivedSources/i386 -I/Users/karl/gdrive/code/github/nuclearchess/platforms/ios/build/Nuclear\ Chess.build/Debug-iphonesimulator/Nuclear\ Chess.build/DerivedSources -F/Users/karl/gdrive/code/github/nuclearchess/platforms/ios/build/emulator --serialize-diagnostics /var/folders/v0/qrz93y5d1cz2rc9vgrd0f8_00000gn/C/com.apple.DeveloperTools/5.1.1-5B1008/Xcode/SharedPrecompiledHeaders/Nuclear\ Chess-Prefix-fybjeielpftzlhfusdxhzvmurjcn/Nuclear\ Chess-Prefix.pch.dia -MMD -MT dependencies -MF /var/folders/v0/qrz93y5d1cz2rc9vgrd0f8_00000gn/C/com.apple.DeveloperTools/5.1.1-5B1008/Xcode/SharedPrecompiledHeaders/Nuclear\ Chess-Prefix-fybjeielpftzlhfusdxhzvmurjcn/Nuclear\ Chess-Prefix.pch.d -c /Users/karl/gdrive/code/github/nuclearchess/platforms/ios/Nuclear\ Chess/Nuclear\ Chess-Prefix.pch -o /var/folders/v0/qrz93y5d1cz2rc9vgrd0f8_00000gn/C/com.apple.DeveloperTools/5.1.1-5B1008/Xcode/SharedPrecompiledHeaders/Nuclear\ Chess-Prefix-fybjeielpftzlhfusdxhzvmurjcn/Nuclear\ Chess-Prefix.pch.pch36"D4140498-3F95-41D8-AD12-78244DC61599-
+b87E71CE4-15EB-4386-A525-7E86D4B09323
 
 CTouch /Users/karl/gdrive/code/github/nuclearchess/platforms/ios/build/emulator/Nuclear\ Chess.app
 s423836734.609151

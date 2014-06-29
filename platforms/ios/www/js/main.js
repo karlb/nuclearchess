@@ -120,7 +120,7 @@ function resize(board) {
         Math.floor((width - board_border)/8)*8 + board_border + "px");
     board.resize();
 
-    $('#google-play').toggle(($(window).width() > width + 300) && !phonegap);
+    $('.app-store').toggle(($(window).width() > width + 300) && !phonegap);
 }
 
 function random_x_pos() {
