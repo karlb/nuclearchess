@@ -1473,6 +1473,9 @@ int von_x(zug_t zug){return zug.von_x;}
 int von_y(zug_t zug){return zug.von_y;}
 int nach_x(zug_t zug){return zug.nach_x;}
 int nach_y(zug_t zug){return zug.nach_y;}
+brett_t* get_brett() {return &brett;}
+zug_t* get_zug_temp() {return &zug_temp;}
+int* get_punkte_int_temp() {return &punkte_int_temp;}
 
 /*int main(int argc, char *argv[])*/
 /*{*/

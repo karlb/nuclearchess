@@ -1,4 +1,5 @@
 #!/bin/sh
-emcc -O2 src/atomschach.c -o js/atomschach.js -s EXPORTED_FUNCTIONS="['_newGame', '_sub_main', 'von_x', 'von_y', 'nach_x', 'nach_y']" \
+emcc -O2 src/atomschach.c -o www/js/atomschach.js -s EXPORTED_FUNCTIONS="['_newGame', '_sub_main', '_von_x', '_von_y', '_nach_x', '_nach_y', '_get_brett', '_legal', '_set_zug_temp', '_hat_koenig', '_get_zug_temp', '_get_punkte_int_temp']" \
 -s EXPORT_ALL=1 \
--s NAMED_GLOBALS=1
+--memory-init-file 0
+#-s EXPORTED_GLOBALS=[brett]

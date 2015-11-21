@@ -156,6 +156,9 @@ function set_winner(text) {
 
 var board;
 $(document).ready(function(){
+    _brett = _get_brett();
+    _zug_temp = _get_zug_temp();
+    _punkte_int_temp = _get_punkte_int_temp();
     var weiss = 1, schwarz = -1;
     var thinking_depth = 1;
     var undo_stack = [];
