@@ -2,6 +2,7 @@
 
 /*history_t history[HISTORY_MAX];*/
 char  bild[7]; 		// von 0 bis 6
+zug_lesbar_t message;
 
 void zuglesbar_func(zug_t *zug_p, farbname_t farbe, brett_t *brett_p, zug_lesbar_t zuglesbar) {
     char bild_c;
@@ -110,6 +111,7 @@ void sub_main (farbname_t farbe,int tiefe,brett_t *brett_p) {
 	zug_t zug;
 	zug_lesbar_t zuglesbar, end_text;
 	bool letzter_zug_mensch;
+	bool computer_gegen_computer = TRUE;
 
 	bild[0]	= ' ';			// leer		empty
 	bild[1]	= 'P';			// Bauer	Pawn

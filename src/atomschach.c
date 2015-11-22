@@ -27,10 +27,6 @@
 // # nicht 3 mal den vollen Zug wiederholen
 // # den Wert der Dame optimal bestimmen (>=200)
 
-// #########################
-// ### globale Variablen ###
-// #########################
-
 #include <stdio.h>
 #include <string.h>
 #include <math.h>	// for points
@@ -39,11 +35,9 @@
 #include "atomschach.h"
 
 #define LIST_LEN 65
-
 #define VERWANDLUNS_BONUS 60
 
 umgebung_t umgebung_liste[128];
-zug_lesbar_t message;
 
 int x_koordinate[64];
 int y_koordinate[64];
@@ -51,13 +45,11 @@ int y_koordinate[64];
 int tiefe;
 
 brett_t brett_start = {-4,-3,-2,-5,-6,-2,-3,-4, -1,-1,-1,-1,-1,-1,-1,-1,  0, 0, 0, 0, 0, 0, 0, 0,  0, 0, 0, 0, 0, 0, 0, 0,  0, 0, 0, 0, 0, 0, 0, 0,  0, 0, 0, 0, 0, 0, 0, 0,  1, 1, 1, 1, 1, 1, 1, 1,  4, 3, 2, 5, 6, 2, 3, 4};
-brett_t brett, merke_brett;
+brett_t brett;
 
-farbname_t farbname;
-farbname_t farbe, mensch, computer;
+farbname_t mensch, computer;
 
 int   grundwert[7]; 	// eigentlich von 1 bis 6
-bool  computer_gegen_computer;
 
 const int malus_schach_und_dran		= 50;
 const int malus_schach_und_nicht_dran	= 4000;
@@ -1044,7 +1036,7 @@ void bester_zug(farbname_t farbe, int start_tiefe, int tiefe, int max_tmp, brett
 
 
 // returns score, changes zug_p
-int computer_zug(farbname_t farbe, int tiefe, brett_t *brett_p, zug_t *zug_p, bool set_message) {
+int computer_zug(farbname_t farbe, int tiefe, brett_t *brett_p, zug_t *zug_p) {
 	int im_schach_int;
 
 	int max_tmp=INIT_FACTOR*MAX_TMP_INIT;
@@ -1055,10 +1047,6 @@ int computer_zug(farbname_t farbe, int tiefe, brett_t *brett_p, zug_t *zug_p, bo
 	zukunft[0].von_x	= -1; // leer
 	zukunft[1].von_x	= -1; // leer
 	zukunft[2].von_x	= -1; // leer
-
-	if (set_message) {
-		strcpy(message,"");
-	}
 
 	im_schach_int = im_schach(-farbe, brett_p, zug_p);
 	if 	(im_schach_int == 1) {
@@ -1092,14 +1080,14 @@ int computer_zug(farbname_t farbe, int tiefe, brett_t *brett_p, zug_t *zug_p, bo
 
 	if (bewertung_int >= -MAX_TMP_INIT_SMALL) {
 		bewertung_int = -MAX_TMP_INIT;
-		if (set_message) {
-			strcpy(message,"you may win");
-		}
+		//if (set_message) {
+			//strcpy(message,"you may win");
+		//}
 	} else if (bewertung_int <= MAX_TMP_INIT_SMALL) {
 		bewertung_int = MAX_TMP_INIT;
-		if (set_message) {
-			strcpy(message,"you will loose");
-		}
+		//if (set_message) {
+			//strcpy(message,"you will loose");
+		//}
 	}
 	return bewertung_int;
 }
@@ -1211,15 +1199,12 @@ void newGame (void) {
 	// ### Einstellungen ###
 	// #####################
 
-	computer_gegen_computer=TRUE;	// mensch gegen computer
 	mensch_farbe = 1;			// weiss
 	tiefe = 0;				// Tiefe in Halbzügen (>=0)
 
 	// ############
 	// ### init ###
 	// ############
-
-	farbe = 1; 				// weiss fängt an
 
 	if (mensch_farbe == weiss) {
 		computer = -1;
@@ -1241,7 +1226,6 @@ void newGame (void) {
 
 	for (index=0; index<64 ; index++){
 		brett[index] 		= brett_start[index];
-		merke_brett[index] 	= brett_start[index];
 	}
 }
 

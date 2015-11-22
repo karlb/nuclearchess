@@ -60,7 +60,7 @@ extern bool legal (int vonx, int vony, int nachx, int nachy, brett_t *brett_p);
 extern umgebung_t umgebung_liste[128];
 
 extern int im_schach(farbname_t farbe, brett_t *brett_p, zug_t *zug_p);
-extern int computer_zug (farbname_t farbe, int tiefe, brett_t *brett_p, zug_t *zug_p, bool set_message);
+extern int computer_zug (farbname_t farbe, int tiefe, brett_t *brett_p, zug_t *zug_p);
 extern void newGame (void);
 extern void sub_main (farbname_t farbe,int tiefe,brett_t *brett_p);
 extern void zuglesbar_func(zug_t *zug_p, farbname_t farbe, brett_t *brett_p, zug_lesbar_t zuglesbar);
