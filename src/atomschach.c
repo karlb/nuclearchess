@@ -43,6 +43,7 @@ int x_koordinate[64];
 int y_koordinate[64];
 
 int tiefe;
+bool immune_pawns;
 
 brett_t brett_start = {-4,-3,-2,-5,-6,-2,-3,-4, -1,-1,-1,-1,-1,-1,-1,-1,  0, 0, 0, 0, 0, 0, 0, 0,  0, 0, 0, 0, 0, 0, 0, 0,  0, 0, 0, 0, 0, 0, 0, 0,  0, 0, 0, 0, 0, 0, 0, 0,  1, 1, 1, 1, 1, 1, 1, 1,  4, 3, 2, 5, 6, 2, 3, 4};
 brett_t brett;
@@ -741,6 +742,13 @@ void anwenden(brett_t *brett_p, zug_t *zug_p) {
 		uref_p = &(umgebung_liste[nach+64]);
 		for (index=0 ; (*uref_p)[index] != -1 ; index++) {
 			ui = (*uref_p)[index];
+			if (immune_pawns
+				   	&& abs((*brett_p)[ui]) == 1  // is pawn
+					&& ui != nach  // is not hit directly
+				) {
+				// skip pawns if immune
+				continue;
+			}
 			(*brett_p)[ui]	= 0;
 		}
 	}
@@ -1184,9 +1192,11 @@ void init_umgebung (void) {
 }
 
 
-void newGame (void) {
+void newGame(bool _immune_pawns) {
 	int index;
 	int mensch_farbe;
+
+	immune_pawns = _immune_pawns;
 
 	// #####################
 	// ### Einstellungen ###
