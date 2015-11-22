@@ -451,7 +451,7 @@ void erlaubte_zuege(int x, int y, brett_t *brett_p, int zug[], int schlag[]){
 	schlag[schlag_index++]=-1;
 }
 
-void punkte (farbname_t farbe, brett_t *brett_p, int *punkte_weiss_p, int *punkte_schwarz_p){
+void punkte(farbname_t farbe, brett_t *brett_p, int *punkte_weiss_p, int *punkte_schwarz_p) {
     int x,y;
     int i,index,index2,index3;
     int figur, figurf;
@@ -1118,7 +1118,6 @@ void computer_zug(farbname_t farbe, int tiefe, brett_t *brett_p, zug_t *zug_p, i
 			strcpy(message,"you will loose");
 		}
 	}
-
 }
 
 
@@ -1284,10 +1283,10 @@ void set_zug_temp(int von_x, int von_y, int nach_x, int nach_y)
 	zug_temp.nach_x = nach_x;
 	zug_temp.nach_y = nach_y;
 }
-int von_x(zug_t zug){return zug.von_x;}
-int von_y(zug_t zug){return zug.von_y;}
-int nach_x(zug_t zug){return zug.nach_x;}
-int nach_y(zug_t zug){return zug.nach_y;}
+int von_x(zug_t zug) {return zug.von_x;}
+int von_y(zug_t zug) {return zug.von_y;}
+int nach_x(zug_t zug) {return zug.nach_x;}
+int nach_y(zug_t zug) {return zug.nach_y;}
 brett_t* get_brett() {return &brett;}
 zug_t* get_zug_temp() {return &zug_temp;}
 int* get_punkte_int_temp() {return &punkte_int_temp;}
