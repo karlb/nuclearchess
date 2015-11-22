@@ -1,15 +1,3 @@
-function print_zug(zug) {
-    return(
-        "zug von " +
-        String.fromCharCode('A'.charCodeAt(0) + _von_x(zug)) +
-        (1 + _von_y(zug)).toString() + 
-        " nach " +
-        String.fromCharCode('A'.charCodeAt(0) + _nach_x(zug)) +
-        (1 + _nach_y(zug)).toString() +
-        "\n"
-    );
-}
-
 function indexes_to_field(x, y) {
     return String.fromCharCode('a'.charCodeAt(0) + x) + (8 - y);
 }
