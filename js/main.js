@@ -166,9 +166,10 @@ $(document).ready(function(){
     var game_over;
     var move_end_callbacks = [];
     var player_color = 'white';
+    var immune_pawns = false;
 
-    function restart() {
-        _newGame();
+    function new_game() {
+        _newGame(immune_pawns);
         update_html_board(board, false);
         game_over = false;
         clear_winner();
@@ -261,7 +262,7 @@ $(document).ready(function(){
         show_nuclear_strike();
         check_game_over();
         waiting_for_player = true;
-        history.replaceState({}, '', '#' + board.fen() + '-' + thinking_depth + '-' + player_color);
+        history.replaceState({}, '', '#' + board.fen() + '-' + thinking_depth + '-' + player_color + '-' + (immune_pawns ? 't' : 'f'));
 
         $.each(move_end_callbacks, function(i, callback) {
             callback();
@@ -315,22 +316,27 @@ $(document).ready(function(){
         resize(board);
     });
 
-    restart(board);
     // set position from url if a fen-string is in the URL fragment part
     if (window.location.hash) {
         var url_data = window.location.hash.slice(1).split('-');
         var fen = url_data[0];
         thinking_depth = url_data[1];
         player_color = url_data[2];
+        immune_pawns = url_data[3] === 't';
+        new_game();
         board.position(fen, false);
         position_to_board(board.position());
         board.orientation(player_color);
+    } else {
+        new_game();
     }
     $('#difficulty').val(thinking_depth);
+    $('#immune_pawns').val(immune_pawns);
 
     $('#play').click(function () {
         player_color = $('input[name=play-as]:checked').val();
-        restart(board);
+        immune_pawns = $('#immune_pawns').is(':checked');
+        new_game();
         if ($('#shuffle').is(':checked')) {
             shuffle(board, 8);
             shuffle(board, 1);
