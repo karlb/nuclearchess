@@ -578,13 +578,13 @@ void punkte(farbname_t farbe, brett_t *brett_p, int *punkte_weiss_p, int *punkte
 							}
 
 							if (!eigener_koenig_in_schlagbereich) {
-								if (dran) {							// freder König kann sofort geschlagen werden
+								if (dran) {  // fremder König kann sofort geschlagen werden
 									if (weiss) {
 										punkte_schwarz	-= malus_schach_und_nicht_dran;
 									} else {
 										punkte_weiss	-= malus_schach_und_nicht_dran;
 									}
-								} else {							// freder König im Schach kann aber nicht sofort geschlagen werden
+								} else {  // fremder König im Schach kann aber nicht sofort geschlagen werden
 									if (weiss) {
 										punkte_schwarz	-= malus_schach_und_dran;
 									} else {
@@ -638,12 +638,12 @@ void punkte(farbname_t farbe, brett_t *brett_p, int *punkte_weiss_p, int *punkte
 
 int im_schach(farbname_t farbe, brett_t *brett_p, zug_t *zug_p) {
 
-	//     ### erster Rückgabewert ######################################
-	//     # -1	: kein König mehr 					#
-	//     #  0	: König nicht im Schach					#
-	//     #  1	: König im Schach 	(mattzug  zurückgeben)		#
-	//     #  2	: remis möglich 	(remiszug zurückgeben)		#
-	//     ### zweiter Rückgabewert: zug ################################
+	// ### erster Rückgabewert ######################################
+	// # -1	: kein König mehr
+	// #  0	: König nicht im Schach
+	// #  1	: König im Schach 	(mattzug  zurückgeben)
+	// #  2	: remis möglich 	(remiszug zurückgeben)
+	// ### zweiter Rückgabewert: zug ################################
 
 	int x, y, i;
 	int koenig_x=-1;
@@ -661,12 +661,12 @@ int im_schach(farbname_t farbe, brett_t *brett_p, zug_t *zug_p) {
 		for (x=0 ; x<8 ; x++){
 			i = x+8*y;
 			if ((*brett_p)[i] == farbe*6) {
-				koenig_pos 		= i;		// Position des eigenen Königs
+				koenig_pos 		= i;  // Position des eigenen Königs
 				koenig_x		= x;
 				koenig_y		= y;
 			}
 			if ((*brett_p)[i] == -farbe*6) {
-				fremder_koenig_x	= x;		// Position des fremden Königs
+				fremder_koenig_x	= x;  // Position des fremden Königs
 				fremder_koenig_y	= y;
 			}
 		}
@@ -701,7 +701,7 @@ int im_schach(farbname_t farbe, brett_t *brett_p, zug_t *zug_p) {
 		}
 	}
 
-	return (0);					// König nicht im Schach
+	return 0;  // König nicht im Schach
 }
 
 
@@ -735,7 +735,7 @@ void anwenden(brett_t *brett_p, zug_t *zug_p) {
 				(*brett_p)[nach-2]	= 0;
 			}
 		}
-	} else {				// ### schlagen ###
+	} else {  // ### schlagen ###
 		(*brett_p)[von]	= 0;
 
 		uref_p = &(umgebung_liste[nach+64]);
@@ -808,15 +808,11 @@ void bester_zug(farbname_t farbe, int start_tiefe, int tiefe, int max_tmp, brett
 	int refz[LIST_LEN];
 	int refs[LIST_LEN];
 
-	//char *zeichen = (".!*#@O");
-
 	int punkte_max;
 	int index_max=0;
 	int abbruchart = 0;
 
 	zugliste_max[0].von_x = -1;
-
-	//printf ("%c",zeichen[tiefe]);
 
 	// alle erlaubten Züge aller eigenen Figuren bestimmen
 	for (y=0 ; y < 8 ; y++) {
@@ -843,7 +839,6 @@ void bester_zug(farbname_t farbe, int start_tiefe, int tiefe, int max_tmp, brett
 					anwenden(&brett, zug);
 					punkte(-farbe, &brett, &punkte_weiss, &punkte_schwarz);
 
-
 					punkte_liste[punkte_index++]= farbe*( punkte_weiss - punkte_schwarz);
 				}
 
@@ -868,7 +863,6 @@ void bester_zug(farbname_t farbe, int start_tiefe, int tiefe, int max_tmp, brett
 
 					punkte_liste[punkte_index++]= farbe*( punkte_weiss - punkte_schwarz);
 				}
-
 			}
 		}
 	}
@@ -890,7 +884,6 @@ void bester_zug(farbname_t farbe, int start_tiefe, int tiefe, int max_tmp, brett
 		*gegenpunkte_max_p= -punkte_max;
 		zug_anhaengen(zugliste, &zug_liste[index_max]);
 		return;
-
 	}
 
 	vorsortieren(punkte_liste, index_liste, punkte_index);  // ergebnis in index_liste
