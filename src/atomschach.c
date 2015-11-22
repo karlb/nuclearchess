@@ -85,36 +85,36 @@ void erlaubte_zuege(int x, int y, brett_t *brett_p, int zug[], int schlag[]){
 		weiss = FALSE;
 	}
 
-	switch (figur){
+	switch (figur) {
 		case 1: 						// ### Bauer ###
 			if (weiss) {
 				if (y > 0) {
-					if	((*brett_p)[i-8]		== 0) {		// Bauer Schritt
-						zug[zug_index++]=i-8;
+					if	((*brett_p)[i-8] == 0) {		// Bauer Schritt
+						zug[zug_index++] = i-8;
 						if	(y == 6   && (*brett_p)[i-16] 	== 0) { // Bauer Doppel-Schritt
-							zug[zug_index++]=i-16;
+							zug[zug_index++] = i-16;
 						}
 					}
-					if	(x < 7  && farbe*((*brett_p)[i-7]) < 0) {	// Bauer Schlag rechts
-						schlag[schlag_index++]=i-7;
+					if	(x < 7  && farbe * ((*brett_p)[i-7]) < 0) {	// Bauer Schlag rechts
+						schlag[schlag_index++] = i-7;
 					}
-					if	(x > 0  && farbe*((*brett_p)[i-9]) < 0) {	// Bauer Schlag links
-						schlag[schlag_index++]=i-9;
+					if	(x > 0  && farbe * ((*brett_p)[i-9]) < 0) {	// Bauer Schlag links
+						schlag[schlag_index++] = i-9;
 					}
 				}
 			} else {
 				if (y < 7) {
-					if	((*brett_p)[i+8]		== 0) {		// Bauer Schritt
-						zug[zug_index++]=i+8;
+					if	((*brett_p)[i+8] == 0) {		// Bauer Schritt
+						zug[zug_index++] = i+8;
 						if	(y == 1   && (*brett_p)[i+16] 	== 0) { // Bauer Doppel-Schritt
-							zug[zug_index++]=i+16;
+							zug[zug_index++] = i+16;
 						}
 					}
 					if	(x < 7  && farbe*((*brett_p)[i+9]) < 0) {	// Bauer Schlag rechts
-						schlag[schlag_index++]=i+9;
+						schlag[schlag_index++] = i+9;
 					}
 					if	(x > 0  && farbe*((*brett_p)[i+7]) < 0) {	// Bauer Schlag links
-						schlag[schlag_index++]=i+7;
+						schlag[schlag_index++] = i+7;
 					}
 				}
 			}
