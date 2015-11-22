@@ -72,8 +72,6 @@ const int malus_schach_und_dran		= 50;
 const int malus_schach_und_nicht_dran	= 4000;
 const int malus_schachmatt		= 10000;
 
-/*history_t history[HISTORY_MAX];*/
-
 // Hilfsfunktionen
 char *string_farbname(farbname_t farbname){
     if (farbname == weiss) return weiss_string;
@@ -729,6 +727,7 @@ int im_schach(farbname_t farbe, brett_t *brett_p, zug_t *zug_p) {
 	return (0);					// König nicht im Schach
 }
 
+
 void anwenden(brett_t *brett_p, zug_t *zug_p) {
 	int von, nach, index;
 	int ui;
@@ -770,7 +769,7 @@ void anwenden(brett_t *brett_p, zug_t *zug_p) {
 	}
 }
 
-void zug_anhaengen (zug_t zugliste[], zug_t *zug){
+void zug_anhaengen(zug_t zugliste[], zug_t *zug){
     int index;
 
     for (index=0; (zugliste[index]).von_x != -1 ; index++){}
@@ -810,7 +809,7 @@ void vorsortieren(int punkte_liste[], int index_liste[], int nr){
 }
 
 
-void bester_zug (farbname_t farbe, int start_tiefe, int tiefe, int max_tmp, brett_t *brett_p,zug_t zugliste[],int *gegenpunkte_max_p){
+void bester_zug(farbname_t farbe, int start_tiefe, int tiefe, int max_tmp, brett_t *brett_p,zug_t zugliste[],int *gegenpunkte_max_p) {
 	int punkte_weiss, punkte_schwarz;
 	int x, y, i;
 	int count, j, gegenpunkte;
@@ -843,8 +842,8 @@ void bester_zug (farbname_t farbe, int start_tiefe, int tiefe, int max_tmp, bret
 	//printf ("%c",zeichen[tiefe]);
 
 	// alle erlaubten Züge aller eigenen Figuren bestimmen
-	for (y=0 ; y < 8 ; y++){
-		for (x=0 ; x < 8 ; x++){
+	for (y=0 ; y < 8 ; y++) {
+		for (x=0 ; x < 8 ; x++) {
 			i = x+8*y;
 			if (farbe*((*brett_p)[i]) > 0) {
 				erlaubte_zuege(x, y, brett_p , refz, refs);
@@ -871,7 +870,7 @@ void bester_zug (farbname_t farbe, int start_tiefe, int tiefe, int max_tmp, bret
 					punkte_liste[punkte_index++]= farbe*( punkte_weiss - punkte_schwarz);
 				}
 
-				//genau dasselbe nochmal (refs statt refz)
+				// genau dasselbe nochmal (refs statt refz)
 				for (index=0 ; refs[index] != -1 ; index++){
 					j=refs[index];
 
@@ -917,13 +916,13 @@ void bester_zug (farbname_t farbe, int start_tiefe, int tiefe, int max_tmp, bret
 
 	}
 
-	vorsortieren(punkte_liste, index_liste, punkte_index); 			// ergebnis in index_liste
+	vorsortieren(punkte_liste, index_liste, punkte_index);  // ergebnis in index_liste
 
-	if ((start_tiefe-tiefe) % 2 == 1) {                                       	// Zug des nicht aktiven Spielers
+	if ((start_tiefe-tiefe) % 2 == 1) {  // Zug des nicht aktiven Spielers
 		gegenpunkte_max = (tiefe+1)*MAX_TMP_INIT;
 	}
 
-	for (j=0 ; j < punkte_index ; j++){								// der Reihe nach die besten Züge durchlaufen
+	for (j=0 ; j < punkte_index ; j++) {  // der Reihe nach die besten Züge durchlaufen
 
 		index=index_liste[j];
 
@@ -936,21 +935,21 @@ void bester_zug (farbname_t farbe, int start_tiefe, int tiefe, int max_tmp, bret
 			/*            show_selected_piece(select_x, select_y, select_old_x, select_old_y);*/
 		}
 
-		if ((start_tiefe-tiefe) % 2 == 0) {                                   			// ### Zug des aktiven Spielers ###
+		if ((start_tiefe-tiefe) % 2 == 0) {  // ### Zug des aktiven Spielers ###
 			if (punkte_liste[index] < -malus_schach_und_nicht_dran + 1500) {
 				//printf ("V%i",tiefe);
-				continue;                                                           		// Verlierer-Züge nicht weiter untersuchen
+				continue;  // Verlierer-Züge nicht weiter untersuchen
 			}
 			if (punkte_liste[index] > malus_schach_und_nicht_dran - 1500) {
 				//printf ("G%i",tiefe);
 				abbruchart = 1;
 				//printf("\nbreak G %d\n", tiefe);
-				break;                                                           		// Gewinner-Züger sofort ziehen
+				break;  // Gewinner-Züger sofort ziehen
 			}
-		} else {                                                                		// ### Zug des nicht aktiven Spielers ###
+		} else { // ### Zug des nicht aktiven Spielers ###
 			if (punkte_liste[index] < -malus_schach_und_nicht_dran + 1500) {
 				//printf ("v%i",tiefe);
-				continue;                                                           		// Verlierer-Züge weiter untersuchen (er könnte sich noch verbessern)
+				continue;  // Verlierer-Züge weiter untersuchen (er könnte sich noch verbessern)
 			}
 			if (punkte_liste[index] > malus_schach_und_nicht_dran - 1500) {
 				printf("\nDieser Fall sollte nie auf treten, da vorher V erkannt werden sollte!\n");
@@ -1012,7 +1011,7 @@ void bester_zug (farbname_t farbe, int start_tiefe, int tiefe, int max_tmp, bret
 		}
 
 		// hier testen
-		//	if ( (max_tmp >= (tiefe+1)*MAX_TMP_INIT) && (-gegenpunkte <= max_tmp)) {
+		//	if ( (max_tmp >= (tiefe+1)*MAX_TMP_INIT) && (-gegenpunkte <= max_tmp)) 
 		if (tiefe!=start_tiefe && (max_tmp >= (tiefe+1)*MAX_TMP_INIT) && (-gegenpunkte <= max_tmp)) {
 			//printf ("%i",tiefe);
 			break;
@@ -1047,7 +1046,7 @@ void bester_zug (farbname_t farbe, int start_tiefe, int tiefe, int max_tmp, bret
 
 	*gegenpunkte_max_p = -gegenpunkte_max;
 
-	for (count=0 ; count<ZUKUNFT_MAX ; count++){
+	for (count=0 ; count<ZUKUNFT_MAX ; count++) {
 		zugliste[count].von_x  = zugliste_max[count].von_x;
 		zugliste[count].von_y  = zugliste_max[count].von_y;
 		zugliste[count].nach_x = zugliste_max[count].nach_x;
@@ -1056,108 +1055,10 @@ void bester_zug (farbname_t farbe, int start_tiefe, int tiefe, int max_tmp, bret
 	}
 
 	return;
-	}
-
-
-void zuglesbar_func(zug_t *zug_p, farbname_t farbe, brett_t *brett_p, zug_lesbar_t zuglesbar) {
-    char bild_c;
-    int vonx, vony, nachx, nachy;
-    char schach=' ';
-    char schachmatt=' ';
-    char zugart='-';
-    int figurf, figur;
-    brett_t brett_copy;
-    int index;
-    zug_t dummy_zug;
-    int schach_pos = 0;
-
-    vonx = zug_p->von_x;
-    vony = zug_p->von_y;
-    nachx = zug_p->nach_x;
-    nachy = zug_p->nach_y;
-
-    if (vonx == -1) {
-	sprintf(zuglesbar,"%s", "");
-	return;
-    }
-
-    for (index=0; index<64 ; index++){
-	brett_copy[index]= (*brett_p)[index];
-    }
-
-    if ((*brett_p)[nachx+8*nachy] != 0) {
-	zugart = '*';
-    }
-
-    figurf 	= brett[vonx + 8*vony];
-    figur	= abs(figurf);
-    bild_c	= bild[figur];
-
-    // test ob danach im schach
-    anwenden(&brett_copy, zug_p);
-    schach_pos = im_schach(-farbe, &brett_copy, &dummy_zug);
-    if (schach_pos == 1) {
-	schach = '+';
-    }
-    if (schach_pos == -1) {
-	schach = '+';
-	schachmatt = '+';
-    }
-
-    sprintf(zuglesbar,"%c%c%i%c%c%i%c%c", bild_c, vonx +'a', 8-vony, zugart, nachx+'a', 8-nachy, schach, schachmatt);
-
 }
 
-float bewertung_float(int bewertung_int, int farbe, int tiefe) {
-	float bewertung_f = 0;
 
-	int offset = 0;
-
-	int drohwert_offset1 = 0;
-	int drohwert_offset2 = -140;
-	int drohwert_offset3 = +140;
-	int drohwert_offset4 = 0;
-
-	if (bewertung_int != 0 && bewertung_int > MAX_TMP_INIT && bewertung_int < -MAX_TMP_INIT) {
-
-		if (mensch == weiss) {
-			if (tiefe % 2) {
-				offset = drohwert_offset1;
-			} else {
-				offset = drohwert_offset2;
-			}
-		} else {
-			if (tiefe % 2) {
-				offset = drohwert_offset3;
-			} else {
-				offset = drohwert_offset4;
-			}
-		}
-		offset += 50;
-	}
-
-	bewertung_int += offset;
-
-	if (bewertung_int > 0) {
-		bewertung_f = log10(bewertung_int);
-	} else if (bewertung_int < 0) {
-		bewertung_f = -log10(-bewertung_int);
-	} else {
-		bewertung_f = 0;
-	}
-
-	if (bewertung_f > 4) {
-		bewertung_f = 4;
-	} else if (bewertung_f < -4) {
-		bewertung_f = -4;
-	}
-
-	bewertung_f = bewertung_f*25;
-
-	return bewertung_f;
-}
-
-void computer_zug (farbname_t farbe, int tiefe, brett_t *brett_p, zug_t *zug_p, int *punkte_p, bool set_message) {
+void computer_zug(farbname_t farbe, int tiefe, brett_t *brett_p, zug_t *zug_p, int *punkte_p, bool set_message) {
 	int im_schach_int;
 
 	int max_tmp=INIT_FACTOR*MAX_TMP_INIT;
@@ -1251,12 +1152,12 @@ bool hat_koenig(farbname_t farbe, brett_t *brett_p){
     bool hat_koenig=FALSE;
     int i;
 
-    for (i=0 ; i<64 ; i++){
-	if (farbe* ((*brett_p)[i]) == 6) {
-	    hat_koenig=TRUE;
-	    break;
-	};
-    }
+	for (i=0 ; i<64 ; i++){
+		if (farbe* ((*brett_p)[i]) == 6) {
+			hat_koenig=TRUE;
+			break;
+		};
+	}
 
     return hat_koenig;
 }
@@ -1319,89 +1220,6 @@ void init_umgebung (void) {
 }
 
 
-// ############
-// ### main ###
-// ############
-void sub_main (farbname_t farbe,int tiefe,brett_t *brett_p) {
-	int i, punkte_int;
-	zug_t zug;
-	zug_lesbar_t zuglesbar, end_text;
-
-	punkte_int = 0;
-	while (TRUE){
-
-		/*        brett_anzeigen(TRUE, TRUE);*/
-
-		zug.von_x = -1;	// init wegen change color
-
-		if (hat_koenig(farbe, brett_p) && hat_koenig(-farbe, brett_p)) {
-			if (farbe == computer) {
-				computer_zug(farbe, tiefe, brett_p, &zug, &punkte_int, TRUE);
-				/*                letzter_zug_mensch = FALSE;*/
-			} else {
-				if (computer_gegen_computer == TRUE){
-					computer_zug(farbe, tiefe, brett_p, &zug, &punkte_int, TRUE);
-					/*                    letzter_zug_mensch = FALSE;*/
-				} else {
-					/*                        mensch_zug(brett_p, &zug);*/
-					/*                    letzter_zug_mensch = TRUE;*/
-					if (zug.von_x == -1) { // change color
-						/*                        computer_zug(farbe, tiefe, brett_p, &zug, &punkte_int, TRUE);*/
-						/*                        letzter_zug_mensch = FALSE;*/
-					}
-				};
-			}
-
-			/*            zuglesbar_func(&zug, farbe, brett_p, zuglesbar);*/
-
-			/*            for (i=0; history[i].von_x != -1; i++) {};*/
-
-			/*            history[i].von_x  = zug.von_x;*/
-			/*            history[i].von_y  = zug.von_y;*/
-			/*            history[i].nach_x = zug.nach_x;*/
-			/*            history[i].nach_y = zug.nach_y;*/
-			/*            strcpy(history[i].zuglesbar, zuglesbar);*/
-			/*            history[i].punkte = punkte_int;*/
-
-			/*            history[i+1].von_x  = -1;*/
-
-			/*            zeige_zug(&zug);*/
-			printf("zug von %c%d nach %c%d\n", 'A' + zug.von_x, 1 + zug.von_y, 'A' + zug.nach_x, 1 + zug.nach_y);
-			/*    int von_y;*/
-			/*    int nach_x;*/
-			/*    int nach_y;*/
-			anwenden(brett_p, &zug);  					// Brett aktualisieren
-			farbe = -farbe;  						// Farbe aktualisieren
-		} else {
-			if (hat_koenig(-farbe, brett_p)) {
-				if (computer == -farbe) {
-					strcpy(message,"mate");
-				} else {
-					strcpy(message,"congratulation");
-				}
-				sprintf(end_text, "%s wins!", string_farbname(-farbe));
-			} else if (hat_koenig(farbe, brett_p)) {
-				if (computer == farbe) {
-					strcpy(message,"mate");
-				} else {
-					strcpy(message,"congratulation");
-				}
-				sprintf(end_text, "%s wins!", string_farbname(farbe));
-			} else {
-				strcpy(message,"...");
-				sprintf(end_text, "%s!", "draw");
-			}
-			break;
-		}
-
-	} //while TRUE
-
-	/*    brett_anzeigen(TRUE, TRUE);*/
-
-	/*    game_over(end_text);*/
-}
-
-
 void newGame (void) {
 	int index;
 	int mensch_farbe;
@@ -1455,6 +1273,8 @@ void newGame (void) {
 	}
 }
 
+
+/* Functions for access from JS */
 zug_t zug_temp;
 int punkte_int_temp;
 void set_zug_temp(int von_x, int von_y, int nach_x, int nach_y)
@@ -1471,18 +1291,3 @@ int nach_y(zug_t zug){return zug.nach_y;}
 brett_t* get_brett() {return &brett;}
 zug_t* get_zug_temp() {return &zug_temp;}
 int* get_punkte_int_temp() {return &punkte_int_temp;}
-
-/*int main(int argc, char *argv[])*/
-/*{*/
-/*    ReadCommandLine(argv);*/
-/*    newGame();*/
-
-// weit unten
-/*    init_gui();*/
-
-/*    sub_main(farbe, tiefe, &brett);*/
-/*    computer_zug(schwarz, 3, &brett, &zug_temp, &punkte_int_temp, TRUE);*/
-/*void erlaubte_zuege(int x, int y, brett_t *brett_p, int zug[], int schlag[]){*/
-
-/*    return 0; //ok*/
-/*}*/
