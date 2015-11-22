@@ -1,6 +1,7 @@
 /* Code not needed for basic AI */
 
 /*history_t history[HISTORY_MAX];*/
+char  bild[7]; 		// von 0 bis 6
 
 void zuglesbar_func(zug_t *zug_p, farbname_t farbe, brett_t *brett_p, zug_lesbar_t zuglesbar) {
     char bild_c;
@@ -108,6 +109,15 @@ void sub_main (farbname_t farbe,int tiefe,brett_t *brett_p) {
 	int i;
 	zug_t zug;
 	zug_lesbar_t zuglesbar, end_text;
+	bool letzter_zug_mensch;
+
+	bild[0]	= ' ';			// leer		empty
+	bild[1]	= 'P';			// Bauer	Pawn
+	bild[2]	= 'B';			// Läufer	Bishop
+	bild[3]	= 'N';			// Springer	Knight
+	bild[4]	= 'R';			// Turm		Rook or Castle
+	bild[5]	= 'Q';			// Dame		Queen
+	bild[6]	= 'K';			// König	King
 
 	while (TRUE){
 

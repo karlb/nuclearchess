@@ -44,7 +44,6 @@
 
 umgebung_t umgebung_liste[128];
 zug_lesbar_t message;
-/*bool letzter_zug_mensch;*/
 
 int x_koordinate[64];
 int y_koordinate[64];
@@ -52,31 +51,17 @@ int y_koordinate[64];
 int tiefe;
 
 brett_t brett_start = {-4,-3,-2,-5,-6,-2,-3,-4, -1,-1,-1,-1,-1,-1,-1,-1,  0, 0, 0, 0, 0, 0, 0, 0,  0, 0, 0, 0, 0, 0, 0, 0,  0, 0, 0, 0, 0, 0, 0, 0,  0, 0, 0, 0, 0, 0, 0, 0,  1, 1, 1, 1, 1, 1, 1, 1,  4, 3, 2, 5, 6, 2, 3, 4};
-// hier xxx
-//brett_t brett_start = {0,0,0,0,0,-2,0,0, -1,0,0,0,0,-6,0,0,  1, 0, 0, 0, 0, 1, 0, 0,  0, 0, 0, -1, 0, 0, 0, 0,  0, 0, 0, 1, 0, 0, 0, 0,  0, 0, 0, -5, 0, 0, 0, 0,  0, 0, 0, 0, 0, 0, 0, 0,  0, 0, 6, 0, 0, 0, 0, 0};
 brett_t brett, merke_brett;
 
 farbname_t farbname;
 farbname_t farbe, mensch, computer;
 
-char  *weiss_string	= "white";
-char  *schwarz_string	= "black";
-
 int   grundwert[7]; 	// eigentlich von 1 bis 6
-char  bild[7]; 		// von 0 bis 6
 bool  computer_gegen_computer;
-
-int spiel;
 
 const int malus_schach_und_dran		= 50;
 const int malus_schach_und_nicht_dran	= 4000;
 const int malus_schachmatt		= 10000;
-
-// Hilfsfunktionen
-char *string_farbname(farbname_t farbname){
-    if (farbname == weiss) return weiss_string;
-    return schwarz_string;
-}
 
 // ############
 // ### subs ###
@@ -1226,7 +1211,6 @@ void newGame (void) {
 	// ### Einstellungen ###
 	// #####################
 
-	/*    computer_gegen_computer=FALSE;	// mensch gegen computer*/
 	computer_gegen_computer=TRUE;	// mensch gegen computer
 	mensch_farbe = 1;			// weiss
 	tiefe = 0;				// Tiefe in Halbzügen (>=0)
@@ -1235,7 +1219,6 @@ void newGame (void) {
 	// ### init ###
 	// ############
 
-	spiel = FALSE;
 	farbe = 1; 				// weiss fängt an
 
 	if (mensch_farbe == weiss) {
@@ -1247,15 +1230,6 @@ void newGame (void) {
 	}
 
 	init_umgebung();
-	/*    history[0].von_x = -1;*/
-
-	bild[0]	= ' ';			// leer		empty
-	bild[1]	= 'P';			// Bauer	Pawn
-	bild[2]	= 'B';			// Läufer	Bishop
-	bild[3]	= 'N';			// Springer	Knight
-	bild[4]	= 'R';			// Turm		Rook or Castle
-	bild[5]	= 'Q';			// Dame		Queen
-	bild[6]	= 'K';			// König	King
 
 	grundwert[0]	= 0; 	// leeres Feld
 	grundwert[1]	= 10;
