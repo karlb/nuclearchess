@@ -105,11 +105,10 @@ float bewertung_float(int bewertung_int, int farbe, int tiefe) {
 // ### main ###
 // ############
 void sub_main (farbname_t farbe,int tiefe,brett_t *brett_p) {
-	int i, punkte_int;
+	int i;
 	zug_t zug;
 	zug_lesbar_t zuglesbar, end_text;
 
-	punkte_int = 0;
 	while (TRUE){
 
 		/*        brett_anzeigen(TRUE, TRUE);*/
@@ -118,17 +117,17 @@ void sub_main (farbname_t farbe,int tiefe,brett_t *brett_p) {
 
 		if (hat_koenig(farbe, brett_p) && hat_koenig(-farbe, brett_p)) {
 			if (farbe == computer) {
-				computer_zug(farbe, tiefe, brett_p, &zug, &punkte_int, TRUE);
+				computer_zug(farbe, tiefe, brett_p, &zug, TRUE);
 				/*                letzter_zug_mensch = FALSE;*/
 			} else {
 				if (computer_gegen_computer == TRUE){
-					computer_zug(farbe, tiefe, brett_p, &zug, &punkte_int, TRUE);
+					computer_zug(farbe, tiefe, brett_p, &zug, TRUE);
 					/*                    letzter_zug_mensch = FALSE;*/
 				} else {
 					/*                        mensch_zug(brett_p, &zug);*/
 					/*                    letzter_zug_mensch = TRUE;*/
 					if (zug.von_x == -1) { // change color
-						/*                        computer_zug(farbe, tiefe, brett_p, &zug, &punkte_int, TRUE);*/
+						/*                        computer_zug(farbe, tiefe, brett_p, &zug, TRUE);*/
 						/*                        letzter_zug_mensch = FALSE;*/
 					}
 				};

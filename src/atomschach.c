@@ -1058,7 +1058,8 @@ void bester_zug(farbname_t farbe, int start_tiefe, int tiefe, int max_tmp, brett
 }
 
 
-void computer_zug(farbname_t farbe, int tiefe, brett_t *brett_p, zug_t *zug_p, int *punkte_p, bool set_message) {
+// returns score, changes zug_p
+int computer_zug(farbname_t farbe, int tiefe, brett_t *brett_p, zug_t *zug_p, bool set_message) {
 	int im_schach_int;
 
 	int max_tmp=INIT_FACTOR*MAX_TMP_INIT;
@@ -1089,13 +1090,10 @@ void computer_zug(farbname_t farbe, int tiefe, brett_t *brett_p, zug_t *zug_p, i
 		zukunft[0].nach_x	= zug_p->nach_x;
 		zukunft[0].nach_y	= zug_p->nach_y;
 
-		*punkte_p = bewertung_int;
-		return;
+		return bewertung_int;
 	}
 
 	bester_zug(farbe, tiefe, tiefe, max_tmp, brett_p, zukunft, &bewertung_int);
-
-	*punkte_p = bewertung_int;
 
 	if (zukunft[0].von_x != -1) {
 		zug_p->von_x  = zukunft[0].von_x;
@@ -1118,6 +1116,7 @@ void computer_zug(farbname_t farbe, int tiefe, brett_t *brett_p, zug_t *zug_p, i
 			strcpy(message,"you will loose");
 		}
 	}
+	return bewertung_int;
 }
 
 
