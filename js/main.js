@@ -158,7 +158,6 @@ var board;
 $(document).ready(function(){
     _brett = _get_brett();
     _zug_temp = _get_zug_temp();
-    _punkte_int_temp = _get_punkte_int_temp();
     var weiss = 1, schwarz = -1;
     var thinking_depth = 1;
     var undo_stack = [];
@@ -182,7 +181,7 @@ $(document).ready(function(){
         $('#thinking').show();
         setTimeout(function() {
             _computer_zug(player_color === 'white' ? schwarz : weiss,
-                          thinking_depth, _brett, _zug_temp, _punkte_int_temp, 1);
+                          thinking_depth, _brett, _zug_temp, 1);
             $('#thinking').hide();
             _anwenden(_brett, _zug_temp);
 
