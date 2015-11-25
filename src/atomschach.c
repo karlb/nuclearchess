@@ -296,18 +296,6 @@ void erlaubte_zuege(int x, int y, brett_t *brett_p, int zug[], int schlag[]){
 
 
 void punkte(farbname_t farbe, brett_t *brett_p, int *punkte_weiss_p, int *punkte_schwarz_p) {
-    bool weiss;
-    int drohwert, zusatzwert, gesamtwert;
-    int nebenkoenig_wert;
-    int schlagpunkte = 0;
-    int schlagpunktemax;
-
-    int refz[LIST_LEN];
-    int refs[LIST_LEN];
-
-    umgebung_t *uref_p;
-    umgebung_t *urefs_p;
-
     int punkte_weiss	= 0;
     int punkte_schwarz	= 0;
 
@@ -320,31 +308,25 @@ void punkte(farbname_t farbe, brett_t *brett_p, int *punkte_weiss_p, int *punkte
     int anzahl_springer_weiss = 0;
     int anzahl_springer_schwarz = 0;
 
-    int eigener_koenig_in_schlagbereich = 0;
-    int schlagfigurremisf = 0;
-
 	for (int y=0 ; y<8 ; y++) {
 		for (int x=0 ; x<8 ; x++) {
-			int i = x+8*y;
+			int i = x + 8*y;
 			int figurf = (*brett_p)[i];
 			bool dran = figurf * farbe > 0;
+			int drohwert, zusatzwert, gesamtwert;
 
 			if (figurf == 0) {
 				continue;
 			}
 
 			int figur	= abs(figurf);
+			bool weiss = figurf > 0;
 			anzahl_figuren++;
-			if (figurf > 0) {
-				weiss = TRUE;
-			} else {
-				weiss = FALSE;
-			}
 
-			uref_p = &(umgebung_liste[i]);
+			umgebung_t *uref_p = &(umgebung_liste[i]);
 			// Zusatztwerte für bestimmte Figuren
 			zusatzwert 		= 0;
-			nebenkoenig_wert 	= 0;
+			int nebenkoenig_wert = 0;
 			if 	(figur == 1) {				// Bauer Zusatzwert
 				if (weiss) {
 					zusatzwert	= 30-5*y;	// (6-y)*10/2
@@ -388,6 +370,8 @@ void punkte(farbname_t farbe, brett_t *brett_p, int *punkte_weiss_p, int *punkte
 				int ui = (*uref_p)[index];
 				if (figurf*((*brett_p)[ui]) > 0) {malus++;};
 			}
+			int refz[LIST_LEN];
+			int refs[LIST_LEN];
 			erlaubte_zuege(x, y, brett_p, refz , refs);
 
 			// Felder bedrohen ist gut
@@ -401,9 +385,10 @@ void punkte(farbname_t farbe, brett_t *brett_p, int *punkte_weiss_p, int *punkte
 			}
 
 			// Schlagmöglichkeit ist gut
-			schlagpunktemax = 0;
+			int schlagpunktemax = 0;
 			for (int index=0 ; refs[index] != -1; index++){
 				int schlag = refs[index];
+				int schlagpunkte = 0;
 				if (dran) {
 					if (abs(x-x_koordinate[schlag]) > 1 || abs(y-y_koordinate[schlag]) > 1) {
 						schlagpunkte 	= -grundwert[figur];
@@ -412,7 +397,7 @@ void punkte(farbname_t farbe, brett_t *brett_p, int *punkte_weiss_p, int *punkte
 					}
 				}
 
-				urefs_p = &(umgebung_liste[schlag+64]);
+				umgebung_t *urefs_p = &(umgebung_liste[schlag+64]);
 				for (int index2=0 ; (*urefs_p)[index2] != -1; index2++){
 					int schlagfigurf = (*brett_p)[(*urefs_p)[index2]];
 					int schlagfigur  = abs(schlagfigurf);
@@ -425,9 +410,9 @@ void punkte(farbname_t farbe, brett_t *brett_p, int *punkte_weiss_p, int *punkte
 					}
 
 					if (schlagfigur == 6 && figurf*schlagfigurf < 0) {
-						eigener_koenig_in_schlagbereich = 0;
+						int eigener_koenig_in_schlagbereich = 0;
 						for (int index3=0 ; (*urefs_p)[index3] != -1; index3++){
-							schlagfigurremisf = (*brett_p)[(*urefs_p)[index3]];
+							int schlagfigurremisf = (*brett_p)[(*urefs_p)[index3]];
 							if (abs(schlagfigurremisf) == 6 && schlagfigurremisf*figurf > 0) {
 								eigener_koenig_in_schlagbereich = 1;
 								break;
