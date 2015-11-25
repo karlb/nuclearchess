@@ -53,6 +53,10 @@ function board_to_position(board) {
                 continue;
             }
             var field = String.fromCharCode('a'.charCodeAt(0) + x) + (8 - y);
+            if (piece_code === 100) {
+                position[field] = 'nuke';
+                continue;
+            } 
             var color = piece_code > 0 ? 'w' : 'b';
             var piece = piece_mapping[Math.abs(piece_code)];
             position[field] = color + piece;
@@ -69,7 +73,7 @@ function position_to_board(position, board) {
         N: '3',
         R: '4',
         Q: '5',
-        K: '6'
+        K: '6',
     };
 
     for (y=0; y<8; y++) {
@@ -82,6 +86,8 @@ function position_to_board(position, board) {
             var piece_code;
             if (piece === undefined) {
                 piece_code = 0;
+            } else if (piece === 'nuke') {
+                piece_code = 100;
             } else {
                 piece_code = piece_mapping[piece[1]];
                 if (piece[0] === 'b') {

@@ -59,6 +59,55 @@ const int malus_schachmatt		= 10000;
 // ### subs ###
 // ############
 
+
+void add_capture(int new_capture, brett_t *brett_p,
+				 int schlag[], int *schlag_index_p, int farbe)
+{
+	int target_piece = (*brett_p)[new_capture];
+
+	if (
+			target_piece * farbe < 0  // opponent's piece
+			&& target_piece != 100  // not nuke
+	) {
+		//fprintf(stderr, "%d %d %d\n", new_capture, *schlag_index_p, farbe);
+		schlag[(*schlag_index_p)++] = new_capture;
+	}
+}
+
+
+void allowed_moves_diagonal(int x_change, int y_change, int i_change,
+		int x, int y, brett_t *brett_p,
+		int zug[], int *zug_index_p, int schlag[], int *schlag_index_p,
+		int farbe)
+{
+	int X = x + x_change;
+	int Y = y + y_change;
+	int I = X + 8 * Y;
+
+	//fprintf(stderr, ">> %d %d %d -- %d\n", I, X, Y, *zug_index_p);
+	while (
+			X >= 0 && X <= 7 &&
+			Y >= 0 && Y <= 7 &&
+			(*brett_p)[I] == 0
+    ) {
+		//fprintf(stderr, "%d %d %d -- %d\n", I, X, Y, *zug_index_p);
+		zug[(*zug_index_p)++] = I;
+		//fprintf(stderr, "%d %d %d -- %d\n", I, X, Y, *zug_index_p);
+		X += x_change;
+		Y += y_change;
+		I += i_change;
+	}
+	//fprintf(stderr, "foo\n");
+	if (
+		X >= 0 && X <= 7 &&
+		Y >= 0 && Y <= 7
+	) {
+		//fprintf(stderr, ">> %d %d %d\n", X, Y, I);
+		add_capture(I, brett_p, schlag, schlag_index_p, farbe);
+	}
+}
+
+
 void erlaubte_zuege(int x, int y, brett_t *brett_p, int zug[], int schlag[]){
     farbname_t farbe;
 
@@ -95,11 +144,11 @@ void erlaubte_zuege(int x, int y, brett_t *brett_p, int zug[], int schlag[]){
 							zug[zug_index++] = i-16;
 						}
 					}
-					if	(x < 7  && farbe * ((*brett_p)[i-7]) < 0) {	// Bauer Schlag rechts
-						schlag[schlag_index++] = i-7;
+					if	(x < 7) {	// Bauer Schlag rechts
+						add_capture(i - 7, brett_p, schlag, &schlag_index, farbe);
 					}
-					if	(x > 0  && farbe * ((*brett_p)[i-9]) < 0) {	// Bauer Schlag links
-						schlag[schlag_index++] = i-9;
+					if	(x > 0) {	// Bauer Schlag links
+						add_capture(i - 9, brett_p, schlag, &schlag_index, farbe);
 					}
 				}
 			} else {
@@ -110,67 +159,28 @@ void erlaubte_zuege(int x, int y, brett_t *brett_p, int zug[], int schlag[]){
 							zug[zug_index++] = i+16;
 						}
 					}
-					if	(x < 7  && farbe*((*brett_p)[i+9]) < 0) {	// Bauer Schlag rechts
-						schlag[schlag_index++] = i+9;
+					if	(x < 7) {	// Bauer Schlag rechts
+						add_capture(i + 9, brett_p, schlag, &schlag_index, farbe);
 					}
-					if	(x > 0  && farbe*((*brett_p)[i+7]) < 0) {	// Bauer Schlag links
-						schlag[schlag_index++] = i+7;
+					if	(x > 0) {	// Bauer Schlag links
+						add_capture(i + 7, brett_p, schlag, &schlag_index, farbe);
 					}
 				}
 			}
 			break;
 		case 2: 						// ### Läufer ###
-			I = i-7;							// Läufer oben rechts
-			X = x+1;
-			Y = y-1;
-			while (X <= 7 && Y >= 0 && (*brett_p)[I] == 0) {
-				zug[zug_index++]=I;
-				X++;
-				Y--;
-				I = I - 7;
-			}
-			if (X <= 7 && Y >= 0 && farbe*((*brett_p)[I]) < 0) {
-				schlag[schlag_index++]=I;
-			}
-
-			I = i+9;							// Läufer unten rechts
-			X = x+1;
-			Y = y+1;
-			while (X <= 7 && Y <= 7 && (*brett_p)[I] == 0) {
-				zug[zug_index++]=I;
-				X++;
-				Y++;
-				I = I + 9;
-			}
-			if (X <= 7 && Y <= 7 && farbe*((*brett_p)[I]) < 0) {
-				schlag[schlag_index++]=I;
-			}
-
-			I = i-9;							// Läufer oben links
-			X = x-1;
-			Y = y-1;
-			while (X >= 0 && Y >= 0 && (*brett_p)[I] == 0) {
-				zug[zug_index++]=I;
-				X--;
-				Y--;
-				I = I - 9;
-			}
-			if (X >= 0 && Y >= 0 && farbe*((*brett_p)[I]) < 0) {
-				schlag[schlag_index++]=I;
-			}
-
-			I = i+7;							// Läufer unten links
-			X = x-1;
-			Y = y+1;
-			while (X >= 0 && Y <= 7 && (*brett_p)[I] == 0) {
-				zug[zug_index++]=I;
-				X--;
-				Y++;
-				I = I + 7;
-			}
-			if (X >= 0 && Y <= 7 && farbe*((*brett_p)[I]) < 0) {
-				schlag[schlag_index++]=I;
-			}
+			// up-right
+			allowed_moves_diagonal(+1, -1, -7, x, y, brett_p,
+					zug, &zug_index, schlag, &schlag_index, farbe);
+			// down-right
+			allowed_moves_diagonal(+1, +1, +9, x, y, brett_p,
+					zug, &zug_index, schlag, &schlag_index, farbe);
+			// up-left
+			allowed_moves_diagonal(-1, -1, -9, x, y, brett_p,
+					zug, &zug_index, schlag, &schlag_index, farbe);
+			// down-left
+			allowed_moves_diagonal(-1, +1, +7, x, y, brett_p,
+					zug, &zug_index, schlag, &schlag_index, farbe);
 			break;
 		case 3: 						// ### Springer ###
 			if (x < 6) {
@@ -1093,47 +1103,6 @@ int computer_zug(farbname_t farbe, int tiefe, brett_t *brett_p, zug_t *zug_p) {
 }
 
 
-bool legal(int vonx, int vony, int nachx, int nachy, brett_t *brett_p) {
-	int refz[LIST_LEN];
-	int refs[LIST_LEN];
-
-	int nach,index;
-
-	// zug für figur legal?
-	nach = nachx+8 * nachy;
-	erlaubte_zuege(vonx, vony, brett_p, refz, refs );
-
-	for (index=0 ; refz[index] != -1; index++){
-		if (nach == refz[index]) {
-			return TRUE;
-		}
-	}
-
-	for (index=0 ; refs[index] != -1; index++){
-		if (nach == refs[index]) {
-			return TRUE;
-		}
-	}
-
-	return FALSE;
-}
-
-
-bool hat_koenig(farbname_t farbe, brett_t *brett_p){
-    bool hat_koenig=FALSE;
-    int i;
-
-	for (i=0 ; i<64 ; i++){
-		if (farbe* ((*brett_p)[i]) == 6) {
-			hat_koenig=TRUE;
-			break;
-		};
-	}
-
-    return hat_koenig;
-}
-
-
 void umgebung(int x, int y, bool mit_mitte, umgebung_t *umgebung_p) {
 	int u;
 	int index=0;
@@ -1248,3 +1217,44 @@ int nach_y(zug_t zug) {return zug.nach_y;}
 brett_t* get_brett() {return &brett;}
 zug_t* get_zug_temp() {return &zug_temp;}
 int* get_punkte_int_temp() {return &punkte_int_temp;}
+
+
+bool legal(int vonx, int vony, int nachx, int nachy, brett_t *brett_p) {
+	int refz[LIST_LEN];
+	int refs[LIST_LEN];
+
+	int nach,index;
+
+	// zug für figur legal?
+	nach = nachx+8 * nachy;
+	erlaubte_zuege(vonx, vony, brett_p, refz, refs );
+
+	for (index=0 ; refz[index] != -1; index++){
+		if (nach == refz[index]) {
+			return TRUE;
+		}
+	}
+
+	for (index=0 ; refs[index] != -1; index++){
+		if (nach == refs[index]) {
+			return TRUE;
+		}
+	}
+
+	return FALSE;
+}
+
+
+bool hat_koenig(farbname_t farbe, brett_t *brett_p){
+    bool hat_koenig=FALSE;
+    int i;
+
+	for (i=0 ; i<64 ; i++){
+		if (farbe* ((*brett_p)[i]) == 6) {
+			hat_koenig=TRUE;
+			break;
+		};
+	}
+
+    return hat_koenig;
+}
