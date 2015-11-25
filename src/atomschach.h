@@ -6,7 +6,7 @@ typedef int brett_t[64];
 typedef enum {
     weiss = 1 , 
     schwarz = -1
-}farbname_t;
+} farbname_t;
 
 typedef char zug_lesbar_t[30];
 

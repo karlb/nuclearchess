@@ -55,10 +55,8 @@ const int malus_schach_und_dran		= 50;
 const int malus_schach_und_nicht_dran	= 4000;
 const int malus_schachmatt		= 10000;
 
-// ############
-// ### subs ###
-// ############
 
+/************************* allowed moves ************************/
 
 void add_capture(int new_capture, brett_t *brett_p,
 				 int schlag[], int *schlag_index_p, int farbe)
@@ -162,34 +160,16 @@ void allowed_move_or_capture(
 
 
 void erlaubte_zuege(int x, int y, brett_t *brett_p, int zug[], int schlag[]){
-    farbname_t farbe;
+    int zug_index = 0;
+    int schlag_index = 0;
 
-    int zug_index=0;
-    int schlag_index=0;
+    int i = x + 8 * y;
+    int figurf = (*brett_p)[i];
+    farbname_t farbe = figurf > 0 ? weiss : schwarz;
 
-    int figurf, figur;
-    int i, I, X, Y, index;
-
-    bool weiss=TRUE;
-
-    umgebung_t *uref_p;
-    int ui, ziel;
-
-    i 		= x + 8*y;
-    figurf 	= (*brett_p)[i];
-    figur	= abs(figurf);
-
-	if (figurf > 0) {
-		farbe = weiss;
-		weiss = TRUE;
-	} else {
-		farbe = schwarz;
-		weiss = FALSE;
-	}
-
-	switch (figur) {
-		case 1: 						// ### Bauer ###
-			if (weiss) {
+	switch (abs(figurf)) {
+		case 1:  // pawn
+			if (farbe == weiss) {
 				if (y > 0) {
 					if	((*brett_p)[i-8] == 0) {		// Bauer Schritt
 						zug[zug_index++] = i-8;
@@ -221,11 +201,11 @@ void erlaubte_zuege(int x, int y, brett_t *brett_p, int zug[], int schlag[]){
 				}
 			}
 			break;
-		case 2: 						// ### Läufer ###
+		case 2:  // bishop
 			allowed_moves_diagonal(x, y, brett_p,
 					zug, &zug_index, schlag, &schlag_index, farbe);
 			break;
-		case 3: 						// ### Springer ###
+		case 3:  // knight
 			if (x < 6) {
 				if (y > 0) {						// Springer rechts oben
 					allowed_move_or_capture(i - 6, brett_p,
@@ -267,34 +247,36 @@ void erlaubte_zuege(int x, int y, brett_t *brett_p, int zug[], int schlag[]){
 				}
 			}
 			break;
-		case 4: 						// ### Turm ###
+		case 4:  // rook
 			allowed_moves_axial(x, y, brett_p,
 					zug, &zug_index, schlag, &schlag_index, farbe);
 			break;
-		case 5: 						// ### Dame ###
+		case 5:  // queen
 			allowed_moves_diagonal(x, y, brett_p,
 					zug, &zug_index, schlag, &schlag_index, farbe);
 			allowed_moves_axial(x, y, brett_p,
 					zug, &zug_index, schlag, &schlag_index, farbe);
 			break;
-		case 6:							// ### König ###
-			uref_p = &(umgebung_liste[i]);
+		case 6:  // king
+			{
+				umgebung_t *uref_p = &(umgebung_liste[i]);
 
-			for (index=0 ; (*uref_p)[index] != -1; index++){
-				ui=(*uref_p)[index];
-				allowed_move_or_capture(ui, brett_p,
-						zug, &zug_index, schlag, &schlag_index, farbe);
+				for (int index=0 ; (*uref_p)[index] != -1; index++){
+					int ui = (*uref_p)[index];
+					allowed_move_or_capture(ui, brett_p,
+							zug, &zug_index, schlag, &schlag_index, farbe);
+				}
 			}
-			// # Rochade
+			// castling
 			if (x == 4) {
-				if 		(y == 7 && weiss) {
+				if 		(y == 7 && farbe == weiss) {
 					if	((*brett_p)[i+1] == 0 && (*brett_p)[i+2] == 0 && (*brett_p)[i+3] == 4) {				// weisse Rochade rechts
 						zug[zug_index++]=i+2;
 					}
 					if 	((*brett_p)[i-1] == 0 && (*brett_p)[i-2] == 0 && (*brett_p)[i-3] == 0 && (*brett_p)[i-4] == 4) {	// weisse Rochade links
 						zug[zug_index++]=i-2;
 					}
-				} else if 	(y == 0 && !weiss) {
+				} else if 	(y == 0 && farbe != weiss) {
 					if	((*brett_p)[i+1] == 0 && (*brett_p)[i+2] == 0 && (*brett_p)[i+3] == -4) {				// schwarze Rochade rechts
 						zug[zug_index++]=i+2;
 					}
@@ -308,9 +290,10 @@ void erlaubte_zuege(int x, int y, brett_t *brett_p, int zug[], int schlag[]){
 			break;
 	}
 
-	zug[zug_index++]=-1;
-	schlag[schlag_index++]=-1;
+	zug[zug_index++] = -1;
+	schlag[schlag_index++] = -1;
 }
+
 
 void punkte(farbname_t farbe, brett_t *brett_p, int *punkte_weiss_p, int *punkte_schwarz_p) {
     int x,y;
