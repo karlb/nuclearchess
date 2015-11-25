@@ -148,6 +148,18 @@ void allowed_moves_axial(
 			zug, zug_index_p, schlag, schlag_index_p, farbe);
 }
 
+void allowed_move_or_capture(
+		int i, brett_t *brett_p,
+		int zug[], int *zug_index_p, int schlag[], int *schlag_index_p,
+		int farbe)
+{
+	if ((*brett_p)[i] == 0) {
+		zug[(*zug_index_p)++] = i;
+	} else {
+		add_capture(i, brett_p, schlag, schlag_index_p, farbe);
+	}
+}
+
 
 void erlaubte_zuege(int x, int y, brett_t *brett_p, int zug[], int schlag[]){
     farbname_t farbe;
@@ -216,74 +228,42 @@ void erlaubte_zuege(int x, int y, brett_t *brett_p, int zug[], int schlag[]){
 		case 3: 						// ### Springer ###
 			if (x < 6) {
 				if (y > 0) {						// Springer rechts oben
-					I = i-6;
-					if 	((*brett_p)[I] == 0) {
-						zug[zug_index++]=I;
-					} else if (farbe*((*brett_p)[I]) < 0) {
-						schlag[schlag_index++]=I;
-					}
+					allowed_move_or_capture(i - 6, brett_p,
+							zug, &zug_index, schlag, &schlag_index, farbe);
 				}
 				if (y < 7) {						// Springer rechts unten
-					I = i+10;
-					if 	((*brett_p)[I] == 0) {
-						zug[zug_index++]=I;
-					} else if (farbe*((*brett_p)[I]) < 0) {
-						schlag[schlag_index++]=I;
-					}
+					allowed_move_or_capture(i + 10, brett_p,
+							zug, &zug_index, schlag, &schlag_index, farbe);
 				}
 			}
 			if (x < 7) {
 				if (y > 1) {						// Springer oben rechts
-					I = i-15;
-					if 	((*brett_p)[I] == 0) {
-						zug[zug_index++]=I;
-					} else if (farbe*((*brett_p)[I]) < 0) {
-						schlag[schlag_index++]=I;
-					}
+					allowed_move_or_capture(i - 15, brett_p,
+							zug, &zug_index, schlag, &schlag_index, farbe);
 				}
 				if (y < 6) {						// Springer unten rechts
-					I = i+17;
-					if 	((*brett_p)[I] == 0) {
-						zug[zug_index++]=I;
-					} else if (farbe*((*brett_p)[I]) < 0) {
-						schlag[schlag_index++]=I;
-					}
+					allowed_move_or_capture(i + 17, brett_p,
+							zug, &zug_index, schlag, &schlag_index, farbe);
 				}
 			}
 			if (x > 1) {
 				if (y > 0) {						// Springer links oben
-					I = i-10;
-					if 	((*brett_p)[I] == 0) {
-						zug[zug_index++]=I;
-					} else if (farbe*((*brett_p)[I]) < 0) {
-						schlag[schlag_index++]=I;
-					}
+					allowed_move_or_capture(i - 10, brett_p,
+							zug, &zug_index, schlag, &schlag_index, farbe);
 				}
 				if (y < 7) {						// Springer links unten
-					I = i+6;
-					if 	((*brett_p)[I] == 0) {
-						zug[zug_index++]=I;
-					} else if (farbe*((*brett_p)[I]) < 0) {
-						schlag[schlag_index++]=I;
-					}
+					allowed_move_or_capture(i + 6, brett_p,
+							zug, &zug_index, schlag, &schlag_index, farbe);
 				}
 			}
 			if (x > 0) {
 				if (y > 1) {						// Springer oben links
-					I = i-17;
-					if 	((*brett_p)[I] == 0) {
-						zug[zug_index++]=I;
-					} else if (farbe*((*brett_p)[I]) < 0) {
-						schlag[schlag_index++]=I;
-					}
+					allowed_move_or_capture(i - 17, brett_p,
+							zug, &zug_index, schlag, &schlag_index, farbe);
 				}
 				if (y < 6) {						// Springer unten links
-					I = i+15;
-					if 	((*brett_p)[I] == 0) {
-						zug[zug_index++]=I;
-					} else if (farbe*((*brett_p)[I]) < 0) {
-						schlag[schlag_index++]=I;
-					}
+					allowed_move_or_capture(i + 15, brett_p,
+							zug, &zug_index, schlag, &schlag_index, farbe);
 				}
 			}
 			break;
