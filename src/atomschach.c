@@ -326,41 +326,51 @@ void punkte(farbname_t farbe, brett_t *brett_p, int *punkte_weiss_p, int *punkte
 			// Zusatztwerte für bestimmte Figuren
 			int zusatzwert = 0;
 			int nebenkoenig_wert = 0;
-			if 	(figur == 1) {				// Bauer Zusatzwert
-				if (weiss) {
-					zusatzwert	= 30-5*y;	// (6-y)*10/2
-					if (y == 1 && (*brett_p)[i-8] == 0) {
-						zusatzwert	+= VERWANDLUNS_BONUS;	// Bauernverwandlung möglich
+			switch (figur) {
+				case 1:  // pawn
+					if (weiss) {
+						zusatzwert	= 30-5*y;	// (6-y)*10/2
+						if (y == 1 && (*brett_p)[i-8] == 0) {
+							// promotion possible
+							zusatzwert += VERWANDLUNS_BONUS;
+						}
+					} else {
+						zusatzwert 	= 5*y-5;	// (y-1)*10/2
+						if (y == 6 && (*brett_p)[x+8] == 0) {
+							// promotion possible
+							zusatzwert += VERWANDLUNS_BONUS;
+						}
 					}
-				} else {
-					zusatzwert 	= 5*y-5;	// (y-1)*10/2
-					if (y == 6 && (*brett_p)[x+8] == 0) {
-						zusatzwert	+= VERWANDLUNS_BONUS;	// Bauernverwandlung möglich
+					break;
+				case 6:  // king
+					if (weiss) {
+						weiss_hat_koenig	= TRUE;
+					} else {
+						schwarz_hat_koenig	= TRUE;
 					}
-				}
-			} else if (figur == 6) { 			// König Zusatzwert
-				if (weiss) {
-					weiss_hat_koenig	= TRUE;
-				} else {
-					schwarz_hat_koenig	= TRUE;
-				}
-				for (int index=0 ; (*uref_p)[index] != -1; index++){
-					int ui = (*uref_p)[index];
-					if 	((*brett_p)[ui] == 0) 			{zusatzwert+=10;}
-					else if (((*brett_p)[i])*((*brett_p)[ui]) < 0) 	{nebenkoenig_wert += grundwert[abs((*brett_p)[ui])];};
-				}
-			} else if (figur == 3) { // # Springer
-				if (weiss) {
-					anzahl_springer_weiss++;
-				} else {
-					anzahl_springer_schwarz++;
-				}
-			} else if (figur == 4) { // # Turm
-				if (weiss) {
-					anzahl_turm_weiss++;
-				} else {
-					anzahl_turm_schwarz++;
-				}
+					for (int index=0 ; (*uref_p)[index] != -1; index++) {
+						int ui = (*uref_p)[index];
+						if 	((*brett_p)[ui] == 0) {
+							zusatzwert+=10;
+						} else if (((*brett_p)[i])*((*brett_p)[ui]) < 0) {
+							nebenkoenig_wert += grundwert[abs((*brett_p)[ui])];
+						};
+					}
+					break;
+				case 3:  // bishop
+					if (weiss) {
+						anzahl_springer_weiss++;
+					} else {
+						anzahl_springer_schwarz++;
+					}
+					break;
+				case 4:  // rook
+					if (weiss) {
+						anzahl_turm_weiss++;
+					} else {
+						anzahl_turm_schwarz++;
+					}
+					break;
 			}
 
 			// mit eigenen Figuren besetzte Nachbarfelder sind schlecht
