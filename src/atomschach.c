@@ -75,11 +75,12 @@ void add_capture(int new_capture, brett_t *brett_p,
 }
 
 
-void allowed_moves_diagonal(int x_change, int y_change, int i_change,
+void allowed_straight_moves(int x_change, int y_change,
 		int x, int y, brett_t *brett_p,
 		int zug[], int *zug_index_p, int schlag[], int *schlag_index_p,
 		int farbe)
 {
+	int i_change = x_change + 8 * y_change;
 	int X = x + x_change;
 	int Y = y + y_change;
 	int I = X + 8 * Y;
@@ -105,6 +106,46 @@ void allowed_moves_diagonal(int x_change, int y_change, int i_change,
 		//fprintf(stderr, ">> %d %d %d\n", X, Y, I);
 		add_capture(I, brett_p, schlag, schlag_index_p, farbe);
 	}
+}
+
+
+void allowed_moves_diagonal(
+		int x, int y, brett_t *brett_p,
+		int zug[], int *zug_index_p, int schlag[], int *schlag_index_p,
+		int farbe)
+{
+	// up-right
+	allowed_straight_moves(+1, -1, x, y, brett_p,
+			zug, zug_index_p, schlag, schlag_index_p, farbe);
+	// down-right
+	allowed_straight_moves(+1, +1, x, y, brett_p,
+			zug, zug_index_p, schlag, schlag_index_p, farbe);
+	// up-left
+	allowed_straight_moves(-1, -1, x, y, brett_p,
+			zug, zug_index_p, schlag, schlag_index_p, farbe);
+	// down-left
+	allowed_straight_moves(-1, +1, x, y, brett_p,
+			zug, zug_index_p, schlag, schlag_index_p, farbe);
+}
+
+
+void allowed_moves_axial(
+		int x, int y, brett_t *brett_p,
+		int zug[], int *zug_index_p, int schlag[], int *schlag_index_p,
+		int farbe)
+{
+	// up
+	allowed_straight_moves( 0, -1, x, y, brett_p,
+			zug, zug_index_p, schlag, schlag_index_p, farbe);
+	// down
+	allowed_straight_moves( 0, +1, x, y, brett_p,
+			zug, zug_index_p, schlag, schlag_index_p, farbe);
+	// left
+	allowed_straight_moves(-1,  0, x, y, brett_p,
+			zug, zug_index_p, schlag, schlag_index_p, farbe);
+	// right
+	allowed_straight_moves(+1,  0, x, y, brett_p,
+			zug, zug_index_p, schlag, schlag_index_p, farbe);
 }
 
 
@@ -169,17 +210,7 @@ void erlaubte_zuege(int x, int y, brett_t *brett_p, int zug[], int schlag[]){
 			}
 			break;
 		case 2: 						// ### Läufer ###
-			// up-right
-			allowed_moves_diagonal(+1, -1, -7, x, y, brett_p,
-					zug, &zug_index, schlag, &schlag_index, farbe);
-			// down-right
-			allowed_moves_diagonal(+1, +1, +9, x, y, brett_p,
-					zug, &zug_index, schlag, &schlag_index, farbe);
-			// up-left
-			allowed_moves_diagonal(-1, -1, -9, x, y, brett_p,
-					zug, &zug_index, schlag, &schlag_index, farbe);
-			// down-left
-			allowed_moves_diagonal(-1, +1, +7, x, y, brett_p,
+			allowed_moves_diagonal(x, y, brett_p,
 					zug, &zug_index, schlag, &schlag_index, farbe);
 			break;
 		case 3: 						// ### Springer ###
@@ -257,146 +288,14 @@ void erlaubte_zuege(int x, int y, brett_t *brett_p, int zug[], int schlag[]){
 			}
 			break;
 		case 4: 						// ### Turm ###
-			I = i-8;							// Turm oben
-			Y = y-1;
-			while (Y >= 0 && (*brett_p)[I] == 0) {
-				zug[zug_index++]=I;
-				Y--;
-				I = I - 8;
-			}
-			if (Y >= 0 && farbe*((*brett_p)[I]) < 0) {
-				schlag[schlag_index++]=I;
-			}
-
-			I = i+1;							// Turm rechts
-			X = x+1;
-			while (X <= 7 && (*brett_p)[I] == 0) {
-				zug[zug_index++]=I;
-				X++;
-				I = I + 1;
-			}
-			if (X <= 7 && farbe*((*brett_p)[I]) < 0) {
-				schlag[schlag_index++]=I;
-			}
-
-			I = i+8;							// Turm unten
-			Y = y+1;
-			while (Y <= 7 && (*brett_p)[I] == 0) {
-				zug[zug_index++]=I;
-				Y++;
-				I = I + 8;
-			}
-			if (Y <= 7 && farbe*((*brett_p)[I]) < 0) {
-				schlag[schlag_index++]=I;
-			}
-
-			I = i-1;							// Turm links
-			X = x-1;
-			while (X >= 0 && (*brett_p)[I] == 0) {
-				zug[zug_index++]=I;
-				X--;
-				I = I - 1;
-			}
-			if (X >= 0 && farbe*((*brett_p)[I]) < 0) {
-				schlag[schlag_index++]=I;
-			}
+			allowed_moves_axial(x, y, brett_p,
+					zug, &zug_index, schlag, &schlag_index, farbe);
 			break;
 		case 5: 						// ### Dame ###
-			I = i-7;							// Dame oben rechts
-			X = x+1;
-			Y = y-1;
-			while (X <= 7 && Y >= 0 && (*brett_p)[I] == 0) {
-				zug[zug_index++]=I;
-				X++;
-				Y--;
-				I = I - 7;
-			}
-			if (X <= 7 && Y >= 0 && farbe*((*brett_p)[I]) < 0) {
-				schlag[schlag_index++]=I;
-			}
-
-			I = i+9;							// Dame unten rechts
-			X = x+1;
-			Y = y+1;
-			while (X <= 7 && Y <= 7 && (*brett_p)[I] == 0) {
-				zug[zug_index++]=I;
-				X++;
-				Y++;
-				I = I + 9;
-			}
-			if (X <= 7 && Y <= 7 && farbe*((*brett_p)[I]) < 0) {
-				schlag[schlag_index++]=I;
-			}
-
-			I = i-9;							// Dame oben links
-			X = x-1;
-			Y = y-1;
-			while (X >= 0 && Y >= 0 && (*brett_p)[I] == 0) {
-				zug[zug_index++]=I;
-				X--;
-				Y--;
-				I = I - 9;
-			}
-			if (X >= 0 && Y >= 0 && farbe*((*brett_p)[I]) < 0) {
-				schlag[schlag_index++]=I;
-			}
-
-			I = i+7;							// Dame unten links
-			X = x-1;
-			Y = y+1;
-			while (X >= 0 && Y <= 7 && (*brett_p)[I] == 0) {
-				zug[zug_index++]=I;
-				X--;
-				Y++;
-				I = I + 7;
-			}
-			if (X >= 0 && Y <= 7 && farbe*((*brett_p)[I]) < 0) {
-				schlag[schlag_index++]=I;
-			}
-
-			I = i-8;							// Dame oben
-			Y = y-1;
-			while (Y >= 0 && (*brett_p)[I] == 0) {
-				zug[zug_index++]=I;
-				Y--;
-				I = I - 8;
-			}
-			if (Y >= 0 && farbe*((*brett_p)[I]) < 0) {
-				schlag[schlag_index++]=I;
-			}
-
-			I = i+1;							// Dame rechts
-			X = x+1;
-			while (X <= 7 && (*brett_p)[I] == 0) {
-				zug[zug_index++]=I;
-				X++;
-				I = I + 1;
-			}
-			if (X <= 7 && farbe*((*brett_p)[I]) < 0) {
-				schlag[schlag_index++]=I;
-			}
-
-			I = i+8;							// Dame unten
-			Y = y+1;
-			while (Y <= 7 && (*brett_p)[I] == 0) {
-				zug[zug_index++]=I;
-				Y++;
-				I = I + 8;
-			}
-			if (Y <= 7 && farbe*((*brett_p)[I]) < 0) {
-				schlag[schlag_index++]=I;
-			}
-
-			I = i-1;							// Dame links
-			X = x-1;
-			while (X >= 0 && (*brett_p)[I] == 0) {
-				zug[zug_index++]=I;
-				X--;
-				I = I - 1;
-			}
-			if (X >= 0 && farbe*((*brett_p)[I]) < 0) {
-				schlag[schlag_index++]=I;
-			}
+			allowed_moves_diagonal(x, y, brett_p,
+					zug, &zug_index, schlag, &schlag_index, farbe);
+			allowed_moves_axial(x, y, brett_p,
+					zug, &zug_index, schlag, &schlag_index, farbe);
 			break;
 		case 6:							// ### König ###
 			uref_p = &(umgebung_liste[i]);
