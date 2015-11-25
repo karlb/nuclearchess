@@ -296,9 +296,6 @@ void erlaubte_zuege(int x, int y, brett_t *brett_p, int zug[], int schlag[]){
 
 
 void punkte(farbname_t farbe, brett_t *brett_p, int *punkte_weiss_p, int *punkte_schwarz_p) {
-    int x,y;
-    int i,index,index2,index3;
-    int figur, figurf;
     bool weiss;
     int drohwert, zusatzwert, gesamtwert;
     int nebenkoenig_wert;
@@ -332,10 +329,10 @@ void punkte(farbname_t farbe, brett_t *brett_p, int *punkte_weiss_p, int *punkte
     int eigener_koenig_in_schlagbereich = 0;
     int schlagfigurremisf = 0;
 
-	for ( y=0 ; y<8 ; y++) {
-		for ( x=0 ; x<8 ; x++) {
-			i = x+8*y;
-			figurf = (*brett_p)[i];
+	for (int y=0 ; y<8 ; y++) {
+		for (int x=0 ; x<8 ; x++) {
+			int i = x+8*y;
+			int figurf = (*brett_p)[i];
 
 			if (figurf*farbe > 0) {
 				dran	= TRUE;
@@ -344,8 +341,8 @@ void punkte(farbname_t farbe, brett_t *brett_p, int *punkte_weiss_p, int *punkte
 			}
 
 			if (figurf != 0) {
+				int figur	= abs(figurf);
 				anzahl_figuren++;
-				figur	= abs(figurf);
 				if (figurf > 0) {
 					weiss = TRUE;
 				} else {
@@ -374,7 +371,7 @@ void punkte(farbname_t farbe, brett_t *brett_p, int *punkte_weiss_p, int *punkte
 					} else {
 						schwarz_hat_koenig	= TRUE;
 					}
-					for (index=0 ; (*uref_p)[index] != -1; index++){
+					for (int index=0 ; (*uref_p)[index] != -1; index++){
 						ui= (*uref_p)[index];
 						if 	((*brett_p)[ui] == 0) 			{zusatzwert+=10;}
 						else if (((*brett_p)[i])*((*brett_p)[ui]) < 0) 	{nebenkoenig_wert += grundwert[abs((*brett_p)[ui])];};
@@ -395,7 +392,7 @@ void punkte(farbname_t farbe, brett_t *brett_p, int *punkte_weiss_p, int *punkte
 
 				// mit eigenen Figuren besetzte Nachbarfelder sind schlecht
 				malus = 0;
-				for (index=0 ; (*uref_p)[index] != -1; index++){
+				for (int index=0 ; (*uref_p)[index] != -1; index++){
 					ui= (*uref_p)[index];
 					if (figurf*((*brett_p)[ui]) > 0) {malus++;};
 				}
@@ -404,6 +401,7 @@ void punkte(farbname_t farbe, brett_t *brett_p, int *punkte_weiss_p, int *punkte
 				// Felder bedrohen ist gut
 				if (dran) {
 					//laenge von refz
+					int index;
 					for (index=0 ; refz[index] != -1; index++){};
 					drohwert 	= index*10;
 				} else {
@@ -412,7 +410,7 @@ void punkte(farbname_t farbe, brett_t *brett_p, int *punkte_weiss_p, int *punkte
 
 				// Schlagmöglichkeit ist gut
 				schlagpunktemax = 0;
-				for (index=0 ; refs[index] != -1; index++){
+				for (int index=0 ; refs[index] != -1; index++){
 					schlag=refs[index];
 					if (dran) {
 						if (abs(x-x_koordinate[schlag]) > 1 || abs(y-y_koordinate[schlag]) > 1) {
@@ -423,7 +421,7 @@ void punkte(farbname_t farbe, brett_t *brett_p, int *punkte_weiss_p, int *punkte
 					}
 
 					urefs_p = &(umgebung_liste[schlag+64]);
-					for (index2=0 ; (*urefs_p)[index2] != -1; index2++){
+					for (int index2=0 ; (*urefs_p)[index2] != -1; index2++){
 						schlagfigurf = (*brett_p)[(*urefs_p)[index2]];
 						schlagfigur  = abs(schlagfigurf);
 						if (dran) {
@@ -436,7 +434,7 @@ void punkte(farbname_t farbe, brett_t *brett_p, int *punkte_weiss_p, int *punkte
 
 						if (schlagfigur == 6 && figurf*schlagfigurf < 0) {
 							eigener_koenig_in_schlagbereich = 0;
-							for (index3=0 ; (*urefs_p)[index3] != -1; index3++){
+							for (int index3=0 ; (*urefs_p)[index3] != -1; index3++){
 								schlagfigurremisf = (*brett_p)[(*urefs_p)[index3]];
 								if (abs(schlagfigurremisf) == 6 && schlagfigurremisf*figurf > 0) {
 									eigener_koenig_in_schlagbereich = 1;
