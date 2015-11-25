@@ -301,18 +301,12 @@ void punkte(farbname_t farbe, brett_t *brett_p, int *punkte_weiss_p, int *punkte
     int nebenkoenig_wert;
     int schlagpunkte = 0;
     int schlagpunktemax;
-    int malus;
-    bool dran;
 
     int refz[LIST_LEN];
     int refs[LIST_LEN];
 
-    int schlag;
     umgebung_t *uref_p;
-    int ui;
     umgebung_t *urefs_p;
-
-    int schlagfigurf, schlagfigur;
 
     int punkte_weiss	= 0;
     int punkte_schwarz	= 0;
@@ -333,147 +327,144 @@ void punkte(farbname_t farbe, brett_t *brett_p, int *punkte_weiss_p, int *punkte
 		for (int x=0 ; x<8 ; x++) {
 			int i = x+8*y;
 			int figurf = (*brett_p)[i];
+			bool dran = figurf * farbe > 0;
 
-			if (figurf*farbe > 0) {
-				dran	= TRUE;
-			} else {
-				dran	= FALSE;
+			if (figurf == 0) {
+				continue;
 			}
 
-			if (figurf != 0) {
-				int figur	= abs(figurf);
-				anzahl_figuren++;
-				if (figurf > 0) {
-					weiss = TRUE;
-				} else {
-					weiss = FALSE;
-				}
+			int figur	= abs(figurf);
+			anzahl_figuren++;
+			if (figurf > 0) {
+				weiss = TRUE;
+			} else {
+				weiss = FALSE;
+			}
 
-				uref_p = &(umgebung_liste[i]);
-				// Zusatztwerte für bestimmte Figuren
-				zusatzwert 		= 0;
-				nebenkoenig_wert 	= 0;
-				if 	(figur == 1) {				// Bauer Zusatzwert
-					if (weiss) {
-						zusatzwert	= 30-5*y;	// (6-y)*10/2
-						if (y == 1 && (*brett_p)[i-8] == 0) {
-							zusatzwert	+= VERWANDLUNS_BONUS;	// Bauernverwandlung möglich
-						}
-					} else {
-						zusatzwert 	= 5*y-5;	// (y-1)*10/2
-						if (y == 6 && (*brett_p)[x+8] == 0) {
-							zusatzwert	+= VERWANDLUNS_BONUS;	// Bauernverwandlung möglich
-						}
-					}
-				} else if (figur == 6) { 			// König Zusatzwert
-					if (weiss) {
-						weiss_hat_koenig	= TRUE;
-					} else {
-						schwarz_hat_koenig	= TRUE;
-					}
-					for (int index=0 ; (*uref_p)[index] != -1; index++){
-						ui= (*uref_p)[index];
-						if 	((*brett_p)[ui] == 0) 			{zusatzwert+=10;}
-						else if (((*brett_p)[i])*((*brett_p)[ui]) < 0) 	{nebenkoenig_wert += grundwert[abs((*brett_p)[ui])];};
-					}
-				} else if (figur == 3) { // # Springer
-					if (weiss) {
-						anzahl_springer_weiss++;
-					} else {
-						anzahl_springer_schwarz++;
-					}
-				} else if (figur == 4) { // # Turm
-					if (weiss) {
-						anzahl_turm_weiss++;
-					} else {
-						anzahl_turm_schwarz++;
-					}
-				}
-
-				// mit eigenen Figuren besetzte Nachbarfelder sind schlecht
-				malus = 0;
-				for (int index=0 ; (*uref_p)[index] != -1; index++){
-					ui= (*uref_p)[index];
-					if (figurf*((*brett_p)[ui]) > 0) {malus++;};
-				}
-				erlaubte_zuege(x, y, brett_p, refz , refs);
-
-				// Felder bedrohen ist gut
-				if (dran) {
-					//laenge von refz
-					int index;
-					for (index=0 ; refz[index] != -1; index++){};
-					drohwert 	= index*10;
-				} else {
-					drohwert = 0;
-				}
-
-				// Schlagmöglichkeit ist gut
-				schlagpunktemax = 0;
-				for (int index=0 ; refs[index] != -1; index++){
-					schlag=refs[index];
-					if (dran) {
-						if (abs(x-x_koordinate[schlag]) > 1 || abs(y-y_koordinate[schlag]) > 1) {
-							schlagpunkte 	= -grundwert[figur];
-						} else {
-							schlagpunkte 	= 0;
-						}
-					}
-
-					urefs_p = &(umgebung_liste[schlag+64]);
-					for (int index2=0 ; (*urefs_p)[index2] != -1; index2++){
-						schlagfigurf = (*brett_p)[(*urefs_p)[index2]];
-						schlagfigur  = abs(schlagfigurf);
-						if (dran) {
-							if (figurf*schlagfigurf < 0) {
-								schlagpunkte += grundwert[schlagfigur];
-							} else {
-								schlagpunkte -= grundwert[schlagfigur];
-							}
-						}
-
-						if (schlagfigur == 6 && figurf*schlagfigurf < 0) {
-							eigener_koenig_in_schlagbereich = 0;
-							for (int index3=0 ; (*urefs_p)[index3] != -1; index3++){
-								schlagfigurremisf = (*brett_p)[(*urefs_p)[index3]];
-								if (abs(schlagfigurremisf) == 6 && schlagfigurremisf*figurf > 0) {
-									eigener_koenig_in_schlagbereich = 1;
-									break;
-								}
-							}
-
-							if (!eigener_koenig_in_schlagbereich) {
-								if (dran) {  // fremder König kann sofort geschlagen werden
-									if (weiss) {
-										punkte_schwarz	-= malus_schach_und_nicht_dran;
-									} else {
-										punkte_weiss	-= malus_schach_und_nicht_dran;
-									}
-								} else {  // fremder König im Schach kann aber nicht sofort geschlagen werden
-									if (weiss) {
-										punkte_schwarz	-= malus_schach_und_dran;
-									} else {
-										punkte_weiss	-= malus_schach_und_dran;
-									}
-								}
-							}
-						}
-					}
-					if (dran && schlagpunkte > schlagpunktemax) {
-						schlagpunktemax = schlagpunkte;
-					}
-				}
-				if (dran && schlagpunktemax > 0) {
-					drohwert += schlagpunktemax;
-				}
-
-				gesamtwert = (grundwert[figur]*(16-malus))/16 + zusatzwert;
-
+			uref_p = &(umgebung_liste[i]);
+			// Zusatztwerte für bestimmte Figuren
+			zusatzwert 		= 0;
+			nebenkoenig_wert 	= 0;
+			if 	(figur == 1) {				// Bauer Zusatzwert
 				if (weiss) {
-					punkte_weiss	+= gesamtwert + (drohwert - nebenkoenig_wert)/2;
+					zusatzwert	= 30-5*y;	// (6-y)*10/2
+					if (y == 1 && (*brett_p)[i-8] == 0) {
+						zusatzwert	+= VERWANDLUNS_BONUS;	// Bauernverwandlung möglich
+					}
 				} else {
-					punkte_schwarz	+= gesamtwert + (drohwert - nebenkoenig_wert)/2;
+					zusatzwert 	= 5*y-5;	// (y-1)*10/2
+					if (y == 6 && (*brett_p)[x+8] == 0) {
+						zusatzwert	+= VERWANDLUNS_BONUS;	// Bauernverwandlung möglich
+					}
 				}
+			} else if (figur == 6) { 			// König Zusatzwert
+				if (weiss) {
+					weiss_hat_koenig	= TRUE;
+				} else {
+					schwarz_hat_koenig	= TRUE;
+				}
+				for (int index=0 ; (*uref_p)[index] != -1; index++){
+					int ui = (*uref_p)[index];
+					if 	((*brett_p)[ui] == 0) 			{zusatzwert+=10;}
+					else if (((*brett_p)[i])*((*brett_p)[ui]) < 0) 	{nebenkoenig_wert += grundwert[abs((*brett_p)[ui])];};
+				}
+			} else if (figur == 3) { // # Springer
+				if (weiss) {
+					anzahl_springer_weiss++;
+				} else {
+					anzahl_springer_schwarz++;
+				}
+			} else if (figur == 4) { // # Turm
+				if (weiss) {
+					anzahl_turm_weiss++;
+				} else {
+					anzahl_turm_schwarz++;
+				}
+			}
+
+			// mit eigenen Figuren besetzte Nachbarfelder sind schlecht
+			int malus = 0;
+			for (int index=0 ; (*uref_p)[index] != -1; index++){
+				int ui = (*uref_p)[index];
+				if (figurf*((*brett_p)[ui]) > 0) {malus++;};
+			}
+			erlaubte_zuege(x, y, brett_p, refz , refs);
+
+			// Felder bedrohen ist gut
+			if (dran) {
+				//laenge von refz
+				int index;
+				for (index=0 ; refz[index] != -1; index++){};
+				drohwert 	= index*10;
+			} else {
+				drohwert = 0;
+			}
+
+			// Schlagmöglichkeit ist gut
+			schlagpunktemax = 0;
+			for (int index=0 ; refs[index] != -1; index++){
+				int schlag = refs[index];
+				if (dran) {
+					if (abs(x-x_koordinate[schlag]) > 1 || abs(y-y_koordinate[schlag]) > 1) {
+						schlagpunkte 	= -grundwert[figur];
+					} else {
+						schlagpunkte 	= 0;
+					}
+				}
+
+				urefs_p = &(umgebung_liste[schlag+64]);
+				for (int index2=0 ; (*urefs_p)[index2] != -1; index2++){
+					int schlagfigurf = (*brett_p)[(*urefs_p)[index2]];
+					int schlagfigur  = abs(schlagfigurf);
+					if (dran) {
+						if (figurf*schlagfigurf < 0) {
+							schlagpunkte += grundwert[schlagfigur];
+						} else {
+							schlagpunkte -= grundwert[schlagfigur];
+						}
+					}
+
+					if (schlagfigur == 6 && figurf*schlagfigurf < 0) {
+						eigener_koenig_in_schlagbereich = 0;
+						for (int index3=0 ; (*urefs_p)[index3] != -1; index3++){
+							schlagfigurremisf = (*brett_p)[(*urefs_p)[index3]];
+							if (abs(schlagfigurremisf) == 6 && schlagfigurremisf*figurf > 0) {
+								eigener_koenig_in_schlagbereich = 1;
+								break;
+							}
+						}
+
+						if (!eigener_koenig_in_schlagbereich) {
+							if (dran) {  // fremder König kann sofort geschlagen werden
+								if (weiss) {
+									punkte_schwarz	-= malus_schach_und_nicht_dran;
+								} else {
+									punkte_weiss	-= malus_schach_und_nicht_dran;
+								}
+							} else {  // fremder König im Schach kann aber nicht sofort geschlagen werden
+								if (weiss) {
+									punkte_schwarz	-= malus_schach_und_dran;
+								} else {
+									punkte_weiss	-= malus_schach_und_dran;
+								}
+							}
+						}
+					}
+				}
+				if (dran && schlagpunkte > schlagpunktemax) {
+					schlagpunktemax = schlagpunkte;
+				}
+			}
+			if (dran && schlagpunktemax > 0) {
+				drohwert += schlagpunktemax;
+			}
+
+			gesamtwert = (grundwert[figur]*(16-malus))/16 + zusatzwert;
+
+			if (weiss) {
+				punkte_weiss	+= gesamtwert + (drohwert - nebenkoenig_wert)/2;
+			} else {
+				punkte_schwarz	+= gesamtwert + (drohwert - nebenkoenig_wert)/2;
 			}
 		}
 	}
