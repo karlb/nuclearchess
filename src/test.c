@@ -66,7 +66,7 @@ void sub_main (farbname_t farbe,int tiefe,brett_t *brett_p) {
 }
 
 
-int main() {
+void test() {
 	int farbe = 1;
 	int tiefe = 1;
 
@@ -78,3 +78,23 @@ int main() {
 	newGame(1);
     sub_main(farbe, tiefe, &brett);
 }
+
+void bench() {
+	int farbe = 1;
+	int tiefe = 3;
+
+	newGame(0);
+    sub_main(farbe, tiefe, &brett);
+}
+
+
+int main(int argc, char *argv[]) {
+	if (argc == 2) {
+		if (strcmp(argv[1], "bench") == 0) {
+			bench();
+		}
+	} else {
+		test();
+	}
+}
+
