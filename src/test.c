@@ -1,10 +1,7 @@
 #include "atomschach.c"
 
 void sub_main (farbname_t farbe,int tiefe,brett_t *brett_p) {
-	int i;
 	zug_t zug;
-	zug_lesbar_t zuglesbar, end_text;
-	bool letzter_zug_mensch;
 	bool computer_gegen_computer = TRUE;
 
 	while (TRUE){
