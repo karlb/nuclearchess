@@ -312,20 +312,19 @@ void punkte(farbname_t farbe, brett_t *brett_p, int *punkte_weiss_p, int *punkte
 		for (int x=0 ; x<8 ; x++) {
 			int i = x + 8*y;
 			int figurf = (*brett_p)[i];
-			bool dran = figurf * farbe > 0;
-			int drohwert, zusatzwert, gesamtwert;
 
 			if (figurf == 0) {
 				continue;
 			}
-
-			int figur	= abs(figurf);
-			bool weiss = figurf > 0;
 			anzahl_figuren++;
+
+			bool dran = figurf * farbe > 0;
+			int figur = abs(figurf);
+			bool weiss = figurf > 0;
 
 			umgebung_t *uref_p = &(umgebung_liste[i]);
 			// Zusatztwerte für bestimmte Figuren
-			zusatzwert 		= 0;
+			int zusatzwert = 0;
 			int nebenkoenig_wert = 0;
 			if 	(figur == 1) {				// Bauer Zusatzwert
 				if (weiss) {
@@ -375,11 +374,12 @@ void punkte(farbname_t farbe, brett_t *brett_p, int *punkte_weiss_p, int *punkte
 			erlaubte_zuege(x, y, brett_p, refz , refs);
 
 			// Felder bedrohen ist gut
+			int drohwert;
 			if (dran) {
 				//laenge von refz
 				int index;
 				for (index=0 ; refz[index] != -1; index++){};
-				drohwert 	= index*10;
+				drohwert = index * 10;
 			} else {
 				drohwert = 0;
 			}
@@ -444,7 +444,7 @@ void punkte(farbname_t farbe, brett_t *brett_p, int *punkte_weiss_p, int *punkte
 				drohwert += schlagpunktemax;
 			}
 
-			gesamtwert = (grundwert[figur]*(16-malus))/16 + zusatzwert;
+			int gesamtwert = (grundwert[figur]*(16-malus))/16 + zusatzwert;
 
 			if (weiss) {
 				punkte_weiss	+= gesamtwert + (drohwert - nebenkoenig_wert)/2;
