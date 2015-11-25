@@ -282,12 +282,8 @@ void erlaubte_zuege(int x, int y, brett_t *brett_p, int zug[], int schlag[]){
 
 			for (index=0 ; (*uref_p)[index] != -1; index++){
 				ui=(*uref_p)[index];
-				ziel = (*brett_p)[ui];
-				if 		(ziel == 0)		{
-					zug[zug_index++]=ui;
-				} else if 	(farbe*ziel < 0) 	{
-					schlag[schlag_index++]=ui;
-				}
+				allowed_move_or_capture(ui, brett_p,
+						zug, &zug_index, schlag, &schlag_index, farbe);
 			}
 			// # Rochade
 			if (x == 4) {
@@ -307,7 +303,6 @@ void erlaubte_zuege(int x, int y, brett_t *brett_p, int zug[], int schlag[]){
 					}
 				}
 			}
-
 			break;
 		default :
 			break;
