@@ -81,7 +81,7 @@ void test() {
 
 void bench() {
 	int farbe = 1;
-	int tiefe = 3;
+	int tiefe = 4;
 
 	newGame(0);
     sub_main(farbe, tiefe, &brett);

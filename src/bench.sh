@@ -1,1 +1,1 @@
-gcc test.c && time ./a.out bench
+gcc -O2 test.c && time ./a.out bench
