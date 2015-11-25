@@ -42,7 +42,6 @@ umgebung_t umgebung_liste[128];
 int x_koordinate[64];
 int y_koordinate[64];
 
-int tiefe;
 bool immune_pawns;
 
 brett_t brett_start = {-4,-3,-2,-5,-6,-2,-3,-4, -1,-1,-1,-1,-1,-1,-1,-1,  0, 0, 0, 0, 0, 0, 0, 0,  0, 0, 0, 0, 0, 0, 0, 0,  0, 0, 0, 0, 0, 0, 0, 0,  0, 0, 0, 0, 0, 0, 0, 0,  1, 1, 1, 1, 1, 1, 1, 1,  4, 3, 2, 5, 6, 2, 3, 4};
@@ -1203,7 +1202,6 @@ void newGame(bool _immune_pawns) {
 	// #####################
 
 	mensch_farbe = 1;			// weiss
-	tiefe = 0;				// Tiefe in Halbzügen (>=0)
 
 	// ############
 	// ### init ###
