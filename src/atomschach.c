@@ -323,7 +323,8 @@ void punkte(farbname_t farbe, brett_t *brett_p, int *punkte_weiss_p, int *punkte
 			bool weiss = figurf > 0;
 
 			umgebung_t *uref_p = &(umgebung_liste[i]);
-			// Zusatztwerte für bestimmte Figuren
+
+			// Additional points for specific pieces
 			int zusatzwert = 0;
 			int nebenkoenig_wert = 0;
 			switch (figur) {
@@ -373,37 +374,38 @@ void punkte(farbname_t farbe, brett_t *brett_p, int *punkte_weiss_p, int *punkte
 					break;
 			}
 
-			// mit eigenen Figuren besetzte Nachbarfelder sind schlecht
+			// Adjacent fields with own pieces are bad
+			// TODO: probably not if pawns are immutable
 			int malus = 0;
 			for (int index=0 ; (*uref_p)[index] != -1; index++){
 				int ui = (*uref_p)[index];
-				if (figurf*((*brett_p)[ui]) > 0) {malus++;};
+				if (figurf*((*brett_p)[ui]) > 0) {
+					malus++;
+				};
 			}
+
 			int refz[LIST_LEN];
 			int refs[LIST_LEN];
 			erlaubte_zuege(x, y, brett_p, refz , refs);
 
-			// Felder bedrohen ist gut
-			int drohwert;
+			// Threatening fields is good
+			int drohwert = 0;
 			if (dran) {
-				//laenge von refz
-				int index;
-				for (index=0 ; refz[index] != -1; index++){};
-				drohwert = index * 10;
-			} else {
-				drohwert = 0;
+				for (int index=0; refz[index] != -1; index++){
+					drohwert += 10;
+				}
 			}
 
-			// Schlagmöglichkeit ist gut
+			// Taking pieces is good
 			int schlagpunktemax = 0;
-			for (int index=0 ; refs[index] != -1; index++){
+			int king_threat_score = 0;
+			for (int index=0; refs[index] != -1; index++){
 				int schlag = refs[index];
 				int schlagpunkte = 0;
 				if (dran) {
 					if (abs(x-x_koordinate[schlag]) > 1 || abs(y-y_koordinate[schlag]) > 1) {
+						// TODO: why?
 						schlagpunkte 	= -grundwert[figur];
-					} else {
-						schlagpunkte 	= 0;
 					}
 				}
 
@@ -415,10 +417,12 @@ void punkte(farbname_t farbe, brett_t *brett_p, int *punkte_weiss_p, int *punkte
 						if (figurf*schlagfigurf < 0) {
 							schlagpunkte += grundwert[schlagfigur];
 						} else {
+							// TODO: why?
 							schlagpunkte -= grundwert[schlagfigur];
 						}
 					}
 
+					// taken piece is opponent's king
 					if (schlagfigur == 6 && figurf*schlagfigurf < 0) {
 						int eigener_koenig_in_schlagbereich = 0;
 						for (int index3=0 ; (*urefs_p)[index3] != -1; index3++){
@@ -430,18 +434,12 @@ void punkte(farbname_t farbe, brett_t *brett_p, int *punkte_weiss_p, int *punkte
 						}
 
 						if (!eigener_koenig_in_schlagbereich) {
-							if (dran) {  // fremder König kann sofort geschlagen werden
-								if (weiss) {
-									punkte_schwarz	-= malus_schach_und_nicht_dran;
-								} else {
-									punkte_weiss	-= malus_schach_und_nicht_dran;
-								}
-							} else {  // fremder König im Schach kann aber nicht sofort geschlagen werden
-								if (weiss) {
-									punkte_schwarz	-= malus_schach_und_dran;
-								} else {
-									punkte_weiss	-= malus_schach_und_dran;
-								}
+							if (dran) {
+								// fremder König kann sofort geschlagen werden
+								king_threat_score -= malus_schach_und_nicht_dran;
+							} else {
+								// fremder König im Schach kann aber nicht sofort geschlagen werden
+								king_threat_score -= malus_schach_und_dran;
 							}
 						}
 					}
@@ -450,16 +448,18 @@ void punkte(farbname_t farbe, brett_t *brett_p, int *punkte_weiss_p, int *punkte
 					schlagpunktemax = schlagpunkte;
 				}
 			}
-			if (dran && schlagpunktemax > 0) {
-				drohwert += schlagpunktemax;
-			}
+			drohwert += schlagpunktemax;
 
-			int gesamtwert = (grundwert[figur]*(16-malus))/16 + zusatzwert;
+			int gesamtwert = (
+					grundwert[figur] * (16-malus)
+				) / 16 + zusatzwert + (drohwert - nebenkoenig_wert) / 2;
 
 			if (weiss) {
-				punkte_weiss	+= gesamtwert + (drohwert - nebenkoenig_wert)/2;
+				punkte_weiss += gesamtwert;
+				punkte_schwarz += king_threat_score;
 			} else {
-				punkte_schwarz	+= gesamtwert + (drohwert - nebenkoenig_wert)/2;
+				punkte_schwarz += gesamtwert;
+				punkte_weiss += king_threat_score;
 			}
 		}
 	}
