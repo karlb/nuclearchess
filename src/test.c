@@ -68,11 +68,11 @@ void test() {
 	int tiefe = 1;
 
 	printf("classic\n");
-	newGame(0);
+	newGame(FALSE, FALSE);
     sub_main(farbe, tiefe, &brett);
 
 	printf("\nimmune_pawns\n");
-	newGame(1);
+	newGame(TRUE, FALSE);
     sub_main(farbe, tiefe, &brett);
 }
 
@@ -80,7 +80,7 @@ void bench() {
 	int farbe = 1;
 	int tiefe = 4;
 
-	newGame(0);
+	newGame(FALSE, FALSE);
     sub_main(farbe, tiefe, &brett);
 }
 

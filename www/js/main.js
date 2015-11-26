@@ -161,9 +161,10 @@ $(document).ready(function(){
     var move_end_callbacks = [];
     var player_color = 'white';
     var immune_pawns = false;
+    var dead_squares = false;
 
     function new_game() {
-        _newGame(immune_pawns);
+        _newGame(immune_pawns, dead_squares);
         update_html_board(board, false);
         game_over = false;
         clear_winner();
@@ -256,7 +257,13 @@ $(document).ready(function(){
         show_nuclear_strike();
         check_game_over();
         waiting_for_player = true;
-        history.replaceState({}, '', '#' + board.fen() + '-' + thinking_depth + '-' + player_color + '-' + (immune_pawns ? 't' : 'f'));
+        history.replaceState({}, '',
+            '#' + board.fen() +
+            '-' + thinking_depth +
+            '-' + player_color +
+            '-' + (immune_pawns ? 't' : 'f') +
+            '-' + (dead_squares ? 't' : 'f')
+        );
 
         $.each(move_end_callbacks, function(i, callback) {
             callback();
@@ -317,6 +324,7 @@ $(document).ready(function(){
         thinking_depth = url_data[1];
         player_color = url_data[2];
         immune_pawns = url_data[3] === 't';
+        dead_squares = url_data[4] === 't';
         new_game();
         board.position(fen, false);
         position_to_board(board.position());
@@ -326,10 +334,12 @@ $(document).ready(function(){
     }
     $('#difficulty').val(thinking_depth);
     $('#immune_pawns').val(immune_pawns);
+    $('#dead_squares').val(dead_squares);
 
     $('#play').click(function () {
         player_color = $('input[name=play-as]:checked').val();
         immune_pawns = $('#immune_pawns').is(':checked');
+        dead_squares = $('#dead_squares').is(':checked');
         new_game();
         if ($('#shuffle').is(':checked')) {
             shuffle(board, 8);
