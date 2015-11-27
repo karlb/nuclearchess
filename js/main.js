@@ -260,7 +260,7 @@ $(document).ready(function(){
         history.replaceState({}, '',
             '#' + board.fen() +
             '-' + thinking_depth +
-            '-' + player_color +
+            '-' + player_color[0] +
             '-' + (immune_pawns ? 't' : 'f') +
             '-' + (dead_squares ? 't' : 'f')
         );
@@ -322,7 +322,7 @@ $(document).ready(function(){
         var url_data = window.location.hash.slice(1).split('-');
         var fen = url_data[0];
         thinking_depth = url_data[1];
-        player_color = url_data[2];
+        player_color = (url_data[2] === 'w') ? 'white' : 'black';
         immune_pawns = url_data[3] === 't';
         dead_squares = url_data[4] === 't';
         new_game();
