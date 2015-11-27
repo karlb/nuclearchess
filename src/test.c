@@ -65,7 +65,7 @@ void sub_main (farbname_t farbe,int tiefe,brett_t *brett_p) {
 }
 
 
-int parse_fen(char *fen, int *farbe, int *tiefe) {
+void parse_fen(char *fen, int *farbe, int *tiefe) {
 	int i = 0;
 	int fen_i;
 
@@ -101,7 +101,9 @@ int parse_fen(char *fen, int *farbe, int *tiefe) {
 					}
 				}
 				break;
-			default: return -1;
+			default:
+				printf("Bad fen notation\n");
+				exit(1);
 		}
 		//printf("%c %d\n", fen[fen_i], i);
 	}
@@ -121,7 +123,6 @@ int parse_fen(char *fen, int *farbe, int *tiefe) {
 	}
 	immune_pawns = immune_pawns_c - '0';
 	dead_squares = dead_squares_c - '0';
-	return 0;
 }
 
 
@@ -198,15 +199,16 @@ int main(int argc, char *argv[]) {
 			//save_board();
 		} else if (strcmp(argv[1], "make_turn") == 0) {
 			zug_t zug;
-			int farbe = strtol(argv[2], NULL, 10);
-			int tiefe = strtol(argv[3], NULL, 10);
-			//printf(">> %d %d\n", farbe, tiefe);
+			int farbe;
+			int tiefe;
 
 			newGame(FALSE, FALSE);
-			//load_board();
+			parse_fen(argv[2], &farbe, &tiefe);
+
 			computer_zug(farbe, tiefe, &brett, &zug);
 			anwenden(&brett, &zug);
-			//save_board();
+
+			write_fen(stdout, farbe, tiefe);
 
 			if (!hat_koenig(-farbe, &brett)) {
 				if (hat_koenig(-farbe, &brett)) {
@@ -222,10 +224,8 @@ int main(int argc, char *argv[]) {
 			int farbe = weiss;
 			int tiefe;
 			newGame(FALSE, FALSE);
-			if (parse_fen(argv[2], &farbe, &tiefe)) {
-				printf("Bad fen notation\n");
-				exit(1);
-			}
+			parse_fen(argv[2], &farbe, &tiefe);
+
 			punkte(farbe, &brett, &punkte_weiss, &punkte_schwarz);
 			printf("%d\n", farbe * (punkte_weiss - punkte_schwarz));
 			write_fen(stdout, farbe, 1);
