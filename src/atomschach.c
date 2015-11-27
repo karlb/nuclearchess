@@ -378,12 +378,14 @@ void punkte(farbname_t farbe, brett_t *brett_p, int *punkte_weiss_p, int *punkte
 			// Adjacent fields with own pieces are bad
 			// TODO: probably not if pawns are immutable
 			int malus = 0;
+			/*
 			for (int index=0 ; (*uref_p)[index] != -1; index++){
 				int ui = (*uref_p)[index];
 				if (figurf*((*brett_p)[ui]) > 0) {
 					malus++;
 				};
 			}
+			*/
 
 			int refz[LIST_LEN];
 			int refs[LIST_LEN];
@@ -410,6 +412,7 @@ void punkte(farbname_t farbe, brett_t *brett_p, int *punkte_weiss_p, int *punkte
 					}
 				}
 
+				// points for pieces killed in nuclear strike
 				umgebung_t *urefs_p = &(umgebung_liste[schlag+64]);
 				for (int index2=0 ; (*urefs_p)[index2] != -1; index2++){
 					int schlagfigurf = (*brett_p)[(*urefs_p)[index2]];
@@ -418,12 +421,11 @@ void punkte(farbname_t farbe, brett_t *brett_p, int *punkte_weiss_p, int *punkte
 						if (figurf*schlagfigurf < 0) {
 							schlagpunkte += grundwert[schlagfigur];
 						} else {
-							// TODO: why?
 							schlagpunkte -= grundwert[schlagfigur];
 						}
 					}
 
-					// taken piece is opponent's king
+					// killed piece is opponent's king
 					if (schlagfigur == 6 && figurf*schlagfigurf < 0) {
 						int eigener_koenig_in_schlagbereich = 0;
 						for (int index3=0 ; (*urefs_p)[index3] != -1; index3++){

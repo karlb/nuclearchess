@@ -33,6 +33,14 @@ typedef int umgebung_t[10];
 #define TRUE 1
 #define FALSE 0
 
+#define PAWN 1
+#define BISHOP 2
+#define KNIGHT 3
+#define ROOK 4
+#define QUEEN 5
+#define KING 6
+#define NUKE 100
+
 #define MAX_TMP_INIT -10000
 #define MAX_TMP_INIT_SMALL -8000
 
