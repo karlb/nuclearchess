@@ -1,3 +1,5 @@
+#include <ctype.h>
+
 #include "atomschach.c"
 
 void sub_main (farbname_t farbe,int tiefe,brett_t *brett_p) {
@@ -111,6 +113,44 @@ int parse_fen(char *fen) {
 }
 
 
+void write_fen(FILE *fp) {
+	int empty_fields = 0;
+	char pieces[] = "pnbrqk";
+
+	for (int i=0; i<64; i++) {
+		if (i % 8 == 0 && i > 0) {
+			putc('/', fp);
+		}
+		switch (brett[i]) {
+			case 0:
+				empty_fields++;
+			   	break;
+			case 100:
+				putc('u', fp);
+				break;
+			default:
+				{
+					int abs_val = abs(brett[i]);
+					if (abs_val > 6) {
+						printf("Bad case\n");
+						exit(1);
+					}
+					if (brett[i] > 0) {
+						putc(toupper(pieces[abs_val - 1]), fp);
+					} else {
+						putc(pieces[abs_val - 1], fp);
+					}
+				}
+		}
+		if (i == 63 || brett[i + 1] != 0) {
+			fprintf(fp, "%d", empty_fields);
+			empty_fields = 0;
+		}
+	}
+	putc('\n', fp);
+}
+
+
 void test() {
 	int farbe = 1;
 	int tiefe = 1;
@@ -194,6 +234,7 @@ int main(int argc, char *argv[]) {
 			}
 			punkte(farbe, &brett, &punkte_weiss, &punkte_schwarz);
 			printf("%d\n", farbe * (punkte_weiss - punkte_schwarz));
+			write_fen(stdout);
 		} else {
 			printf("Bad command '%s'\n", argv[1]);
 		}
