@@ -66,29 +66,24 @@ void sub_main (farbname_t farbe,int tiefe,brett_t *brett_p) {
 
 
 int parse_fen(char *fen) {
-	int x = 0;
-	int y = 0;
+	int i = 0;
 
 	for (int fen_i=0; fen[fen_i] != '-'; fen_i++) {
-		int i = x + 8 * y;
 		switch (fen[fen_i]) {
-			case 'p': brett[i] = -PAWN; x++; break;
-			case 'r': brett[i] = -ROOK; x++; break;
-			case 'n': brett[i] = -KNIGHT; x++; break;
-			case 'b': brett[i] = -BISHOP; x++; break;
-			case 'q': brett[i] = -QUEEN; x++; break;
-			case 'k': brett[i] = -KING; x++; break;
-			case 'P': brett[i] = PAWN; x++; break;
-			case 'R': brett[i] = ROOK; x++; break;
-			case 'N': brett[i] = KNIGHT; x++; break;
-			case 'B': brett[i] = BISHOP; x++; break;
-			case 'Q': brett[i] = QUEEN; x++; break;
-			case 'K': brett[i] = KING; x++; break;
-			case 'u': brett[i] = NUKE; x++; break;
-			case '/':
-				y++;
-				x = 0;
-				break;
+			case 'p': brett[i] = -PAWN; i++; break;
+			case 'r': brett[i] = -ROOK; i++; break;
+			case 'n': brett[i] = -KNIGHT; i++; break;
+			case 'b': brett[i] = -BISHOP; i++; break;
+			case 'q': brett[i] = -QUEEN; i++; break;
+			case 'k': brett[i] = -KING; i++; break;
+			case 'P': brett[i] = PAWN; i++; break;
+			case 'R': brett[i] = ROOK; i++; break;
+			case 'N': brett[i] = KNIGHT; i++; break;
+			case 'B': brett[i] = BISHOP; i++; break;
+			case 'Q': brett[i] = QUEEN; i++; break;
+			case 'K': brett[i] = KING; i++; break;
+			case 'u': brett[i] = NUKE; i++; break;
+			case '/': break;
 			case '1':
 			case '2':
 			case '3':
@@ -100,22 +95,23 @@ int parse_fen(char *fen) {
 				{
 					int empty_fields = strtol(&fen[fen_i], NULL, 10);
 					for (int i2=0; i2 < empty_fields; i2++) {
-						brett[i + i2] = 0;
-						x++;
+						brett[i] = 0;
+						i++;
 					}
 				}
 				break;
 			default: return -1;
 		}
-		//printf("%c %d %d %d\n", fen[fen_i], i, x, y);
+		printf("%c %d\n", fen[fen_i], i);
 	}
 	return 0;
 }
 
 
+
 void write_fen(FILE *fp) {
 	int empty_fields = 0;
-	char pieces[] = "pnbrqk";
+	char pieces[] = ".pbnrqk";
 
 	for (int i=0; i<64; i++) {
 		if (i % 8 == 0 && i > 0) {
@@ -136,9 +132,9 @@ void write_fen(FILE *fp) {
 						exit(1);
 					}
 					if (brett[i] > 0) {
-						putc(toupper(pieces[abs_val - 1]), fp);
+						putc(toupper(pieces[abs_val]), fp);
 					} else {
-						putc(pieces[abs_val - 1], fp);
+						putc(pieces[abs_val], fp);
 					}
 				}
 		}
