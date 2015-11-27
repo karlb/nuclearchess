@@ -65,10 +65,11 @@ void sub_main (farbname_t farbe,int tiefe,brett_t *brett_p) {
 }
 
 
-int parse_fen(char *fen) {
+int parse_fen(char *fen, int *farbe, int *tiefe) {
 	int i = 0;
+	int fen_i;
 
-	for (int fen_i=0; fen[fen_i] != '-'; fen_i++) {
+	for (fen_i=0; fen[fen_i] != '-'; fen_i++) {
 		switch (fen[fen_i]) {
 			case 'p': brett[i] = -PAWN; i++; break;
 			case 'r': brett[i] = -ROOK; i++; break;
@@ -102,14 +103,30 @@ int parse_fen(char *fen) {
 				break;
 			default: return -1;
 		}
-		printf("%c %d\n", fen[fen_i], i);
+		//printf("%c %d\n", fen[fen_i], i);
 	}
+	char farbe_c, immune_pawns_c, dead_squares_c;
+	int variables_read = sscanf(&fen[fen_i], "-%d-%c-%c-%c\n", tiefe, &farbe_c, &immune_pawns_c, &dead_squares_c);
+	if (variables_read != 4) {
+		printf("sscanf returned %d\n", variables_read);
+		exit(1);
+	};
+	if (farbe_c == 'w') {
+		*farbe = 1;
+	} else if (farbe_c == 'b') {
+		*farbe = -1;
+	} else {
+		printf("Bad color in fen string");
+		exit(1);
+	}
+	immune_pawns = immune_pawns_c - '0';
+	dead_squares = dead_squares_c - '0';
 	return 0;
 }
 
 
 
-void write_fen(FILE *fp) {
+void write_fen(FILE *fp, int farbe, int tiefe) {
 	int empty_fields = 0;
 	char pieces[] = ".pbnrqk";
 
@@ -143,7 +160,7 @@ void write_fen(FILE *fp) {
 			empty_fields = 0;
 		}
 	}
-	putc('\n', fp);
+	fprintf(fp, "-%d-%c-%c-%c\n", tiefe, (farbe == 1) ? 'w' : 'b', immune_pawns ? 't': 'f', dead_squares ? 't' : 'f');
 }
 
 
@@ -169,26 +186,6 @@ void bench() {
 }
 
 
-void save_board() {
-	FILE *fp = fopen("board.csv", "w");
-	for (int i=0; i<=64; i++) {
-		fprintf(fp, "%d,", brett[i]);
-	}
-	fprintf(fp, "\n%d,%d\n,", immune_pawns, dead_squares);
-	fclose(fp);
-}
-
-
-void load_board() {
-	FILE *fp = fopen("board.csv", "r");
-	for (int i=0; i<=64; i++) {
-		fscanf(fp, "%d,", &brett[i]);
-	}
-	fscanf(fp, "\n%d,%d\n,", &immune_pawns, &dead_squares);
-	fclose(fp);
-}
-
-
 int main(int argc, char *argv[]) {
 	if (argc >= 2) {
 		if (strcmp(argv[1], "bench") == 0) {
@@ -198,7 +195,7 @@ int main(int argc, char *argv[]) {
 			int _dead_squares = strtol(argv[3], NULL, 10);
 
 			newGame(_immune_pawns, _dead_squares);
-			save_board();
+			//save_board();
 		} else if (strcmp(argv[1], "make_turn") == 0) {
 			zug_t zug;
 			int farbe = strtol(argv[2], NULL, 10);
@@ -206,10 +203,10 @@ int main(int argc, char *argv[]) {
 			//printf(">> %d %d\n", farbe, tiefe);
 
 			newGame(FALSE, FALSE);
-			load_board();
+			//load_board();
 			computer_zug(farbe, tiefe, &brett, &zug);
 			anwenden(&brett, &zug);
-			save_board();
+			//save_board();
 
 			if (!hat_koenig(-farbe, &brett)) {
 				if (hat_koenig(-farbe, &brett)) {
@@ -223,14 +220,15 @@ int main(int argc, char *argv[]) {
 		} else if (strcmp(argv[1], "score") == 0) {
 			int punkte_weiss, punkte_schwarz;
 			int farbe = weiss;
+			int tiefe;
 			newGame(FALSE, FALSE);
-			if (parse_fen(argv[2])) {
+			if (parse_fen(argv[2], &farbe, &tiefe)) {
 				printf("Bad fen notation\n");
 				exit(1);
 			}
 			punkte(farbe, &brett, &punkte_weiss, &punkte_schwarz);
 			printf("%d\n", farbe * (punkte_weiss - punkte_schwarz));
-			write_fen(stdout);
+			write_fen(stdout, farbe, 1);
 		} else {
 			printf("Bad command '%s'\n", argv[1]);
 		}
