@@ -1,0 +1,94 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<svg
+   xmlns:dc="http://purl.org/dc/elements/1.1/"
+   xmlns:cc="http://creativecommons.org/ns#"
+   xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+   xmlns:svg="http://www.w3.org/2000/svg"
+   xmlns="http://www.w3.org/2000/svg"
+   xmlns:xlink="http://www.w3.org/1999/xlink"
+   xmlns:sodipodi="http://sodipodi.sourceforge.net/DTD/sodipodi-0.dtd"
+   xmlns:inkscape="http://www.inkscape.org/namespaces/inkscape"
+   width="600"
+   height="600"
+   viewBox="-300 -300 600 600"
+   id="svg3336"
+   version="1.1"
+   inkscape:version="0.91+devel+osxmenu r12922"
+   sodipodi:docname="Nuclear_symbol.svg"
+   inkscape:export-filename="/Users/karl/Downloads/nuke.png"
+   inkscape:export-xdpi="12.8"
+   inkscape:export-ydpi="12.8">
+  <metadata
+     id="metadata3353">
+    <rdf:RDF>
+      <cc:Work
+         rdf:about="">
+        <dc:format>image/svg+xml</dc:format>
+        <dc:type
+           rdf:resource="http://purl.org/dc/dcmitype/StillImage" />
+      </cc:Work>
+    </rdf:RDF>
+  </metadata>
+  <defs
+     id="defs3351" />
+  <sodipodi:namedview
+     pagecolor="#ffffff"
+     bordercolor="#666666"
+     borderopacity="1"
+     objecttolerance="10"
+     gridtolerance="10"
+     guidetolerance="10"
+     inkscape:pageopacity="0"
+     inkscape:pageshadow="2"
+     inkscape:window-width="1200"
+     inkscape:window-height="742"
+     id="namedview3349"
+     showgrid="false"
+     inkscape:zoom="0.805"
+     inkscape:cx="289.60154"
+     inkscape:cy="300"
+     inkscape:window-x="70"
+     inkscape:window-y="23"
+     inkscape:window-maximized="0"
+     inkscape:current-layer="svg3336" />
+  <circle
+     r="243.85278"
+     id="circle3338"
+     cx="0"
+     cy="0"
+     style="stroke-width:0.83425522"
+     inkscape:export-xdpi="12.8"
+     inkscape:export-ydpi="12.8" />
+  <g
+     style="fill:#f1cd43"
+     transform="scale(0.81621559)"
+     id="g3340"
+     inkscape:export-xdpi="12.8"
+     inkscape:export-ydpi="12.8">
+    <circle
+       r="50"
+       id="circle3342"
+       cx="0"
+       cy="0" />
+    <path
+       d="M 75,0 A 75,75 0 0 0 37.5,-64.951905 L 125,-216.50635 A 250,250 0 0 1 250,0 Z"
+       id="bld"
+       inkscape:connector-curvature="0" />
+    <use
+       xlink:href="#bld"
+       transform="rotate(120)"
+       id="use3345"
+       x="0"
+       y="0"
+       width="100%"
+       height="100%" />
+    <use
+       xlink:href="#bld"
+       transform="rotate(-120)"
+       id="use3347"
+       x="0"
+       y="0"
+       width="100%"
+       height="100%" />
+  </g>
+</svg>
