@@ -42,6 +42,11 @@
 		<meta name="msapplication-TileImage" content="/favicons/mstile-144x144.png">
 		<meta name="msapplication-config" content="/favicons/browserconfig.xml">
 		<meta name="theme-color" content="#ffffff">
+		<style>
+			.hint {
+				background: #ff7777;
+			}
+		</style>
 	</head>
 	<body>
 		<!-- robotdetect.com -->
@@ -72,7 +77,7 @@
 
 		<!-- analytics -->
 		<script>
-			if (document.URL.indexOf("http://karlb") != -1) {
+			if (document.URL.indexOf("http://www.karl.berlin") != -1) {
 			  (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
 			  (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
 			  m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
@@ -94,6 +99,7 @@
 					</div>
 				</div>
 				<div style="text-align: right">
+					<button class="btn btn-default" id='hint'>Hint</button>
 					<button class="btn btn-default" data-toggle="modal" data-target="#rules">Rules</button>
 					<button class="btn btn-default" data-toggle="modal" data-target="#new-game">New Game</button>
 				</div>
