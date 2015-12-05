@@ -161,7 +161,7 @@ function set_winner(text) {
 
 
 var board;
-$(document).ready(function(){
+function main() {
     _brett = _get_brett();
     _zug_temp = _get_zug_temp();
     var weiss = 1, schwarz = -1;
@@ -391,6 +391,28 @@ $(document).ready(function(){
         );
     });
     $('#difficulty').change(function () {thinking_depth = parseInt(this.value)});
+};
+
+
+$(document).ready(function() {
+    var isCordovaApp = !!window.cordova;
+
+    if (!isCordovaApp) {
+        main();
+    }
 });
+
+
+// will only be called on cordova
+document.addEventListener("deviceready", function () {
+    // adjust tracking
+    var adjustConfig = new AdjustConfig(
+        "u8x75dwq8q2o",
+        AdjustConfig.EnvironmentProduction);
+    Adjust.create(adjustConfig);
+
+    main();
+}, false);
+
 
 // vim: tabstop=4 expandtab shiftwidth=4 softtabstop=4
