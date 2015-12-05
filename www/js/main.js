@@ -2,6 +2,18 @@ function indexes_to_field(x, y) {
     return String.fromCharCode('a'.charCodeAt(0) + x) + (8 - y);
 }
 
+
+function get_current_move() {
+    var from = indexes_to_field(_von_x(_zug_temp), _von_y(_zug_temp));
+    var to = indexes_to_field(_nach_x(_zug_temp), _nach_y(_zug_temp));
+    return [from, to];
+}
+
+function apply_move(move, brett) {
+    var zug = make_zug(move[0], move[1]);
+    _anwenden(brett, zug);
+}
+
 function field_to_indexes(field) {
     var x = field.charCodeAt(0) - 'a'.charCodeAt(0);
     var y = 8 - parseInt(field[1]);
@@ -168,24 +180,32 @@ $(document).ready(function(){
         update_html_board(board, false);
         game_over = false;
         clear_winner();
+        $('.hint').removeClass('hint');
     }
 
-    function computer_turn() {
+    function calc_move(color, depth, cb) {
         if (game_over) {
             return;
         }
         $('#thinking').show();
         setTimeout(function() {
-            _computer_zug(player_color === 'white' ? schwarz : weiss,
-                          thinking_depth, _brett, _zug_temp, 1);
+            _computer_zug(color === 'white' ? weiss : schwarz,
+                          depth, _brett, _zug_temp, 1);
             $('#thinking').hide();
-            _anwenden(_brett, _zug_temp);
-
-            var from = indexes_to_field(_von_x(_zug_temp), _von_y(_zug_temp));
-            var to = indexes_to_field(_nach_x(_zug_temp), _nach_y(_zug_temp));
-            check_for_nuclear_strike(to);
-            board.move(from + '-' + to);
+            var move = get_current_move();
+            cb(move);
         }, 10);
+    }
+
+    function computer_turn() {
+        calc_move(player_color === 'white' ? 'black' : 'white',
+            thinking_depth,
+            function(move) {
+                apply_move(move, _brett);
+                check_for_nuclear_strike(move[1]);
+                board.move(move[0] + '-' + move[1]);
+            }
+        );
     }
 
     function check_for_nuclear_strike(to_field) {
@@ -284,6 +304,7 @@ $(document).ready(function(){
         if (zug === 'invalid') {
             return 'snapback';
         }
+        $('.hint').removeClass('hint');
 
         undo_stack.push(board_to_position(_brett));
         waiting_for_player = false;
@@ -321,7 +342,7 @@ $(document).ready(function(){
     if (window.location.hash) {
         var url_data = window.location.hash.slice(1).split('-');
         var fen = url_data[0];
-        thinking_depth = url_data[1];
+        thinking_depth = parseInt(url_data[1]);
         player_color = (url_data[2] === 'w') ? 'white' : 'black';
         immune_pawns = url_data[3] === 't';
         dead_squares = url_data[4] === 't';
@@ -356,6 +377,18 @@ $(document).ready(function(){
         update_html_board(board);
         game_over = false;
         clear_winner();
+    });
+    $('#hint').click(function () {
+        var depth = thinking_depth + 1;
+        if (depth < 3) {
+            depth += 1;
+        }
+        calc_move(player_color,
+            depth,
+            function(move) {
+                $('.square-' + move[0] + ', .square-' + move[1]).addClass('hint');
+            }
+        );
     });
     $('#difficulty').change(function () {thinking_depth = parseInt(this.value)});
 });
