@@ -159,6 +159,10 @@
 				if (push_state !== false) {
 					history.pushState({}, '', '#' + id);
 				}
+				if (id === 'play') {
+					// Show example board to help understand game modes
+					show_example();
+				}
 			}
 
 			function show_example() {
@@ -245,9 +249,6 @@
 				} else {
 					$('[data-keep_pawns=false][data-dead_squares=false]').click();
 				}
-
-				// Show example board to help understand game modes
-				show_example();
 			});
 		</script>
 	</head>
