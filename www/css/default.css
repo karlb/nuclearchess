@@ -37,17 +37,6 @@
 	display: table-cell;
 	white-space: nowrap;
 }
-#bottom-bar {
-	opacity: 0.3;
-	padding: 12px 0;
-	transition: opacity .5s ease-in-out;
-}
-#bottom-bar:hover {
-	opacity: 1;
-}
-#bottom-bar > * {
-	vertical-align: middle;
-}
 .app-store {
 	/*display: none;*/
 	position: absolute;
