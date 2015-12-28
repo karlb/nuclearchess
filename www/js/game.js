@@ -82,7 +82,17 @@ var game = (function () {
                     )
                     {
                         field = indexes_to_field(center_x + x, center_y + y);
-                        piece_classes.push('.square-' + field + ' img');
+						if (
+							board.position()[field] !== undefined
+							&& board.position()[field] !== 'nuke'
+							&& (
+								board.position()[field][1] !== 'P'
+								|| !cfg.keep_pawns
+							)
+						) {
+							console.log(board.position()[field], cfg.keep_pawns);
+							piece_classes.push('.square-' + field + ' img');
+						}
                     }
                 }
             }
