@@ -27,6 +27,9 @@ var game = (function () {
         game_over = false;
         clear_winner();
         $('.hint').removeClass('hint');
+		if (game_cfg.player_color === 'black' && !fen) {
+			computer_turn();
+		}
 		state_to_url();
     };
 
@@ -90,7 +93,6 @@ var game = (function () {
 								|| !cfg.keep_pawns
 							)
 						) {
-							console.log(board.position()[field], cfg.keep_pawns);
 							piece_classes.push('.square-' + field + ' img');
 						}
                     }
