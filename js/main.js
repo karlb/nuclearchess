@@ -180,7 +180,7 @@ $(document).ready(function() {
 document.addEventListener("deviceready", function () {
     // adjust tracking
     var adjustConfig = new AdjustConfig(
-        "u8x75dwq8q2o",
+        "5oj72xlvpx1c",
         AdjustConfig.EnvironmentProduction);
     Adjust.create(adjustConfig);
 
