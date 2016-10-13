@@ -183,6 +183,8 @@ document.addEventListener("deviceready", function () {
         "5oj72xlvpx1c",
         AdjustConfig.EnvironmentProduction);
     Adjust.create(adjustConfig);
+    var adjustEvent = new AdjustEvent("fohq78");  // "appstart" event
+    Adjust.trackEvent(adjustEvent);
 
     main();
 }, false);
