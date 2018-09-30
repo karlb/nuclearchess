@@ -161,33 +161,8 @@ function set_winner(text) {
 }
 
 
-function main() {
-    game.init();
-};
-
-
-
 $(document).ready(function() {
-    var isCordovaApp = !!window.cordova;
-
-    if (!isCordovaApp) {
-        main();
-    }
+    game.init();
 });
-
-
-// will only be called on cordova
-document.addEventListener("deviceready", function () {
-    // adjust tracking
-    var adjustConfig = new AdjustConfig(
-        "5oj72xlvpx1c",
-        AdjustConfig.EnvironmentProduction);
-    Adjust.create(adjustConfig);
-    var adjustEvent = new AdjustEvent("fohq78");  // "appstart" event
-    Adjust.trackEvent(adjustEvent);
-
-    main();
-}, false);
-
 
 // vim: tabstop=4 expandtab shiftwidth=4 softtabstop=4
