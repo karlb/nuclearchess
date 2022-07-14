@@ -7,4 +7,4 @@ An explosive Chess variant with three different game modes:
 * **Keep Pawns**: When a capture is made, both pieces and all non-pawn pieces on adjacent squares are removed from play.
 * **Dead Square**: When a capture is made, both pieces and all non-pawn pieces on adjacent squares are removed from play.
 
-## [Play now!](http://www.karl.berlin/nuclearchess/)
+## [Play now!](http://karlb.github.io/nuclearchess/)
