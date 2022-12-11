@@ -1,19 +1,28 @@
 {
-    "name": "Nuclear Chess",
-    "short_name": "Nuclear Chess",
-    "icons": [
-        {
-            "src": "android-chrome-192x192.png",
-            "sizes": "192x192",
-            "type": "image/png"
-        },
-        {
-            "src": "android-chrome-512x512.png",
-            "sizes": "512x512",
-            "type": "image/png"
-        }
-    ],
-    "theme_color": "#fffdca",
-    "background_color": "#fffdca",
-    "display": "standalone"
+	"name": "Nuclear Chess",
+	"short_name": "Nuclear Chess",
+	"icons": [
+		{
+			"src": "android-chrome-192x192.png",
+			"sizes": "192x192",
+			"type": "image/png"
+		},
+		{
+			"src": "android-chrome-512x512.png",
+			"sizes": "512x512",
+			"type": "image/png",
+			"purpose": "any"
+		}
+	],
+	"theme_color": "#fffdca",
+	"background_color": "#fffdca",
+	"display": "standalone",
+	"description": "Nuclear Chess (also known as Atomic Chess or Dead Square) is an unusual chess variant. Whenever a piece is captured, both pieces and all adjacent pieces are removed from the game. Nuclear Chess games are short and fun even for people who usually don't play chess.\n\nFeatures:\n * Simple rule changes compared to normal chess, yet totally different game play\n * Play against AI, choosing one of 6 difficulty levels\n * Undo your moves and try a different strategy\n * Get hints from the AI if you are stuck\n * Use shuffle mode to play with a randomized starting position\n * Support for the three most popular Nuclear Chess rule sets:\n    - Full Blast (all adjacent pieces are removed from the game)\n    - Keep Pawns (adjacent pawns survive a nuclear strike)\n    - Dead Square (nuclear strikes leave a blocked square)",
+	"start_url": "index.html",
+	"lang": "en",
+	"orientation": "any",
+	"categories": [
+		"games"
+	],
+	"dir": "ltr"
 }
